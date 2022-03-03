@@ -22,6 +22,7 @@ public class Invoice extends javax.swing.JInternalFrame {
      */
     public Invoice() {
         initComponents();
+         
     }
 
     /**
@@ -199,81 +200,79 @@ public class Invoice extends javax.swing.JInternalFrame {
     private void txt_QtyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_QtyActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_QtyActionPerformed
-ItemListTable itb = new ItemListTable(null,true);
-double totalone_item = 0;
-double price = 0;
-double qty = 0;
+
+     ItemListTable itb = new ItemListTable(null, true);
+    double totalone_item = 0;
+    double price = 0;
+    double qty = 0;
+    //add button press then add data into table
     private void btn_AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AddActionPerformed
-          try{
-        DefaultTableModel model1 = (DefaultTableModel) tbl_invoice.getModel();
-           ManageItem ManageItem2 = new ManageItem();
-            ResultSet result1 = ManageItem2.selectItemdata(Integer.parseInt(itb.itemno));
-            
-             while(result1.next())
-                          { Vector vec1 = new Vector();
-                                 vec1.insertElementAt(result1.getString("code"), 0);
-                            vec1.insertElementAt(result1.getString("itemName"), 1);
-                           vec1.insertElementAt(price, 2);
-                            vec1.insertElementAt(qty, 3);
-                            vec1.insertElementAt(totalone_item, 4);
-                             
-                             model1.insertRow(0, vec1);
-                          
-                          }
-                          tbl_invoice.setModel(model1);
-          }
-          catch(Exception e)
-          {
+        try {
+            DefaultTableModel model = new DefaultTableModel();
+            model = (DefaultTableModel) tbl_invoice.getModel();
+            model.addRow(new Object[]{
+                txt_item_no.getText(),
+                txt_Item_name.getText(),
+                txt_price.getText(),
+                txt_Qty.getText(),
+                txt_total.getText(),});
+
+            //take table row count and add it into the sum text field
+            double sum = 0;
+            int qty = 0;
+            int i = 0;
+            for (i = 0; i < tbl_invoice.getRowCount(); i++) {
+                sum = sum + Double.parseDouble(tbl_invoice.getValueAt(i, 4).toString());
+                qty = qty + Integer.parseInt(tbl_invoice.getValueAt(i, 3).toString());
+            }
+
+            txt_subtoot.setText(Double.toString(sum));
+            txt_unit.setText(Integer.toString(tbl_invoice.getRowCount()));
+            txt_item_qty.setText(Integer.toString(qty));
+
+        } catch (Exception e) {
             System.out.println(e.getMessage());
-          }
+        }
     }//GEN-LAST:event_btn_AddActionPerformed
+
 
     private void txt_Invoice_NoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_Invoice_NoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_Invoice_NoActionPerformed
-     
-      
+
+//f1 key pres then add data from item table to text fields
     private void txt_item_noKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_item_noKeyPressed
-         if (evt.getKeyCode() == KeyEvent.VK_F1) {
-            
-            
+        if (evt.getKeyCode() == KeyEvent.VK_F1) {
+
             itb.setVisible(true);
             txt_item_no.setText(itb.itemno);
             txt_Item_name.setText(itb.itemname);
             txt_price.setText(itb.price);
-            
-            
-            
+
             ManageItem manageitem1 = new ManageItem();
             ResultSet result = manageitem1.selectItemdata(Integer.parseInt(itb.itemno));
-            try{
-            while(result.next())
-            {
-               txt_Qty.setText(result.getString("stockQty"));                        
+            try {
+                while (result.next()) {
+                    txt_Qty.setText(result.getString("stockQty"));
+                }
+
+                double qty1 = Double.parseDouble(txt_Qty.getText());
+                totalone_item = (Double.parseDouble(itb.price) * qty1);
+                txt_total.setText(Double.toString(totalone_item));
+
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+
             }
-            
-           double qty1 = Double.parseDouble(txt_Qty.getText()); 
-            totalone_item = (Double.parseDouble(itb.price) * qty1);
-           txt_total.setText(Double.toString(totalone_item));
-            
-            
-            
-            }
-            catch(Exception e)
-            {
-            System.out.println(e.getMessage());
-            
-            }
-            
-            
 
         }
         if (evt.getKeyCode() == KeyEvent.VK_F2) {
-          //  txtdno.setText("");
-          //  txtdname.setText("");
+            //  txtdno.setText("");
+            //  txtdname.setText("");
 
         }
     }//GEN-LAST:event_txt_item_noKeyPressed
+
 
     private void txt_item_noActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_item_noActionPerformed
         
@@ -287,6 +286,7 @@ double qty = 0;
        
     }//GEN-LAST:event_txt_QtyKeyTyped
 
+    //quantity and price multiplication
     private void txt_QtyKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_QtyKeyReleased
         try{
         qty = Double.parseDouble(txt_Qty.getText()); 
@@ -302,16 +302,7 @@ double qty = 0;
     }//GEN-LAST:event_txt_QtyKeyReleased
 
     private void txt_priceKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_priceKeyReleased
-       try{
-        qty = Double.parseDouble(txt_Qty.getText()); 
-          price = Double.parseDouble(txt_price.getText());
-         totalone_item =(price * qty);
-         txt_total.setText(Double.toString(totalone_item));
-       }
-       catch(Exception e)
-       {
-         System.out.println(e.getMessage());
-       }
+       
     }//GEN-LAST:event_txt_priceKeyReleased
 
 
