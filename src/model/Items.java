@@ -1,0 +1,103 @@
+
+package Model;
+
+public class Items {
+    private int icode;
+    private String name;
+    private String sinhala_name;
+    private int barcode;
+    private int weight;
+    private int margin;
+    private int department;
+    private String category;
+    private int supplier;
+    private int binType;
+    private float costPrice;
+    private int reorderLevel;
+    private int reorderQuantity;
+    private float sellingPrice;
+    private float maxQuantity;
+      
+    public Items(){
+        
+    }
+    
+    public Items(int ino,String name, String sname, int barcode, int weight, int margin, int dep, String cat, int supplier, int bin, float cprice, int reLevel, int reQty, float sprice, int mqty){
+        this.icode = ino;
+        this.name = name;
+        this.sinhala_name = sname;
+        this.barcode = barcode;
+        this.weight = weight;
+        this.margin = margin;
+        this.department = dep;
+        this.category = cat;
+        this.supplier = supplier;
+        this.binType = bin;
+        this.costPrice = cprice;
+        this.reorderLevel = reLevel;
+        this.reorderQuantity = reQty;
+        this.sellingPrice = sprice;
+        this.maxQuantity = mqty;
+        
+    }
+     
+    public int getItemCode() {
+        return icode;
+    }
+      
+    public String getName() {
+        return name;
+    }
+    
+    public String getSname() {
+        return sinhala_name;
+    }
+    
+    public int getBarcode() {
+        return barcode;
+    }
+    
+    public int getWeight() {
+        return weight;
+    }
+    
+    public int getMargin() {
+        return margin;
+    }
+    
+    public int getDepartment() {
+        return department;
+    }
+    
+    public String getCategory() {
+        return category;
+    }
+    
+    public int getSupplier(){
+        return supplier;
+    }
+    
+    public int getBinType(){
+        return binType;
+    }
+    
+    public float getCostType(){
+        return costPrice;
+    }
+    
+    public int getReorderLevel() {
+        return reorderLevel;
+    }
+    
+    public int getReorderQty() {
+        return reorderQuantity;
+    }
+    
+    public float getSellingPrice() {
+        return sellingPrice;
+    }
+    
+    public float getMaxQty() {
+        return maxQuantity;
+    }
+}
