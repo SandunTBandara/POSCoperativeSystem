@@ -71,6 +71,47 @@ public class ManageStore {
     
     }
     
+    public ResultSet getStoreID(String loc){
+        ResultSet result = null;
+        try{
+            Connection con = DB.createConnection();
+            Statement stmt = con.createStatement();
+            String sql = "select stcode from store where location = '" + loc + "';";
+            result = stmt.executeQuery(sql);
+    
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+        return result;        
+    }
+    
+    public ResultSet getStoreName(String code){
+        ResultSet result = null;
+        try{
+            Connection con = DB.createConnection();
+            Statement stmt = con.createStatement();
+            String sql = "select location from store where stcode = '" + code + "';";
+            result = stmt.executeQuery(sql);
+    
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+        return result;        
+    }
+    
+    public ResultSet getStores(){
+        ResultSet result = null;
+        try{
+            Connection con = DB.createConnection();
+            Statement stmt = con.createStatement();
+            String sql = "select * from store where stcode;";
+            result = stmt.executeQuery(sql);    
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+        return result;        
+    }
+    
                 Window getVisibleContent() {
         Window result = null;
         for (Window w : Window.getWindows()) {
