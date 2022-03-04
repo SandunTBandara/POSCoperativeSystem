@@ -158,6 +158,21 @@ public class ManageItem {
       
       }
     
+     
+      public ResultSet getItemName(int code){
+        ResultSet result = null;
+        try{
+            Connection con = DB.createConnection();
+            Statement stmt = con.createStatement();
+            String sql = "select itemName from item where code = " + code + ";";
+            result = stmt.executeQuery(sql);
+    
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+        return result;
+        
+    }
     
     
     
