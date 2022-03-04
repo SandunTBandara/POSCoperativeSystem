@@ -84,6 +84,35 @@ public class ManageSupplies {
 
     }
     
+    public ResultSet ViewSupliertable(String sname) {
+        ResultSet result = null;
+        try {
+            Connection con = DB.createConnection();
+            Statement stmt = con.createStatement();
+            String sql = "SELECT * FROM supplier  WHERE (scode   LiKE '" + sname + "%' or  Sname LiKE '" + sname + "%') ";
+            result = stmt.executeQuery(sql);
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return result;
+    }
+    
+     public ResultSet getSupplierName(int code){
+        ResultSet result = null;
+        try{
+            Connection con = DB.createConnection();
+            Statement stmt = con.createStatement();
+            String sql = "select Sname from supplier where scode = " + code + ";";
+            result = stmt.executeQuery(sql);
+    
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+        return result;
+        
+    }
+    
     public String getsuppliernamebyid(String sname)
     {
         String name= "";
