@@ -219,16 +219,16 @@ public class Invoice extends javax.swing.JInternalFrame {
 
             //take table row count and add it into the sum text field
             double sum = 0;
-            int qty = 0;
+            double qty = 0;
             int i = 0;
             for (i = 0; i < tbl_invoice.getRowCount(); i++) {
                 sum = sum + Double.parseDouble(tbl_invoice.getValueAt(i, 4).toString());
-                qty = qty + Integer.parseInt(tbl_invoice.getValueAt(i, 3).toString());
+                qty = qty + Double.parseDouble(tbl_invoice.getValueAt(i, 3).toString());
             }
 
             txt_subtoot.setText(Double.toString(sum));
-            txt_unit.setText(Integer.toString(tbl_invoice.getRowCount()));
-            txt_item_qty.setText(Integer.toString(qty));
+            txt_unit.setText(Double.toString(tbl_invoice.getRowCount()));
+            txt_item_qty.setText(Double.toString(qty));
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
