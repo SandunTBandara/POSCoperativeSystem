@@ -229,6 +229,8 @@ public class Invoice extends javax.swing.JInternalFrame {
             txt_subtoot.setText(Double.toString(sum));
             txt_unit.setText(Double.toString(tbl_invoice.getRowCount()));
             txt_item_qty.setText(Double.toString(qty));
+            
+            txt_item_no.setText("");
 
         } catch (Exception e) {
             System.out.println(e.getMessage());

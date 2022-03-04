@@ -18,6 +18,7 @@ public class frontlogin {
     {
          this.userId = userId;
          this.password = password;
+      
     
     }
 }

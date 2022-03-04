@@ -7,6 +7,7 @@ package view.FrontEnd;
 
 import controller.ManageFrontLogin;
 import java.sql.ResultSet;
+import javax.swing.JOptionPane;
 import model.frontlogin;
 
 /**
@@ -163,13 +164,25 @@ public class CashierLogin extends javax.swing.JFrame {
          ManageFrontLogin mlogin = new ManageFrontLogin(login);
          ResultSet rs = mlogin.loadlogin();
          if(rs.next())
-         {}
+         {
+             UserSignin signon1 = new UserSignin(null,true);
+             this.dispose();
+             signon1.setLocationRelativeTo(this);
+             signon1.setVisible(true);
+             
+             
+         }
+         else{
+                JOptionPane.showMessageDialog(null, "User Name and Password not matched");
+                txtUsername.setText("");
+                txtpass.setText("");
+         }
         }
         catch(Exception e)
         {
-           System.out.println(e.getMessage());
+          System.out.println(e.getMessage());
         }
-        }
+         
         /* try {
            
         
