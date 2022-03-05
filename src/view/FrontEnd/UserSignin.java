@@ -8,6 +8,7 @@ package view.FrontEnd;
 import controller.ManageCahsierLogin;
 import controller.ManageFrontLogin;
 import controller.ManageUser;
+import controller.ManageValidation;
 import java.sql.ResultSet;
 import java.time.LocalDateTime;
 import javax.swing.JOptionPane;
@@ -106,6 +107,7 @@ public class UserSignin extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel9 = new javax.swing.JLabel();
         kGradientPanel1 = new keeptoo.KGradientPanel();
         jPanel1 = new javax.swing.JPanel();
         kGradientPanel2 = new keeptoo.KGradientPanel();
@@ -124,6 +126,11 @@ public class UserSignin extends javax.swing.JDialog {
         datetime = new com.github.lgooddatepicker.components.DateTimePicker();
         lbl_snumber = new javax.swing.JLabel();
         lbl_uname = new javax.swing.JLabel();
+        lbl_famouterror = new javax.swing.JLabel();
+        lbl_countererror = new javax.swing.JLabel();
+        lbl_pwderror1 = new javax.swing.JLabel();
+
+        jLabel9.setText("jLabel9");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -172,7 +179,30 @@ public class UserSignin extends javax.swing.JDialog {
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 140, -1, -1));
         jPanel1.add(pwd_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 380, 210, 40));
+
+        txt_counter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_counterActionPerformed(evt);
+            }
+        });
+        txt_counter.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_counterKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_counterKeyReleased(evt);
+            }
+        });
         jPanel1.add(txt_counter, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 280, 210, 40));
+
+        txt_floatamount.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_floatamountKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_floatamountKeyReleased(evt);
+            }
+        });
         jPanel1.add(txt_floatamount, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 370, 210, 40));
 
         btn_signon.setText("Sign On");
@@ -191,6 +221,15 @@ public class UserSignin extends javax.swing.JDialog {
 
         lbl_uname.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jPanel1.add(lbl_uname, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 290, 210, 40));
+
+        lbl_famouterror.setForeground(new java.awt.Color(255, 0, 51));
+        jPanel1.add(lbl_famouterror, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 420, 150, 20));
+
+        lbl_countererror.setForeground(new java.awt.Color(255, 0, 51));
+        jPanel1.add(lbl_countererror, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 330, 150, 20));
+
+        lbl_pwderror1.setForeground(new java.awt.Color(255, 0, 51));
+        jPanel1.add(lbl_pwderror1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 430, 150, 20));
 
         kGradientPanel1.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 980, 640));
 
@@ -228,6 +267,17 @@ public class UserSignin extends javax.swing.JDialog {
         } */
      
              try{
+                 //use  here because i want to get error message for all the empty text fields
+                 ManageValidation.validatorText(pwd_password, lbl_pwderror1);
+                         ManageValidation.validatorText(txt_counter, lbl_countererror);
+                         ManageValidation.validatorText(txt_floatamount, lbl_famouterror);
+                         
+                         
+                 if(ManageValidation.validatorText(pwd_password, lbl_pwderror1)
+                         &&ManageValidation.validatorText(txt_counter, lbl_countererror)
+                         &&ManageValidation.validatorText(txt_floatamount, lbl_famouterror)
+                         )
+                 {
                  frontlogin flogin1 = new frontlogin();
         frontlogin login = new frontlogin(flogin1.getuserId(),pwd_password.getText());
          ManageFrontLogin mlogin = new ManageFrontLogin(login);
@@ -255,12 +305,34 @@ public class UserSignin extends javax.swing.JDialog {
                 pwd_password.setText("");
          }
         }
+             }
         catch(Exception e)
         {
           System.out.println("error1" +e.getMessage());
         }
+             
       
     }//GEN-LAST:event_btn_signonActionPerformed
+
+    private void txt_floatamountKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_floatamountKeyPressed
+       
+    }//GEN-LAST:event_txt_floatamountKeyPressed
+
+    private void txt_counterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_counterActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_counterActionPerformed
+
+    private void txt_counterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_counterKeyPressed
+       
+    }//GEN-LAST:event_txt_counterKeyPressed
+
+    private void txt_counterKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_counterKeyReleased
+         ManageValidation.validateNumber(txt_counter, 4);
+    }//GEN-LAST:event_txt_counterKeyReleased
+
+    private void txt_floatamountKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_floatamountKeyReleased
+         ManageValidation.validateNumber(txt_floatamount, 10);
+    }//GEN-LAST:event_txt_floatamountKeyReleased
 
     /**
      * @param args the command line arguments
@@ -315,9 +387,13 @@ public class UserSignin extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private keeptoo.KGradientPanel kGradientPanel1;
     private keeptoo.KGradientPanel kGradientPanel2;
+    private javax.swing.JLabel lbl_countererror;
+    private javax.swing.JLabel lbl_famouterror;
+    private javax.swing.JLabel lbl_pwderror1;
     private javax.swing.JLabel lbl_snumber;
     private javax.swing.JLabel lbl_uname;
     private javax.swing.JPasswordField pwd_password;

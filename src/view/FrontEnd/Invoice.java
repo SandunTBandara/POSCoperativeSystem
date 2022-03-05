@@ -190,6 +190,12 @@ public class Invoice extends javax.swing.JInternalFrame {
         jLabel12.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel12.setText("Sub Total");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 750, -1, -1));
+
+        txt_subtoot.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_subtootActionPerformed(evt);
+            }
+        });
         jPanel1.add(txt_subtoot, new org.netbeans.lib.awtextra.AbsoluteConstraints(1310, 740, 150, 40));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1510, 820));
@@ -205,6 +211,7 @@ public class Invoice extends javax.swing.JInternalFrame {
     double totalone_item = 0;
     double price = 0;
     double qty = 0;
+   
     //add button press then add data into table
     private void btn_AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AddActionPerformed
         try {
@@ -230,13 +237,26 @@ public class Invoice extends javax.swing.JInternalFrame {
             txt_unit.setText(Double.toString(tbl_invoice.getRowCount()));
             txt_item_qty.setText(Double.toString(qty));
             
+            setsubtot();
+            
             txt_item_no.setText("");
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }//GEN-LAST:event_btn_AddActionPerformed
-
+     
+    static double subtotal = 0;
+    public void setsubtot()
+    {
+        subtotal = Double.parseDouble(txt_subtoot.getText());
+        System.out.println(subtotal);
+    }
+    
+    public double getsubtot()
+    {
+       return subtotal;
+    }
 
     private void txt_Invoice_NoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_Invoice_NoActionPerformed
         // TODO add your handling code here:
@@ -306,6 +326,10 @@ public class Invoice extends javax.swing.JInternalFrame {
     private void txt_priceKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_priceKeyReleased
        
     }//GEN-LAST:event_txt_priceKeyReleased
+
+    private void txt_subtootActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_subtootActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_subtootActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
