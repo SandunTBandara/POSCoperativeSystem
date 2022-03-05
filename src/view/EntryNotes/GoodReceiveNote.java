@@ -60,6 +60,7 @@ public class GoodReceiveNote extends javax.swing.JDialog {
                 grn = "GRN22KT000001";
             }else{
                 int no = Integer.valueOf(grn.substring(8));
+               
                 int nno = ++no;
             
                 if(String.valueOf(nno).length() == 1){
@@ -77,7 +78,7 @@ public class GoodReceiveNote extends javax.swing.JDialog {
                 }
             }            
             
-            System.out.println(grn);
+            //System.out.println(grn);
             F16BNo.setText(grn);
         } catch (Exception ex) {
             System.out.println("line 55" + ex.getMessage());

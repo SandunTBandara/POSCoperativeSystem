@@ -5,6 +5,15 @@
  */
 package view.FrontEnd;
 
+import controller.ManageCahsierLogin;
+import controller.ManageFrontLogin;
+import controller.ManageUser;
+import java.sql.ResultSet;
+import java.time.LocalDateTime;
+import javax.swing.JOptionPane;
+import model.frontlogin;
+import model.CashierLogin;
+
 /**
  *
  * @author Sanu
@@ -17,6 +26,75 @@ public class UserSignin extends javax.swing.JDialog {
     public UserSignin(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        datetime.datePicker.setDateToToday();
+        datetime.timePicker.setTimeToNow();
+        generateID();
+        generateusername();
+        
+        
+        
+    }
+    
+    public void generateID()
+    {
+        try{
+        ResultSet rs = null;
+         String ShiftID = "";
+        ManageCahsierLogin c1 = new ManageCahsierLogin();
+       rs =  c1.getcashierlogin();
+       while(rs.next())
+       {
+           ShiftID = rs.getString("shiftNo").toString();
+       }
+       
+       if(ShiftID == ""){
+                ShiftID = "DSN21DM000001";
+            }else{
+                int no = Integer.valueOf(ShiftID.substring(8));
+                int nno = ++no;
+            
+                if(String.valueOf(nno).length() == 1){
+                    ShiftID = "DSN21DM00000" + String.valueOf(nno);
+                }else if(String.valueOf(nno).length() == 2){
+                    ShiftID = "DSN21DM0000" + String.valueOf(nno);
+                }else if(String.valueOf(nno).length() == 3){
+                    ShiftID = "DSN21DM000" + String.valueOf(nno);
+                }else if(String.valueOf(nno).length() == 4){
+                    ShiftID = "DSN21DM00" + String.valueOf(nno);
+                }else if(String.valueOf(nno).length() == 5){
+                    ShiftID = "DSN21DM0" + String.valueOf(nno);
+                }else{
+                    ShiftID = "DSN21DM" + String.valueOf(nno);
+                }
+            } 
+       lbl_snumber.setText(ShiftID);
+       
+        }
+        catch(Exception e)
+        {
+          System.out.println(e.getMessage());
+        }
+         
+    
+    }
+    
+    public void generateusername()
+    {
+        frontlogin flog1 = new frontlogin();
+        lbl_uname.setText(flog1.getuserId());
+        
+    /*    try {
+            ResultSet rst = null;
+            String username =
+            ManageCahsierLogin Managecashier1 = new ManageCahsierLogin();
+            rst = Managecashier1.getcashierlogin();
+            while (rst.next()) 
+            {
+               rst.getString("Uname").toString();
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }*/
     }
 
     /**
@@ -28,7 +106,9 @@ public class UserSignin extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        kGradientPanel1 = new keeptoo.KGradientPanel();
         jPanel1 = new javax.swing.JPanel();
+        kGradientPanel2 = new keeptoo.KGradientPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -37,76 +117,149 @@ public class UserSignin extends javax.swing.JDialog {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        txtusername = new javax.swing.JTextField();
-        txtShiftname = new javax.swing.JTextField();
         pwd_password = new javax.swing.JPasswordField();
         txt_counter = new javax.swing.JTextField();
         txt_floatamount = new javax.swing.JTextField();
-        txt_date = new javax.swing.JTextField();
-        txt_time = new javax.swing.JTextField();
         btn_signon = new javax.swing.JButton();
+        datetime = new com.github.lgooddatepicker.components.DateTimePicker();
+        lbl_snumber = new javax.swing.JLabel();
+        lbl_uname = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        kGradientPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         jPanel1.setBackground(new java.awt.Color(204, 204, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        kGradientPanel2.setkEndColor(new java.awt.Color(0, 0, 0));
+        kGradientPanel2.setkStartColor(new java.awt.Color(0, 0, 0));
+        kGradientPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         jLabel1.setText("User Sign On");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(364, 49, 256, 52));
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(204, 204, 255));
+        kGradientPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 10, 380, 60));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jPanel1.add(kGradientPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 940, 90));
+
         jLabel2.setText("User Name");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, 145, 41));
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 290, 145, 41));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel3.setText("Password");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, -1, -1));
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 380, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel4.setText("Counter");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 360, -1, -1));
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 290, -1, -1));
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel5.setText("Float Amount");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 450, -1, -1));
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 380, -1, -1));
 
+        jLabel6.setText("Shift Number");
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel6.setText("Shift Name");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 180, -1, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, -1, -1));
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel7.setText("Date");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 270, -1, -1));
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 140, -1, -1));
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel8.setText("Time");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 350, -1, -1));
-        jPanel1.add(txtusername, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 180, 210, 40));
-        jPanel1.add(txtShiftname, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 180, 180, 40));
-        jPanel1.add(pwd_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 270, 210, 40));
-        jPanel1.add(txt_counter, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 350, 210, 40));
-        jPanel1.add(txt_floatamount, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 440, 210, 40));
-        jPanel1.add(txt_date, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 260, 180, 40));
-        jPanel1.add(txt_time, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 340, 180, 40));
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 140, -1, -1));
+        jPanel1.add(pwd_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 380, 210, 40));
+        jPanel1.add(txt_counter, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 280, 210, 40));
+        jPanel1.add(txt_floatamount, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 370, 210, 40));
 
-        btn_signon.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         btn_signon.setText("Sign On");
+        btn_signon.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         btn_signon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_signonActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_signon, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 560, 290, 50));
+        jPanel1.add(btn_signon, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 520, 290, 50));
+        jPanel1.add(datetime, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 180, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 980, 670));
+        lbl_snumber.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lbl_snumber.setForeground(new java.awt.Color(204, 0, 0));
+        jPanel1.add(lbl_snumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 130, 230, 30));
+
+        lbl_uname.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jPanel1.add(lbl_uname, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 290, 210, 40));
+
+        kGradientPanel1.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 980, 640));
+
+        getContentPane().add(kGradientPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 670));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_signonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_signonActionPerformed
-        // TODO add your handling code here:
+     
+     /*   try{
+        frontlogin flogin1 = new frontlogin();
+        String password = "";
+      System.out.println("error check" +pwd_password.getText());
+     ResultSet rs = null;
+     ManageUser mu1 = new ManageUser();
+     rs = mu1.loadUserSearch("C001");
+            while (rs.next()) {
+             password =   rs.getString("Password");
+            }
+            System.out.println("error check2" +password);
+       
+    if("sandun123#" != "sandun123#")
+    {
+            JOptionPane.showMessageDialog(null, "Password is correct");
+    }
+    else
+    {
+       JOptionPane.showMessageDialog(null, "Password is incorrect");
+    }
+        }
+         catch(Exception e)
+        {
+          System.out.println(e.getMessage());
+        } */
+     
+             try{
+                 frontlogin flogin1 = new frontlogin();
+        frontlogin login = new frontlogin(flogin1.getuserId(),pwd_password.getText());
+         ManageFrontLogin mlogin = new ManageFrontLogin(login);
+         ResultSet rs = mlogin.loadlogin();
+         if(rs.next())
+         {
+             CashierLogin cashierlogin1 = new CashierLogin(lbl_snumber.getText(),lbl_uname.getText(),Integer.parseInt(txt_counter.getText()),datetime.datePicker.getDate().toString(),datetime.timePicker.getTime().toString(),Double.parseDouble(txt_floatamount.getText()),"",""); 
+               ManageCahsierLogin manageclog = new ManageCahsierLogin(cashierlogin1);
+               int result = manageclog.saveCashierlogin();
+               if(result > 0)
+               {
+                    FrontDashboard Frontdb1 = new FrontDashboard();
+                     this.dispose();
+                    Frontdb1.setLocationRelativeTo(this);
+                     Frontdb1.setVisible(true);
+               }
+               else
+               {
+                 JOptionPane.showMessageDialog(null, "Cannot Sign please check Again", "Super Market Pos",JOptionPane.ERROR_MESSAGE);
+               }
+         }
+         else{
+                JOptionPane.showMessageDialog(null, "User Name and Password not matched");
+              
+                pwd_password.setText("");
+         }
+        }
+        catch(Exception e)
+        {
+          System.out.println("error1" +e.getMessage());
+        }
+      
     }//GEN-LAST:event_btn_signonActionPerformed
 
     /**
@@ -153,6 +306,7 @@ public class UserSignin extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_signon;
+    private com.github.lgooddatepicker.components.DateTimePicker datetime;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -162,12 +316,12 @@ public class UserSignin extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
+    private keeptoo.KGradientPanel kGradientPanel1;
+    private keeptoo.KGradientPanel kGradientPanel2;
+    private javax.swing.JLabel lbl_snumber;
+    private javax.swing.JLabel lbl_uname;
     private javax.swing.JPasswordField pwd_password;
-    private javax.swing.JTextField txtShiftname;
     private javax.swing.JTextField txt_counter;
-    private javax.swing.JTextField txt_date;
     private javax.swing.JTextField txt_floatamount;
-    private javax.swing.JTextField txt_time;
-    private javax.swing.JTextField txtusername;
     // End of variables declaration//GEN-END:variables
 }

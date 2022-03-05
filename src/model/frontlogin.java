@@ -10,15 +10,26 @@ package model;
  * @author Sanu
  */
 public class frontlogin {
-    public String userId;
-    public String password;
+    private static String userId;
+    private String password;
     
+    public frontlogin()
+    {
     
+    }
     public frontlogin(String userId, String password)
     {
          this.userId = userId;
          this.password = password;
       
     
+    }
+    public String getuserId()
+    {
+      return userId;
+    }
+    public String getpassword()
+    {
+       return password;
     }
 }

@@ -33,7 +33,8 @@ public class ManageFrontLogin {
         ResultSet result = null;
         try{
       Connection con = DB.createConnection();
-      String sql = "select * from users where userID = '"+flogin.userId+"' and Password = '"+flogin.password+"' ";
+      
+      String sql = "select * from users where userID = '"+flogin.getuserId()+"' and Password = '"+flogin.getpassword()+"' ";
       PreparedStatement pst = con.prepareStatement(sql);
       result = pst.executeQuery(sql);
       
