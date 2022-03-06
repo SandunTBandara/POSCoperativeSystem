@@ -85,12 +85,30 @@ public class PaymentPortal extends javax.swing.JDialog {
         jPanel1.add(txtsubtot, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 120, 209, -1));
 
         txtdiscount.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        txtdiscount.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtdiscountKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtdiscountKeyTyped(evt);
+            }
+        });
         jPanel1.add(txtdiscount, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 190, 209, -1));
 
         txtnettotal.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jPanel1.add(txtnettotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 260, 209, -1));
 
         txtpaycash.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        txtpaycash.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtpaycashActionPerformed(evt);
+            }
+        });
+        txtpaycash.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtpaycashKeyReleased(evt);
+            }
+        });
         jPanel1.add(txtpaycash, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 320, 209, -1));
 
         txtcashamount.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -140,7 +158,7 @@ public class PaymentPortal extends javax.swing.JDialog {
         jLabel7.setText("Payment Portal");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 40, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 940, 690));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 940, 700));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -154,8 +172,41 @@ public class PaymentPortal extends javax.swing.JDialog {
     }//GEN-LAST:event_btngenbillActionPerformed
 
     private void btnloyalcusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnloyalcusActionPerformed
-        // TODO add your handling code here:
+       LoyalitycardDetails lcd = new LoyalitycardDetails(null,true);
+       lcd.setLocationRelativeTo(lcd);
+       lcd.setVisible(true);
+       
     }//GEN-LAST:event_btnloyalcusActionPerformed
+
+    private void txtdiscountKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtdiscountKeyTyped
+   
+    }//GEN-LAST:event_txtdiscountKeyTyped
+    static double nettotal1 = 0;
+    private void txtdiscountKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtdiscountKeyReleased
+          double subtotal =  Double.parseDouble(txtsubtot.getText());
+       double discount =  Double.parseDouble(txtdiscount.getText());
+       nettotal1 = subtotal - discount;
+        txtnettotal.setText(Double.toString(nettotal1));
+    }//GEN-LAST:event_txtdiscountKeyReleased
+
+    private void txtpaycashKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtpaycashKeyReleased
+         double nettotal = Double.parseDouble(txtnettotal.getText());
+         double paycash  = Double.parseDouble(txtpaycash.getText());
+         double creditamount = paycash - nettotal;
+         txtcashamount.setText(Double.toString(creditamount));
+         
+    }//GEN-LAST:event_txtpaycashKeyReleased
+    
+    public double getpaycash()
+    {
+     
+      System.out.print(nettotal1);
+      return nettotal1;
+    }
+    
+    private void txtpaycashActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtpaycashActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtpaycashActionPerformed
 
     /**
      * @param args the command line arguments
