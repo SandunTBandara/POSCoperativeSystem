@@ -48,7 +48,7 @@ public class LoyalitycardDetails extends javax.swing.JDialog {
         lbl_LCode = new javax.swing.JLabel();
         lbl_totalpoint = new javax.swing.JLabel();
         lbl_memberID = new javax.swing.JLabel();
-        btn_detuctpoint = new javax.swing.JButton();
+        btn_cancel = new javax.swing.JButton();
         btn_barcodeadd = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
@@ -112,16 +112,16 @@ public class LoyalitycardDetails extends javax.swing.JDialog {
         lbl_memberID.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jPanel1.add(lbl_memberID, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 100, 220, 40));
 
-        btn_detuctpoint.setBackground(new java.awt.Color(0, 0, 0));
-        btn_detuctpoint.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        btn_detuctpoint.setForeground(new java.awt.Color(204, 204, 255));
-        btn_detuctpoint.setText("Deduct Bill");
-        btn_detuctpoint.addActionListener(new java.awt.event.ActionListener() {
+        btn_cancel.setBackground(new java.awt.Color(0, 0, 0));
+        btn_cancel.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        btn_cancel.setForeground(new java.awt.Color(204, 204, 255));
+        btn_cancel.setText("Cancel");
+        btn_cancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_detuctpointActionPerformed(evt);
+                btn_cancelActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_detuctpoint, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 460, 190, 50));
+        jPanel1.add(btn_cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 460, 190, 50));
 
         btn_barcodeadd.setBackground(new java.awt.Color(0, 0, 0));
         btn_barcodeadd.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
@@ -150,47 +150,65 @@ public class LoyalitycardDetails extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+ double paycash = 0;
+     private static String mID;
+    private static double totpoint;
+    private static int pointbill = 0;
     private void btn_addtotalpointActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addtotalpointActionPerformed
-       double paycash = 0;
+      
        double points = 0;
         PaymentPortal pp1 = new PaymentPortal(null,true);  
         paycash = pp1.getpaycash();
-        System.out.println(paycash);
+        
+       // System.out.println(paycash);
+       
         points = Double.parseDouble(lbl_totalpoint.getText());
         if(paycash >= 10000)
         {
           points = points + 100;
+          pointbill = pointbill + 100;
           lbl_totalpoint.setText(Double.toString(points));
+           JOptionPane.showMessageDialog(null, "Points SuccesFully Added", "Super MArket POS System", JOptionPane.INFORMATION_MESSAGE);
         }
         else if(paycash >= 5000)
         {
            points = points + 50;
+           pointbill = pointbill + 50;
            lbl_totalpoint.setText(Double.toString(points));
+            JOptionPane.showMessageDialog(null, "Points SuccesFully Added", "Super MArket POS System", JOptionPane.INFORMATION_MESSAGE);
         }
         else if(paycash >= 3000)
         {
           points = points + 30;
+          pointbill = pointbill + 30;
           lbl_totalpoint.setText(Double.toString(points));
+           JOptionPane.showMessageDialog(null, "Points SuccesFully Added", "Super MArket POS System", JOptionPane.INFORMATION_MESSAGE);
         }
         else if(paycash >= 1000)
         {
           points = points + 10;
+          pointbill = pointbill + 10;
           lbl_totalpoint.setText(Double.toString(points));
+           JOptionPane.showMessageDialog(null, "Points SuccesFully Added", "Super MArket POS System", JOptionPane.INFORMATION_MESSAGE);
         }
         else if(paycash >= 500)
         {
           points = points + 5;
+          pointbill = pointbill + 5;
           lbl_totalpoint.setText(Double.toString(points));
+           JOptionPane.showMessageDialog(null, "Points SuccesFully Added", "Super MArket POS System", JOptionPane.INFORMATION_MESSAGE);
         }
         
+        ManageLoyalityCustomer mcl = new ManageLoyalityCustomer();
+        mcl.updateloyalitycustomer(lbl_memberID.getText().toString(), points);
+        totpoint = Double.parseDouble( lbl_totalpoint.getText());
         
     }//GEN-LAST:event_btn_addtotalpointActionPerformed
 
-    private void btn_detuctpointActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_detuctpointActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_detuctpointActionPerformed
-
+    public int getpointsone()
+    {
+      return pointbill;
+    }
     private void btn_barcodeaddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_barcodeaddActionPerformed
        ResultSet result = null;
         try{
@@ -205,6 +223,9 @@ public class LoyalitycardDetails extends javax.swing.JDialog {
            lbl_totalpoint.setText(Double.toString(result.getDouble("totalpoints")));
            
         }
+        mID = lbl_memberID.getText().toString();
+        totpoint = Double.parseDouble( lbl_totalpoint.getText());
+        
         }
         catch(Exception e)
         {
@@ -212,6 +233,18 @@ public class LoyalitycardDetails extends javax.swing.JDialog {
         
         }
     }//GEN-LAST:event_btn_barcodeaddActionPerformed
+     
+    public String getMemID()
+    {
+      return mID;
+    }
+    public double gettotpoint()
+    {
+      return totpoint;
+    }
+    private void btn_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelActionPerformed
+       this.dispose();
+    }//GEN-LAST:event_btn_cancelActionPerformed
 
     /**
      * @param args the command line arguments
@@ -258,7 +291,7 @@ public class LoyalitycardDetails extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_addtotalpoint;
     private javax.swing.JButton btn_barcodeadd;
-    private javax.swing.JButton btn_detuctpoint;
+    private javax.swing.JButton btn_cancel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

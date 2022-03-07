@@ -5,6 +5,14 @@
  */
 package view.FrontEnd;
 
+import controller.ManageCahsierLogin;
+import controller.ManageCustomerInvoice;
+import controller.ManageLoyalityCustomer;
+import controller.ManageValidation;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+import model.CustomerInvoice;
+
 /**
  *
  * @author Sanu
@@ -54,6 +62,13 @@ public class PaymentPortal extends javax.swing.JDialog {
         btnloyalcus = new javax.swing.JButton();
         btncreditcus = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
+        btn_detuctpoint = new javax.swing.JButton();
+        lbl_diserror = new javax.swing.JLabel();
+        lbl_nterror = new javax.swing.JLabel();
+        lbl_pcasherror = new javax.swing.JLabel();
+        lblpaycasherror = new javax.swing.JLabel();
+        lbl_suerror = new javax.swing.JLabel();
+        lbl_balerror = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -75,11 +90,11 @@ public class PaymentPortal extends javax.swing.JDialog {
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel4.setText("Pay Cash");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 320, -1, 35));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 330, -1, 35));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel5.setText("Credit Amount");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 390, -1, 35));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 400, -1, 35));
 
         txtsubtot.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jPanel1.add(txtsubtot, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 120, 209, -1));
@@ -109,14 +124,14 @@ public class PaymentPortal extends javax.swing.JDialog {
                 txtpaycashKeyReleased(evt);
             }
         });
-        jPanel1.add(txtpaycash, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 320, 209, -1));
+        jPanel1.add(txtpaycash, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 330, 209, -1));
 
         txtcashamount.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jPanel1.add(txtcashamount, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 390, 209, -1));
+        jPanel1.add(txtcashamount, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 400, 209, -1));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel6.setText("Balance");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 480, -1, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 490, -1, -1));
 
         txtbalancef.setBackground(new java.awt.Color(0, 0, 0));
         txtbalancef.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
@@ -126,7 +141,7 @@ public class PaymentPortal extends javax.swing.JDialog {
                 txtbalancefActionPerformed(evt);
             }
         });
-        jPanel1.add(txtbalancef, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 470, 246, 63));
+        jPanel1.add(txtbalancef, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 480, 246, 63));
 
         btngenbill.setBackground(new java.awt.Color(0, 0, 0));
         btngenbill.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
@@ -137,7 +152,7 @@ public class PaymentPortal extends javax.swing.JDialog {
                 btngenbillActionPerformed(evt);
             }
         });
-        jPanel1.add(btngenbill, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 567, 360, 80));
+        jPanel1.add(btngenbill, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 610, 360, 80));
 
         btnloyalcus.setBackground(new java.awt.Color(204, 255, 255));
         btnloyalcus.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
@@ -158,7 +173,41 @@ public class PaymentPortal extends javax.swing.JDialog {
         jLabel7.setText("Payment Portal");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 40, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 940, 700));
+        btn_detuctpoint.setBackground(new java.awt.Color(153, 0, 102));
+        btn_detuctpoint.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btn_detuctpoint.setText("Deduct Loyality Points");
+        btn_detuctpoint.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_detuctpointActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_detuctpoint, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 480, 210, 40));
+
+        lbl_diserror.setBackground(new java.awt.Color(255, 0, 0));
+        lbl_diserror.setForeground(new java.awt.Color(255, 0, 0));
+        jPanel1.add(lbl_diserror, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 230, 130, -1));
+
+        lbl_nterror.setBackground(new java.awt.Color(255, 0, 0));
+        lbl_nterror.setForeground(new java.awt.Color(255, 0, 0));
+        jPanel1.add(lbl_nterror, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 300, 130, -1));
+
+        lbl_pcasherror.setBackground(new java.awt.Color(255, 0, 0));
+        lbl_pcasherror.setForeground(new java.awt.Color(255, 0, 0));
+        jPanel1.add(lbl_pcasherror, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 370, 130, -1));
+
+        lblpaycasherror.setBackground(new java.awt.Color(255, 0, 0));
+        lblpaycasherror.setForeground(new java.awt.Color(255, 0, 0));
+        jPanel1.add(lblpaycasherror, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 440, 130, -1));
+
+        lbl_suerror.setBackground(new java.awt.Color(255, 0, 0));
+        lbl_suerror.setForeground(new java.awt.Color(255, 0, 0));
+        jPanel1.add(lbl_suerror, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 160, 130, -1));
+
+        lbl_balerror.setBackground(new java.awt.Color(255, 0, 0));
+        lbl_balerror.setForeground(new java.awt.Color(255, 0, 0));
+        jPanel1.add(lbl_balerror, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 550, 150, 20));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 940, 720));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -166,15 +215,120 @@ public class PaymentPortal extends javax.swing.JDialog {
     private void txtbalancefActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtbalancefActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtbalancefActionPerformed
-
+    
     private void btngenbillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btngenbillActionPerformed
-        // TODO add your handling code here:
+        String memID = null; 
+        String InvoiceID = null;
+        int pointsone = 0;
+        double qty = 0;
+        double discount = 0;
+        double totdiscount = 0;
+        double subtot = 0;
+        String time;
+        String Date;
+        int unit;
+        double nettotal = 0;
+        double balance = 0;
+       
+        
+        try{
+        ManageValidation.validatorText(txtsubtot, lbl_suerror);
+            ManageValidation.validatorText(txtdiscount, lbl_diserror);
+            ManageValidation.validatorText(txtnettotal, lbl_nterror);
+            ManageValidation.validatorText(txtpaycash, lbl_pcasherror);
+            ManageValidation.validatorText(txtpaycash, lbl_pcasherror);
+            ManageValidation.validatorText(txtcashamount, lblpaycasherror);
+            ManageValidation.validatorText(txtbalancef, lbl_balerror);
+            
+            if(ManageValidation.validatorText(txtsubtot, lbl_suerror)
+                    &&ManageValidation.validatorText(txtdiscount, lbl_diserror)
+                    &&ManageValidation.validatorText(txtnettotal, lbl_nterror)
+                    &&ManageValidation.validatorText(txtpaycash, lbl_pcasherror)
+                    &&ManageValidation.validatorText(txtpaycash, lbl_pcasherror)
+                    &&ManageValidation.validatorText(txtcashamount, lblpaycasherror)
+                    &&ManageValidation.validatorText(txtbalancef, lbl_balerror))
+                    
+            {
+                if(Double.parseDouble(txtpaycash.getText()) >= Double.parseDouble(txtnettotal.getText()))
+                {
+                    LoyalitycardDetails lcd = new LoyalitycardDetails(null,true);
+                    memID = lcd.getMemID();
+                    pointsone = lcd.getpointsone();
+                    //
+                    Invoice Invoice1 = new Invoice();
+                    InvoiceID = Invoice1.getIvoiceID();
+                    qty = Invoice1.getqty();
+                    totdiscount = Double.parseDouble(txtdiscount.getText());
+                    time = Invoice1.gettime();
+                    Date = Invoice1.getdate();
+                    unit = Invoice1.getunit();
+                    
+                    nettotal = Double.parseDouble(txtnettotal.getText());
+                    //
+                    
+                    discount = Double.parseDouble(txtdiscount.getText());
+                    //
+                    subtot = Double.parseDouble(txtsubtot.getText());
+                    //
+                    balance = Double.parseDouble(txtbalancef.getText());
+                    //
+                    UserSignin user = new UserSignin(null,true);
+            
+                   //geting shift number
+                   ResultSet result = null;
+                   String shiftNo = "";
+                   ManageCahsierLogin ManageCahsierLogin1 = new ManageCahsierLogin();
+                   result = ManageCahsierLogin1.getcashierlogin();
+                   while(result.next())
+                   {
+                     shiftNo = result.getString("shiftNo").toString();
+                   }
+                    
+                    
+                CustomerInvoice c1 = new CustomerInvoice(memID,InvoiceID,pointsone,qty,totdiscount,subtot,Date,time,unit,nettotal,balance,Double.parseDouble(txtcashamount.getText()),Double.parseDouble(txtpaycash.getText()),1,shiftNo);
+                ManageCustomerInvoice m1 = new ManageCustomerInvoice(c1);
+                m1.saveInvoice();
+                
+                txtsubtot.setText("");
+                txtdiscount.setText("");
+                txtnettotal.setText("");
+                txtpaycash.setText("");
+                txtcashamount.setText("");
+                txtbalancef.setText("");
+                }
+                else
+                {
+                  JOptionPane.showMessageDialog(null, "Pay Cash Amount should be Greater than net Amount","Super MArket Pos System",JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        }
+        catch(Exception e)
+        {
+          System.out.println("generate invoice " +e.getMessage());
+        }
     }//GEN-LAST:event_btngenbillActionPerformed
 
     private void btnloyalcusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnloyalcusActionPerformed
-       LoyalitycardDetails lcd = new LoyalitycardDetails(null,true);
+                   ManageValidation.validatorText(txtsubtot, lbl_suerror);
+            ManageValidation.validatorText(txtdiscount, lbl_diserror);
+            ManageValidation.validatorText(txtnettotal, lbl_nterror);
+            ManageValidation.validatorText(txtpaycash, lbl_pcasherror);
+            ManageValidation.validatorText(txtpaycash, lbl_pcasherror);
+            ManageValidation.validatorText(txtcashamount, lblpaycasherror);
+            ManageValidation.validatorText(txtbalancef, lbl_balerror);
+            
+            if(ManageValidation.validatorText(txtsubtot, lbl_suerror)
+                    &&ManageValidation.validatorText(txtdiscount, lbl_diserror)
+                    &&ManageValidation.validatorText(txtnettotal, lbl_nterror)
+                    &&ManageValidation.validatorText(txtpaycash, lbl_pcasherror)
+                    &&ManageValidation.validatorText(txtpaycash, lbl_pcasherror)
+                    &&ManageValidation.validatorText(txtcashamount, lblpaycasherror)
+                    &&ManageValidation.validatorText(txtbalancef, lbl_balerror))
+            {
+        LoyalitycardDetails lcd = new LoyalitycardDetails(null,true);
        lcd.setLocationRelativeTo(lcd);
        lcd.setVisible(true);
+            }
        
     }//GEN-LAST:event_btnloyalcusActionPerformed
 
@@ -187,6 +341,7 @@ public class PaymentPortal extends javax.swing.JDialog {
        double discount =  Double.parseDouble(txtdiscount.getText());
        nettotal1 = subtotal - discount;
         txtnettotal.setText(Double.toString(nettotal1));
+        txtbalancef.setText(Double.toString(nettotal1));
     }//GEN-LAST:event_txtdiscountKeyReleased
 
     private void txtpaycashKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtpaycashKeyReleased
@@ -207,6 +362,55 @@ public class PaymentPortal extends javax.swing.JDialog {
     private void txtpaycashActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtpaycashActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtpaycashActionPerformed
+
+    private void btn_detuctpointActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_detuctpointActionPerformed
+        String memId = null;
+        double totbal = 0;
+        double points = 0;
+        double bal = 0;
+        try{
+            ManageValidation.validatorText(txtsubtot, lbl_suerror);
+            ManageValidation.validatorText(txtdiscount, lbl_diserror);
+            ManageValidation.validatorText(txtnettotal, lbl_nterror);
+            ManageValidation.validatorText(txtpaycash, lbl_pcasherror);
+            ManageValidation.validatorText(txtpaycash, lbl_pcasherror);
+            ManageValidation.validatorText(txtcashamount, lblpaycasherror);
+            ManageValidation.validatorText(txtbalancef, lbl_balerror);
+            
+            if(ManageValidation.validatorText(txtsubtot, lbl_suerror)
+                    &&ManageValidation.validatorText(txtdiscount, lbl_diserror)
+                    &&ManageValidation.validatorText(txtnettotal, lbl_nterror)
+                    &&ManageValidation.validatorText(txtpaycash, lbl_pcasherror)
+                    &&ManageValidation.validatorText(txtpaycash, lbl_pcasherror)
+                    &&ManageValidation.validatorText(txtcashamount, lblpaycasherror)
+                    &&ManageValidation.validatorText(txtbalancef, lbl_balerror))
+            {
+        LoyalitycardDetails lcd = new LoyalitycardDetails(null,true);
+        memId = lcd.getMemID();
+        points = lcd.gettotpoint();
+        if(memId != null)
+        {
+            bal = Double.parseDouble(txtbalancef.getText());
+            totbal = bal - points;
+            points = 0;
+            txtbalancef.setText(Double.toString(totbal));
+            
+            ManageLoyalityCustomer mlC = new ManageLoyalityCustomer();
+            mlC.updateloyalitycustomer(memId, points);
+          
+        }
+        else
+        {
+          JOptionPane.showMessageDialog(null, "Please Enter Loyality card details First", "Super Market Pos System", JOptionPane.ERROR_MESSAGE);
+        }
+            }
+        }
+        catch(Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
+        
+    }//GEN-LAST:event_btn_detuctpointActionPerformed
 
     /**
      * @param args the command line arguments
@@ -251,6 +455,7 @@ public class PaymentPortal extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_detuctpoint;
     private javax.swing.JButton btncreditcus;
     private javax.swing.JButton btngenbill;
     private javax.swing.JButton btnloyalcus;
@@ -262,6 +467,12 @@ public class PaymentPortal extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lbl_balerror;
+    private javax.swing.JLabel lbl_diserror;
+    private javax.swing.JLabel lbl_nterror;
+    private javax.swing.JLabel lbl_pcasherror;
+    private javax.swing.JLabel lbl_suerror;
+    private javax.swing.JLabel lblpaycasherror;
     private javax.swing.JTextField txtbalancef;
     private javax.swing.JTextField txtcashamount;
     private javax.swing.JTextField txtdiscount;

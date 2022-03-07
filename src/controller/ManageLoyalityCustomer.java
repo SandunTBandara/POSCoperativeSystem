@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import javax.swing.JOptionPane;
 import model.DB;
 import model.LoyalityCardCustomer;
 
@@ -52,8 +53,14 @@ public class ManageLoyalityCustomer {
     {
         try{
         Connection con = DB.createConnection();
-        String sql = "Update loyalitycardcustomer set 	totalpoints = '"+points+"' where memberId = '"+uno+"' ";
+        String sql = "Update loyalitycardcustomer set totalpoints = '"+points+"' where memberId = '"+uno+"' ";
         PreparedStatement stmt = con.prepareStatement(sql);
+        int result = stmt.executeUpdate();
+        
+        if(result<0 )
+        {
+           JOptionPane.showMessageDialog(null, "Points not Added", "Super MArket POS System", JOptionPane.ERROR_MESSAGE);
+        }
         
         }
         catch(Exception e)

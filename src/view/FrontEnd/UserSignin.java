@@ -35,12 +35,12 @@ public class UserSignin extends javax.swing.JDialog {
         
         
     }
-    
+     String ShiftID = "" ;
     public void generateID()
     {
         try{
         ResultSet rs = null;
-         String ShiftID = "";
+         
         ManageCahsierLogin c1 = new ManageCahsierLogin();
        rs =  c1.getcashierlogin();
        while(rs.next())
@@ -78,7 +78,7 @@ public class UserSignin extends javax.swing.JDialog {
          
     
     }
-    
+
     public void generateusername()
     {
         frontlogin flog1 = new frontlogin();
