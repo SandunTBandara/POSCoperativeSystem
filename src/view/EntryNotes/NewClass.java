@@ -12,5 +12,6 @@ import static java.time.Clock.system;
  * @author Sanu
  */
 public class NewClass {
-   
+   public void delete()
+   {}
 }
