@@ -72,6 +72,8 @@ public class Invoice extends javax.swing.JInternalFrame {
         lbl_qtyerror = new javax.swing.JLabel();
         lbl_toterror = new javax.swing.JLabel();
         lbl_itemerror = new javax.swing.JLabel();
+        txt_discount = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(204, 204, 255));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -104,7 +106,7 @@ public class Invoice extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Item No", "Description", "Price", "Quantity", "Total"
+                "Item No", "Description", "Price", "Quantity", "Discount", "Total"
             }
         ));
         tbl_invoice.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -152,15 +154,10 @@ public class Invoice extends javax.swing.JInternalFrame {
                 txt_QtyKeyTyped(evt);
             }
         });
-        jPanel1.add(txt_Qty, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 150, 140, 37));
+        jPanel1.add(txt_Qty, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 150, 140, 40));
 
         txt_total.setEditable(false);
-        txt_total.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txt_totalKeyReleased(evt);
-            }
-        });
-        jPanel1.add(txt_total, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 150, 171, 38));
+        jPanel1.add(txt_total, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 150, 171, 38));
 
         btn_Add.setText("Add");
         btn_Add.setActionCommand("btn_Add");
@@ -186,7 +183,7 @@ public class Invoice extends javax.swing.JInternalFrame {
 
         jLabel8.setText("Total");
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 120, -1, -1));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(1260, 120, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel9.setText("Unit");
@@ -218,7 +215,7 @@ public class Invoice extends javax.swing.JInternalFrame {
 
         jLabel13.setText("Quantity");
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 120, -1, -1));
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 120, -1, -1));
 
         lbl_itemnameerror.setBackground(new java.awt.Color(255, 0, 0));
         lbl_itemnameerror.setForeground(new java.awt.Color(255, 0, 0));
@@ -239,6 +236,16 @@ public class Invoice extends javax.swing.JInternalFrame {
         lbl_itemerror.setBackground(new java.awt.Color(255, 0, 0));
         lbl_itemerror.setForeground(new java.awt.Color(255, 0, 0));
         jPanel1.add(lbl_itemerror, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, 120, -1));
+
+        txt_discount.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_discountKeyReleased(evt);
+            }
+        });
+        jPanel1.add(txt_discount, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 150, 100, 40));
+
+        jLabel7.setText("Discount");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 120, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 1510, 820));
 
@@ -323,6 +330,7 @@ public class Invoice extends javax.swing.JInternalFrame {
                 txt_Item_name.getText(),
                 txt_price.getText(),
                 txt_Qty.getText(),
+                
                 txt_total.getText(),
                 });
 
@@ -418,6 +426,7 @@ public class Invoice extends javax.swing.JInternalFrame {
                 double qty1 = Double.parseDouble(txt_Qty.getText());
                 totalone_item = (Double.parseDouble(itb.price) * qty1);
                 txt_total.setText(Double.toString(totalone_item));
+                txt_discount.setText("0.00");
 
             } catch (Exception e) {
                 System.out.println(e.getMessage());
@@ -474,9 +483,23 @@ public class Invoice extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_QtyActionPerformed
 
-    private void txt_totalKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_totalKeyReleased
-      
-    }//GEN-LAST:event_txt_totalKeyReleased
+    private void txt_discountKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_discountKeyReleased
+        double discount = 0;
+        double tprice = 0;
+        double qty = 0;
+        double finaltotal = 0;
+        try{
+        discount = Double.parseDouble(txt_discount.getText());
+        tprice = Double.parseDouble(txt_price.getText());
+        qty = Double.parseDouble(txt_Qty.getText());
+        finaltotal = (tprice * qty) - discount;
+        txt_total.setText(Double.toString(finaltotal));
+        }
+        catch(Exception e)
+        {
+          System.out.println(e.getMessage());
+        }
+    }//GEN-LAST:event_txt_discountKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -491,6 +514,7 @@ public class Invoice extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
@@ -505,6 +529,7 @@ public class Invoice extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txt_Invoice_No;
     private javax.swing.JTextField txt_Item_name;
     private javax.swing.JTextField txt_Qty;
+    private javax.swing.JTextField txt_discount;
     private javax.swing.JTextField txt_item_no;
     private javax.swing.JTextField txt_item_qty;
     private javax.swing.JTextField txt_price;

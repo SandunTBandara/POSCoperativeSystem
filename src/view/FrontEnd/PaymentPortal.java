@@ -97,7 +97,7 @@ public class PaymentPortal extends javax.swing.JDialog {
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 400, -1, 35));
 
         txtsubtot.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jPanel1.add(txtsubtot, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 120, 209, -1));
+        jPanel1.add(txtsubtot, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 120, 250, -1));
 
         txtdiscount.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         txtdiscount.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -108,10 +108,10 @@ public class PaymentPortal extends javax.swing.JDialog {
                 txtdiscountKeyTyped(evt);
             }
         });
-        jPanel1.add(txtdiscount, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 190, 209, -1));
+        jPanel1.add(txtdiscount, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 190, 250, -1));
 
         txtnettotal.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jPanel1.add(txtnettotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 260, 209, -1));
+        jPanel1.add(txtnettotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 260, 250, -1));
 
         txtpaycash.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         txtpaycash.addActionListener(new java.awt.event.ActionListener() {
@@ -124,10 +124,10 @@ public class PaymentPortal extends javax.swing.JDialog {
                 txtpaycashKeyReleased(evt);
             }
         });
-        jPanel1.add(txtpaycash, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 330, 209, -1));
+        jPanel1.add(txtpaycash, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 330, 250, -1));
 
         txtcashamount.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jPanel1.add(txtcashamount, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 400, 209, -1));
+        jPanel1.add(txtcashamount, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 400, 250, -1));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel6.setText("Balance");
@@ -141,7 +141,7 @@ public class PaymentPortal extends javax.swing.JDialog {
                 txtbalancefActionPerformed(evt);
             }
         });
-        jPanel1.add(txtbalancef, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 480, 246, 63));
+        jPanel1.add(txtbalancef, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 480, 250, 63));
 
         btngenbill.setBackground(new java.awt.Color(0, 0, 0));
         btngenbill.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
@@ -167,7 +167,7 @@ public class PaymentPortal extends javax.swing.JDialog {
         btncreditcus.setBackground(new java.awt.Color(204, 255, 255));
         btncreditcus.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         btncreditcus.setText("Credit Customers");
-        jPanel1.add(btncreditcus, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 310, 270, 70));
+        jPanel1.add(btncreditcus, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 310, 270, 60));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel7.setText("Payment Portal");
@@ -181,7 +181,7 @@ public class PaymentPortal extends javax.swing.JDialog {
                 btn_detuctpointActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_detuctpoint, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 480, 210, 40));
+        jPanel1.add(btn_detuctpoint, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 490, 210, 40));
 
         lbl_diserror.setBackground(new java.awt.Color(255, 0, 0));
         lbl_diserror.setForeground(new java.awt.Color(255, 0, 0));

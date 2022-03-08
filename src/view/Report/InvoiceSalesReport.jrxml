@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="543f2bb1-5984-4e97-bb35-82ea71fb3c2b">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Table Dataset 1" uuid="289d2123-be0a-4815-bae7-c87e6651d067"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     getcreditformation.`creditCode` AS getcreditformation_creditCode,
+     getcreditformation.`creditAmount` AS getcreditformation_creditAmount,
+     getcreditformation.`invoiceNo` AS getcreditformation_invoiceNo,
+     customerinvoice.`Balance` AS customerinvoice_Balance,
+     creditcustomerinformation.`name` AS creditcustomerinformation_name,
+     customerinvoice.`invoiceNo` AS customerinvoice_invoiceNo,
+     customerinvoice.`ItemDiscounts` AS customerinvoice_ItemDiscounts
+FROM
+     `creditcustomerinformation` creditcustomerinformation INNER JOIN `getcreditformation` getcreditformation ON creditcustomerinformation.`CusNo` = getcreditformation.`cusNo`
+     INNER JOIN `customerinvoice` customerinvoice ON creditcustomerinformation.`CusNo` = customerinvoice.`cusNo`
+     AND customerinvoice.`invoiceNo` = getcreditformation.`invoiceNo`]]>
+	</queryString>
+	<field name="getcreditformation_creditCode" class="java.lang.Integer"/>
+	<field name="getcreditformation_creditAmount" class="java.lang.Double"/>
+	<field name="getcreditformation_invoiceNo" class="java.lang.String"/>
+	<field name="customerinvoice_Balance" class="java.lang.Double"/>
+	<field name="creditcustomerinformation_name" class="java.lang.String"/>
+	<field name="customerinvoice_invoiceNo" class="java.lang.String"/>
+	<field name="customerinvoice_ItemDiscounts" class="java.lang.Double"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<componentElement>
+				<reportElement key="table" style="table" x="124" y="0" width="606" height="266" uuid="590000d8-0bed-44ad-9171-9508908555f0"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="Table Dataset 1" uuid="b9ce2c01-2841-4ab5-842c-d2bd0793dad7">
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource(1)]]></dataSourceExpression>
+					</datasetRun>
+					<jr:column width="90" uuid="5b7539bd-0710-4091-bdba-d4e60b2487b5">
+						<jr:tableHeader style="table_TH" height="0"/>
+						<jr:tableFooter style="table_TH" height="30"/>
+						<jr:columnHeader style="table_CH" height="30"/>
+						<jr:columnFooter style="table_CH" height="30"/>
+						<jr:detailCell style="table_TD" height="20"/>
+					</jr:column>
+					<jr:column width="90" uuid="7fb81fb6-7e4a-469c-8580-721e9c704171">
+						<jr:tableHeader style="table_TH" height="0"/>
+						<jr:tableFooter style="table_TH" height="30"/>
+						<jr:columnHeader style="table_CH" height="30"/>
+						<jr:columnFooter style="table_CH" height="30"/>
+						<jr:detailCell style="table_TD" height="20"/>
+					</jr:column>
+					<jr:column width="90" uuid="5d814267-7dc1-4814-98a4-30790cedf60c">
+						<jr:tableHeader style="table_TH" height="0"/>
+						<jr:tableFooter style="table_TH" height="30"/>
+						<jr:columnHeader style="table_CH" height="30"/>
+						<jr:columnFooter style="table_CH" height="30"/>
+						<jr:detailCell style="table_TD" height="20"/>
+					</jr:column>
+					<jr:column width="90" uuid="81cc266e-a03e-426d-91e8-fe47d31ccad8">
+						<jr:tableHeader style="table_TH" height="0"/>
+						<jr:tableFooter style="table_TH" height="30"/>
+						<jr:columnHeader style="table_CH" height="30"/>
+						<jr:columnFooter style="table_CH" height="30"/>
+						<jr:detailCell style="table_TD" height="20"/>
+					</jr:column>
+					<jr:column width="90" uuid="94669b05-ebe6-4fd8-96f4-5e70b51cfcf9">
+						<jr:tableHeader style="table_TH" height="0"/>
+						<jr:tableFooter style="table_TH" height="30"/>
+						<jr:columnHeader style="table_CH" height="30"/>
+						<jr:columnFooter style="table_CH" height="30"/>
+						<jr:detailCell style="table_TD" height="20"/>
+					</jr:column>
+					<jr:column width="90" uuid="4dd5e11a-c17b-4588-b46d-47a074411932">
+						<jr:tableHeader style="table_TH" height="0"/>
+						<jr:tableFooter style="table_TH" height="30"/>
+						<jr:columnHeader style="table_CH" height="30"/>
+						<jr:columnFooter style="table_CH" height="30"/>
+						<jr:detailCell style="table_TD" height="20"/>
+					</jr:column>
+					<jr:column width="90" uuid="69f5c732-3c13-469d-96f0-3bd2583df5ac">
+						<jr:tableHeader style="table_TH" height="0"/>
+						<jr:tableFooter style="table_TH" height="30"/>
+						<jr:columnHeader style="table_CH" height="30"/>
+						<jr:columnFooter style="table_CH" height="30"/>
+						<jr:detailCell style="table_TD" height="20"/>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

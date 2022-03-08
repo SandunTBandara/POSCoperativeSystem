@@ -9,6 +9,7 @@ import java.awt.FontFormatException;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.plaf.basic.BasicInternalFrameUI;
 
 /**
  *
@@ -20,7 +21,9 @@ public class Dashboard1 extends javax.swing.JFrame {
      * Creates new form Dashboard1
      */
     public Dashboard1() {
+            
         initComponents();
+        
         runLetters();
         Menu Menu1 = new Menu();
               jmenupanel.removeAll();
@@ -64,7 +67,6 @@ public class Dashboard1 extends javax.swing.JFrame {
         kGradientPanel1 = new keeptoo.KGradientPanel();
         btn_menu = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
@@ -112,11 +114,13 @@ public class Dashboard1 extends javax.swing.JFrame {
         });
         kGradientPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 350, 90));
 
-        jLabel3.setFont(new java.awt.Font("Nirmala UI", 0, 13)); // NOI18N
-        kGradientPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, 370, 110));
-
         jButton3.setFont(new java.awt.Font("Nirmala UI", 1, 24)); // NOI18N
         jButton3.setText("වාර්තා තොරතුරු");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         kGradientPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, 350, 90));
 
         jLabel4.setFont(new java.awt.Font("Nirmala UI", 0, 13)); // NOI18N
@@ -256,6 +260,12 @@ public class Dashboard1 extends javax.swing.JFrame {
             jmenupanel.add(bi).setVisible(true); 
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        ReportsForm RF = new ReportsForm();
+       jmenupanel.removeAll();
+        jmenupanel.add(RF).setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -304,7 +314,6 @@ public class Dashboard1 extends javax.swing.JFrame {
     private javax.swing.JButton jButton6;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;

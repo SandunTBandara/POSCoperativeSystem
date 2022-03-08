@@ -37,7 +37,7 @@ public class FrontDashboard extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenuItem2 = new javax.swing.JMenuItem();
-        frontendpanel = new keeptoo.KGradientPanel();
+        frontendpanel = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -58,21 +58,20 @@ public class FrontDashboard extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(1930, 1000));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        frontendpanel.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
-        frontendpanel.setMinimumSize(new java.awt.Dimension(1930, 1000));
+        frontendpanel.setBackground(new java.awt.Color(51, 255, 255));
 
         javax.swing.GroupLayout frontendpanelLayout = new javax.swing.GroupLayout(frontendpanel);
         frontendpanel.setLayout(frontendpanelLayout);
         frontendpanelLayout.setHorizontalGroup(
             frontendpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1930, Short.MAX_VALUE)
+            .addGap(0, 1960, Short.MAX_VALUE)
         );
         frontendpanelLayout.setVerticalGroup(
             frontendpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1020, Short.MAX_VALUE)
+            .addGap(0, 1000, Short.MAX_VALUE)
         );
 
-        getContentPane().add(frontendpanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1930, 1020));
+        getContentPane().add(frontendpanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1960, 1000));
 
         jMenu1.setText("File");
         jMenu1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -103,6 +102,11 @@ public class FrontDashboard extends javax.swing.JFrame {
         jMenuItem4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jMenuItem4.setText("CASH Withdraw");
         jMenuItem4.setPreferredSize(new java.awt.Dimension(300, 40));
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem4);
 
         jMenuItem5.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, 0));
@@ -186,9 +190,9 @@ public class FrontDashboard extends javax.swing.JFrame {
     private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem9ActionPerformed
-   Invoice Invoice1 = new Invoice();
+   
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-     
+     Invoice Invoice1 = new Invoice();
         frontendpanel.removeAll();
         frontendpanel.add(Invoice1).setVisible(true);
              
@@ -201,6 +205,12 @@ public class FrontDashboard extends javax.swing.JFrame {
      frontendpanel.removeAll();
        
     }//GEN-LAST:event_jMenuItem8ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        Invoice Invoice1 = new Invoice();
+        frontendpanel.removeAll();
+        frontendpanel.add(Invoice1).setVisible(true);
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -238,7 +248,7 @@ public class FrontDashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private keeptoo.KGradientPanel frontendpanel;
+    private javax.swing.JPanel frontendpanel;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
