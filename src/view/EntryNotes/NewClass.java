@@ -12,5 +12,5 @@ import static java.time.Clock.system;
  * @author Sanu
  */
 public class NewClass {
-    system.out.println("");
+   
 }
