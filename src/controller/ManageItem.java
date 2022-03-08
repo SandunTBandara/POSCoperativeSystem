@@ -102,7 +102,7 @@ public class ManageItem {
       {   int check = 0;
           try{
          Connection con = DB.createConnection();
-         String sql = "update items set BinType = "+bcode+"  where code="+Integer.parseInt(code)+" ";
+         String sql = "update item set BinType = "+bcode+"  where code="+Integer.parseInt(code)+" ";
          Statement stmt = con.createStatement();
          int result = stmt.executeUpdate(sql);
          
@@ -174,6 +174,53 @@ public class ManageItem {
         
     }
     
+    
+    public ResultSet getItemStock(int code)
+    {  
+        ResultSet result = null;
+        try{
+
+            Connection con = DB.createConnection();
+            Statement stmt = con.createStatement();
+            String sql = "select stockQty, maxQty from item where code = " + code + ";";
+                        System.out.println(sql);
+            System.out.println(code);
+            result = stmt.executeQuery(sql);
+            
+        }
+        catch(Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
+        return result;
+      
+       
+    }
+    
+    public int UpdateItemStock(int code, double qty)
+    {  
+        int check = 0;
+        try{
+            
+            Connection con = DB.createConnection();
+            String sql = "update item set stockQty = "+qty+"  where code="+ code+"; ";
+            System.out.println(sql);
+
+            Statement stmt = con.createStatement();
+            int result = stmt.executeUpdate(sql);
+
+            if(result==1)
+            {
+                check = 1;
+            }
+        }
+        catch(Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
+        return check;
+      
+    }
     
     
     
