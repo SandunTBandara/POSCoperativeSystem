@@ -5,6 +5,23 @@
  */
 package view.Report;
 
+import java.awt.BorderLayout;
+import java.sql.Connection;
+import java.text.SimpleDateFormat;
+import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import model.DB;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.swing.JRViewer;
+import net.sf.jasperreports.view.JasperViewer;
+
 /**
  *
  * @author Sanu
@@ -16,6 +33,47 @@ public class dailyitemchangeviewreport extends javax.swing.JFrame {
      */
     public dailyitemchangeviewreport() {
         initComponents();
+         connect();
+    }
+    
+    Connection con;
+    public void connect()
+    {
+        try {
+             con = DB.createConnection();
+        } catch (Exception ex) {
+            Logger.getLogger(dailyitemchangeviewreport.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    
+    }
+    
+    
+    public void loadreport()
+    {
+//       SimpleDateFormat date_Format1 = new SimpleDateFormat("yyyy-MM-dd ");
+//       String date1 = date_Format1.format(datePicker.getDate().toString());
+        
+        String date1 = datePicker.getDate().toString();
+       
+       HashMap a = new HashMap();
+        a.put("fdate", date1);
+        
+        
+        jPanel1.removeAll();
+        jPanel1.repaint();
+        jPanel1.revalidate();
+        
+        try {
+            JasperDesign jdesign = JRXmlLoader.load("C:\\Users\\Sanu\\Documents\\NetBeansProjects\\FinalProjectPOSSystem\\src\\view\\Report\\DailyPriceChange_View.jrxml");
+            JasperReport jreport = JasperCompileManager.compileReport(jdesign);
+            JasperPrint jprint = JasperFillManager.fillReport(jreport,   a,con );
+            
+            JRViewer v = new JRViewer(jprint);
+            jPanel1.setLayout(new BorderLayout());
+            jPanel1.add(v);
+        } catch (JRException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 
     /**
@@ -28,7 +86,7 @@ public class dailyitemchangeviewreport extends javax.swing.JFrame {
     private void initComponents() {
 
         lbldate = new javax.swing.JLabel();
-        datePicker1 = new com.github.lgooddatepicker.components.DatePicker();
+        datePicker = new com.github.lgooddatepicker.components.DatePicker();
         jButton1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
 
@@ -37,9 +95,14 @@ public class dailyitemchangeviewreport extends javax.swing.JFrame {
 
         lbldate.setText("Date");
         getContentPane().add(lbldate, new org.netbeans.lib.awtextra.AbsoluteConstraints(66, 71, 78, 29));
-        getContentPane().add(datePicker1, new org.netbeans.lib.awtextra.AbsoluteConstraints(156, 75, -1, -1));
+        getContentPane().add(datePicker, new org.netbeans.lib.awtextra.AbsoluteConstraints(156, 75, -1, -1));
 
         jButton1.setText("Report");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(382, 73, -1, -1));
 
         jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -48,18 +111,22 @@ public class dailyitemchangeviewreport extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 1184, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 484, Short.MAX_VALUE)
+            .addGap(0, 644, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 133, 830, 490));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 133, 1190, 650));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        loadreport();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -97,7 +164,7 @@ public class dailyitemchangeviewreport extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.github.lgooddatepicker.components.DatePicker datePicker1;
+    private com.github.lgooddatepicker.components.DatePicker datePicker;
     private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lbldate;

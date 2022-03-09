@@ -199,13 +199,11 @@ public class FrontDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
-      PaymentPortal Payment1 = new PaymentPortal(null,true);
-     Payment1.setLocationRelativeTo(this);
-     Payment1.setVisible(true);
-     frontendpanel.removeAll();
+     
        
     }//GEN-LAST:event_jMenuItem8ActionPerformed
-
+    
+    
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         Invoice Invoice1 = new Invoice();
         frontendpanel.removeAll();

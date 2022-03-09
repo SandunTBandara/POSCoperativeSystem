@@ -7,11 +7,14 @@ package view.FrontEnd;
 
 import controller.ManageCahsierLogin;
 import controller.ManageCustomerInvoice;
+import controller.ManageInvoiceItems;
 import controller.ManageLoyalityCustomer;
 import controller.ManageValidation;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import model.CustomerInvoice;
+import model.InvoiceItems;
 
 /**
  *
@@ -26,6 +29,8 @@ public class PaymentPortal extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         setsubtot();
+        settotdiscount();
+        setnettotal();
     }
         public void setsubtot()
     {
@@ -36,6 +41,26 @@ public class PaymentPortal extends javax.swing.JDialog {
        txtsubtot.setText(Double.toString(finalsubtot));
     
     }
+        
+        public void settotdiscount()
+        {
+            double discount = 0;
+         Invoice Invoice1 = new Invoice();
+       discount = Invoice1.getdiscount();
+       txtdiscount.setText(Double.toString(discount));
+       
+       
+        }
+        static double nettotal1 = 0;
+        public void setnettotal()
+        {
+        
+              double subtotal =  Double.parseDouble(txtsubtot.getText());
+       double discount =  Double.parseDouble(txtdiscount.getText());
+       nettotal1 = subtotal - discount;
+        txtnettotal.setText(Double.toString(nettotal1));
+        txtbalancef.setText(Double.toString(nettotal1));
+        }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -96,6 +121,7 @@ public class PaymentPortal extends javax.swing.JDialog {
         jLabel5.setText("Credit Amount");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 400, -1, 35));
 
+        txtsubtot.setEditable(false);
         txtsubtot.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jPanel1.add(txtsubtot, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 120, 250, -1));
 
@@ -289,6 +315,22 @@ public class PaymentPortal extends javax.swing.JDialog {
                 ManageCustomerInvoice m1 = new ManageCustomerInvoice(c1);
                 m1.saveInvoice();
                 
+                DefaultTableModel dtm = Invoice.dtm;
+                
+                int row = dtm.getRowCount();
+                for(int i=0; i< row; i++){
+                    System.out.println(dtm.getValueAt(i, 1));
+                    System.out.println(dtm.getValueAt(i, 2));
+                    System.out.println(dtm.getValueAt(i, 3));
+                    System.out.println(dtm.getValueAt(i, 4));
+                    
+                    InvoiceItems InvoiceItems1 = new InvoiceItems(Integer.parseInt(dtm.getValueAt(i, 0).toString()),InvoiceID,Double.parseDouble(dtm.getValueAt(i, 3).toString()),Double.parseDouble(dtm.getValueAt(i, 2).toString()),Double.parseDouble(dtm.getValueAt(i, 4).toString()),Double.parseDouble(dtm.getValueAt(i, 5).toString()));
+           ManageInvoiceItems ManageInvoiceItems1 = new ManageInvoiceItems(InvoiceItems1);
+           ManageInvoiceItems1.saveInvoiceItems();
+          
+                    
+                }
+                
                 txtsubtot.setText("");
                 txtdiscount.setText("");
                 txtnettotal.setText("");
@@ -335,13 +377,9 @@ public class PaymentPortal extends javax.swing.JDialog {
     private void txtdiscountKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtdiscountKeyTyped
    
     }//GEN-LAST:event_txtdiscountKeyTyped
-    static double nettotal1 = 0;
+    
     private void txtdiscountKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtdiscountKeyReleased
-          double subtotal =  Double.parseDouble(txtsubtot.getText());
-       double discount =  Double.parseDouble(txtdiscount.getText());
-       nettotal1 = subtotal - discount;
-        txtnettotal.setText(Double.toString(nettotal1));
-        txtbalancef.setText(Double.toString(nettotal1));
+    
     }//GEN-LAST:event_txtdiscountKeyReleased
 
     private void txtpaycashKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtpaycashKeyReleased

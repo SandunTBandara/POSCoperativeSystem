@@ -7,12 +7,14 @@ package view.FrontEnd;
 
 import controller.ManageCahsierLogin;
 import controller.ManageCustomerInvoice;
+import controller.ManageInvoiceItems;
 import controller.ManageItem;
 import controller.ManageValidation;
 import java.awt.event.KeyEvent;
 import java.sql.ResultSet;
 import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
+import model.InvoiceItems;
 
 /**
  *
@@ -26,6 +28,7 @@ public class Invoice extends javax.swing.JInternalFrame {
     public Invoice() {
         initComponents();
         generateInvoiceno();
+        
         timePicker.setTimeToNow();
         datepicker.setDateToToday();
          
@@ -74,6 +77,9 @@ public class Invoice extends javax.swing.JInternalFrame {
         lbl_itemerror = new javax.swing.JLabel();
         txt_discount = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        txt_discunt = new javax.swing.JTextField();
+        btn_payment = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(204, 204, 255));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -177,8 +183,8 @@ public class Invoice extends javax.swing.JInternalFrame {
         jLabel6.setText("Item Name");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(421, 123, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel4.setText("Price");
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(778, 123, -1, -1));
 
         jLabel8.setText("Total");
@@ -199,8 +205,8 @@ public class Invoice extends javax.swing.JInternalFrame {
         txt_item_qty.setEditable(false);
         jPanel1.add(txt_item_qty, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 740, 120, 40));
 
-        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel12.setText("Sub Total");
+        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 750, -1, -1));
 
         txt_subtoot.setEditable(false);
@@ -245,9 +251,23 @@ public class Invoice extends javax.swing.JInternalFrame {
         jPanel1.add(txt_discount, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 150, 100, 40));
 
         jLabel7.setText("Discount");
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 120, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 1510, 820));
+        jLabel11.setText("Tot Discount");
+        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 750, -1, -1));
+        jPanel1.add(txt_discunt, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 740, 150, 40));
+
+        btn_payment.setText("jButton1");
+        btn_payment.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_paymentActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_payment, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 760, 110, 40));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 1510, 830));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -303,10 +323,12 @@ public class Invoice extends javax.swing.JInternalFrame {
     double totalone_item = 0;
     double price = 0;
     private static double qty ;
-     static double discount ;
+     
      static String time;
      static String date;
      static int unit;
+     double discount = 0;
+     public static DefaultTableModel dtm;
    
     //add button press then add data into table
     private void btn_AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AddActionPerformed
@@ -330,7 +352,7 @@ public class Invoice extends javax.swing.JInternalFrame {
                 txt_Item_name.getText(),
                 txt_price.getText(),
                 txt_Qty.getText(),
-                
+                txt_discount.getText(),
                 txt_total.getText(),
                 });
 
@@ -338,9 +360,11 @@ public class Invoice extends javax.swing.JInternalFrame {
             double sum = 0;
             double qty = 0;
             
+            
             int i = 0;
             for (i = 0; i < tbl_invoice.getRowCount(); i++) {
-                sum = sum + Double.parseDouble(tbl_invoice.getValueAt(i, 4).toString());
+                sum = sum + Double.parseDouble(tbl_invoice.getValueAt(i, 5).toString());
+                discount = discount + Double.parseDouble(tbl_invoice.getValueAt(i, 4).toString());
                 qty = qty + Double.parseDouble(tbl_invoice.getValueAt(i, 3).toString());
             }
             
@@ -349,16 +373,20 @@ public class Invoice extends javax.swing.JInternalFrame {
             txt_subtoot.setText(Double.toString(sum));
             txt_unit.setText(Double.toString(tbl_invoice.getRowCount()));
             txt_item_qty.setText(Double.toString(qty));
+            txt_discunt.setText(Double.toString(discount));
            // 
             
-          
+           //save invoice data in invoice table
+           
             setsubtot();
+            setdiscounttot();
             
             txt_item_no.setText("");
             txt_Item_name.setText("");
             txt_price.setText("");
             txt_Qty.setText("");
             txt_total.setText("");
+            txt_discount.setText("");
               time = timePicker.getTime().toString();
             date = datepicker.getDate().toString();
             unit = Integer.parseInt(txt_unit.getText());
@@ -374,7 +402,11 @@ public class Invoice extends javax.swing.JInternalFrame {
     {
        return unit;
     }
+    public void addinvoice()
+    {
+        dtm = (DefaultTableModel)tbl_invoice.getModel();
     
+    }
     public String gettime()
     {
       return time;
@@ -383,9 +415,15 @@ public class Invoice extends javax.swing.JInternalFrame {
     {
       return date;
     }
+        static double discount1;
+    public void setdiscounttot()
+    {
+        discount1 = Double.parseDouble(txt_discunt.getText());
+       
+    }
     public double getdiscount()
      {
-      return discount;
+      return discount1;
      }
     public double getqty()
     {
@@ -501,12 +539,22 @@ public class Invoice extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_txt_discountKeyReleased
 
+    private void btn_paymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_paymentActionPerformed
+         addinvoice();
+        PaymentPortal Payment1 = new PaymentPortal(null,true);
+     Payment1.setLocationRelativeTo(this);
+     Payment1.setVisible(true);
+     
+    }//GEN-LAST:event_btn_paymentActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_Add;
+    private javax.swing.JButton btn_payment;
     private com.github.lgooddatepicker.components.DatePicker datepicker;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
@@ -530,6 +578,7 @@ public class Invoice extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txt_Item_name;
     private javax.swing.JTextField txt_Qty;
     private javax.swing.JTextField txt_discount;
+    private javax.swing.JTextField txt_discunt;
     private javax.swing.JTextField txt_item_no;
     private javax.swing.JTextField txt_item_qty;
     private javax.swing.JTextField txt_price;
