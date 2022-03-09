@@ -13,6 +13,8 @@ import controller.ManageValidation;
 import java.awt.event.KeyEvent;
 import java.sql.ResultSet;
 import java.util.Vector;
+import javax.swing.JOptionPane;
+import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
 import model.InvoiceItems;
 
@@ -27,6 +29,8 @@ public class Invoice extends javax.swing.JInternalFrame {
      */
     public Invoice() {
         initComponents();
+//         BasicInternalFrameUI ui = (BasicInternalFrameUI) this.getUI();
+//        ui.setNorthPane(null);
         generateInvoiceno();
         
         timePicker.setTimeToNow();
@@ -45,7 +49,6 @@ public class Invoice extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         txt_Invoice_No = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -76,20 +79,21 @@ public class Invoice extends javax.swing.JInternalFrame {
         lbl_toterror = new javax.swing.JLabel();
         lbl_itemerror = new javax.swing.JLabel();
         txt_discount = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         txt_discunt = new javax.swing.JTextField();
         btn_payment = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel14 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(204, 204, 255));
+        setVisible(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setText("Invoice No");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 43, 122, 41));
 
         txt_Invoice_No.setEditable(false);
         txt_Invoice_No.addActionListener(new java.awt.event.ActionListener() {
@@ -97,15 +101,17 @@ public class Invoice extends javax.swing.JInternalFrame {
                 txt_Invoice_NoActionPerformed(evt);
             }
         });
-        jPanel1.add(txt_Invoice_No, new org.netbeans.lib.awtextra.AbsoluteConstraints(164, 46, 199, 38));
+        jPanel1.add(txt_Invoice_No, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, 199, 38));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel2.setText("Date");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(454, 52, -1, -1));
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(204, 204, 255));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 100, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel3.setText("Time");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 52, -1, -1));
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(204, 204, 255));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 100, -1, -1));
 
         tbl_invoice.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -118,7 +124,7 @@ public class Invoice extends javax.swing.JInternalFrame {
         tbl_invoice.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jScrollPane1.setViewportView(tbl_invoice);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 221, 1270, 500));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, 1270, 490));
 
         txt_item_no.setEditable(false);
         txt_item_no.addActionListener(new java.awt.event.ActionListener() {
@@ -131,10 +137,10 @@ public class Invoice extends javax.swing.JInternalFrame {
                 txt_item_noKeyPressed(evt);
             }
         });
-        jPanel1.add(txt_item_no, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 152, 156, 37));
+        jPanel1.add(txt_item_no, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 156, 37));
 
         txt_Item_name.setEditable(false);
-        jPanel1.add(txt_Item_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(229, 152, 461, 37));
+        jPanel1.add(txt_Item_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, 461, 37));
 
         txt_price.setEditable(false);
         txt_price.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -142,7 +148,7 @@ public class Invoice extends javax.swing.JInternalFrame {
                 txt_priceKeyReleased(evt);
             }
         });
-        jPanel1.add(txt_price, new org.netbeans.lib.awtextra.AbsoluteConstraints(729, 152, 156, 37));
+        jPanel1.add(txt_price, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 200, 156, 37));
 
         txt_Qty.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -160,10 +166,10 @@ public class Invoice extends javax.swing.JInternalFrame {
                 txt_QtyKeyTyped(evt);
             }
         });
-        jPanel1.add(txt_Qty, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 150, 140, 40));
+        jPanel1.add(txt_Qty, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 200, 140, 40));
 
         txt_total.setEditable(false);
-        jPanel1.add(txt_total, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 150, 171, 38));
+        jPanel1.add(txt_total, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 200, 171, 38));
 
         btn_Add.setText("Add");
         btn_Add.setActionCommand("btn_Add");
@@ -173,41 +179,45 @@ public class Invoice extends javax.swing.JInternalFrame {
                 btn_AddActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_Add, new org.netbeans.lib.awtextra.AbsoluteConstraints(1400, 130, 98, 46));
+        jPanel1.add(btn_Add, new org.netbeans.lib.awtextra.AbsoluteConstraints(1400, 180, 98, 46));
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel5.setText("Item No");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(79, 113, 88, 32));
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(204, 204, 255));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, 88, 32));
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel6.setText("Item Name");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(421, 123, -1, -1));
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(204, 204, 255));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 170, -1, -1));
 
         jLabel4.setText("Price");
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(778, 123, -1, -1));
+        jLabel4.setForeground(new java.awt.Color(204, 204, 255));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 170, -1, -1));
 
         jLabel8.setText("Total");
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(1260, 120, -1, -1));
+        jLabel8.setForeground(new java.awt.Color(204, 204, 255));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(1260, 170, -1, -1));
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel9.setText("Unit");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 750, -1, -1));
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 810, -1, -1));
 
         txt_unit.setEditable(false);
-        jPanel1.add(txt_unit, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 740, 100, 40));
+        jPanel1.add(txt_unit, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 800, 100, 40));
 
-        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel10.setText("Item Qty");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 750, -1, -1));
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 810, -1, -1));
 
         txt_item_qty.setEditable(false);
-        jPanel1.add(txt_item_qty, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 740, 120, 40));
+        jPanel1.add(txt_item_qty, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 800, 120, 40));
 
         jLabel12.setText("Sub Total");
         jLabel12.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 750, -1, -1));
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 810, -1, -1));
 
         txt_subtoot.setEditable(false);
         txt_subtoot.addActionListener(new java.awt.event.ActionListener() {
@@ -215,13 +225,14 @@ public class Invoice extends javax.swing.JInternalFrame {
                 txt_subtootActionPerformed(evt);
             }
         });
-        jPanel1.add(txt_subtoot, new org.netbeans.lib.awtextra.AbsoluteConstraints(1310, 740, 150, 40));
-        jPanel1.add(datepicker, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 40, 230, 40));
-        jPanel1.add(timePicker, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 40, 210, 40));
+        jPanel1.add(txt_subtoot, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 800, 150, 40));
+        jPanel1.add(datepicker, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 90, 230, 40));
+        jPanel1.add(timePicker, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 90, 210, 40));
 
         jLabel13.setText("Quantity");
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 120, -1, -1));
+        jLabel13.setForeground(new java.awt.Color(204, 204, 255));
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 170, -1, -1));
 
         lbl_itemnameerror.setBackground(new java.awt.Color(255, 0, 0));
         lbl_itemnameerror.setForeground(new java.awt.Color(255, 0, 0));
@@ -248,26 +259,51 @@ public class Invoice extends javax.swing.JInternalFrame {
                 txt_discountKeyReleased(evt);
             }
         });
-        jPanel1.add(txt_discount, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 150, 100, 40));
-
-        jLabel7.setText("Discount");
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 120, -1, -1));
+        jPanel1.add(txt_discount, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 200, 100, 40));
 
         jLabel11.setText("Tot Discount");
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 750, -1, -1));
-        jPanel1.add(txt_discunt, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 740, 150, 40));
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 810, -1, -1));
+        jPanel1.add(txt_discunt, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 800, 150, 40));
 
-        btn_payment.setText("jButton1");
+        btn_payment.setBackground(new java.awt.Color(0, 0, 153));
+        btn_payment.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        btn_payment.setForeground(new java.awt.Color(204, 204, 204));
+        btn_payment.setText("Generate Payment");
         btn_payment.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_paymentActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_payment, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 760, 110, 40));
+        jPanel1.add(btn_payment, new org.netbeans.lib.awtextra.AbsoluteConstraints(1230, 800, 220, 60));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 1510, 830));
+        jPanel2.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel7.setText("Discount");
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(204, 204, 255));
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 100, -1, -1));
+
+        jLabel1.setText("Invoice No");
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(204, 204, 255));
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 122, 41));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 1520, 190));
+
+        jPanel3.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel14.setBackground(new java.awt.Color(204, 204, 255));
+        jLabel14.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(204, 204, 255));
+        jLabel14.setText("INVOICE");
+        jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 0, -1, -1));
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 10, 890, 50));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 1570, 900));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -343,8 +379,11 @@ public class Invoice extends javax.swing.JInternalFrame {
                     &&ManageValidation.validatorText(txt_Item_name, lbl_itemnameerror)
                     &&ManageValidation.validatorText(txt_price, lbl_priceerror)
                     &&ManageValidation.validatorText(txt_Qty, lbl_qtyerror)
-                    &&ManageValidation.validatorText(txt_total, lbl_toterror))
+                    &&ManageValidation.validatorText(txt_total, lbl_toterror)
+                    )
             {
+                if(Double.parseDouble(txt_Qty.getText())!= 0)
+                {
             DefaultTableModel model = new DefaultTableModel();
             model = (DefaultTableModel) tbl_invoice.getModel();
             model.addRow(new Object[]{
@@ -391,7 +430,11 @@ public class Invoice extends javax.swing.JInternalFrame {
             date = datepicker.getDate().toString();
             unit = Integer.parseInt(txt_unit.getText());
             
-            
+                }
+                else
+                {
+                 JOptionPane.showMessageDialog(null, "Quantity can't be zero","Super Market POS System",JOptionPane.ERROR_MESSAGE);
+                }
             }
 
         } catch (Exception e) {
@@ -557,6 +600,7 @@ public class Invoice extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -566,6 +610,8 @@ public class Invoice extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbl_itemerror;
     private javax.swing.JLabel lbl_itemnameerror;

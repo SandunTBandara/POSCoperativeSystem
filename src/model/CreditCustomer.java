@@ -14,14 +14,14 @@ public class CreditCustomer {
         
     }
     
-    public CreditCustomer(int cusno,String name, int cid, float climit, String nic, int tel, String addr ){
+    public CreditCustomer(int cusno,String name, int cid, float climit, String nic, int tel, String address ){
         this.cusno = cusno;
         this.name = name;
         this.creditId = cid;
         this.creditLimit = climit;
         this.NIC = nic;
         this.tel = tel;
-        this.address = addr;
+        this.address = address;
     }
      
     public int getCusNo() {

@@ -38,6 +38,43 @@ public class ManageCreditCustomer {
      
        
     }
+        public ResultSet viewcreditcustomerbycus(int cno) throws Exception
+    {
+       ResultSet result = null;  
+       Connection con = DB.createConnection();
+       Statement stmt = con.createStatement();
+       String sql = "Select * from creditcustomerinformation where 	CusNo = '"+cno+"' ";
+        result = stmt.executeQuery(sql);
+       
+        return result;
+     
+       
+    }
+        
+     public int UpdateItemStock(int code, double limit)
+    {  
+        int check = 0;
+        try{
+            
+            Connection con = DB.createConnection();
+            String sql = "update creditcustomerinformation set creditLimit = '"+limit+"'  where CusNo='"+code+"' ";
+            System.out.println(sql);
+
+            Statement stmt = con.createStatement();
+            int result = stmt.executeUpdate(sql);
+
+            if(result==1)
+            {
+                check = 1;
+            }
+        }
+        catch(Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
+        return check;
+      
+    }
     
     
 }

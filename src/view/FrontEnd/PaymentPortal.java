@@ -8,6 +8,7 @@ package view.FrontEnd;
 import controller.ManageCahsierLogin;
 import controller.ManageCustomerInvoice;
 import controller.ManageInvoiceItems;
+import controller.ManageItem;
 import controller.ManageLoyalityCustomer;
 import controller.ManageValidation;
 import java.sql.ResultSet;
@@ -193,6 +194,11 @@ public class PaymentPortal extends javax.swing.JDialog {
         btncreditcus.setBackground(new java.awt.Color(204, 255, 255));
         btncreditcus.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         btncreditcus.setText("Credit Customers");
+        btncreditcus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btncreditcusActionPerformed(evt);
+            }
+        });
         jPanel1.add(btncreditcus, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 310, 270, 60));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
@@ -242,6 +248,7 @@ public class PaymentPortal extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtbalancefActionPerformed
     
+    static double balance1 = 0;
     private void btngenbillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btngenbillActionPerformed
         String memID = null; 
         String InvoiceID = null;
@@ -297,6 +304,7 @@ public class PaymentPortal extends javax.swing.JDialog {
                     subtot = Double.parseDouble(txtsubtot.getText());
                     //
                     balance = Double.parseDouble(txtbalancef.getText());
+                   
                     //
                     UserSignin user = new UserSignin(null,true);
             
@@ -325,9 +333,25 @@ public class PaymentPortal extends javax.swing.JDialog {
                     System.out.println(dtm.getValueAt(i, 4));
                     
                     InvoiceItems InvoiceItems1 = new InvoiceItems(Integer.parseInt(dtm.getValueAt(i, 0).toString()),InvoiceID,Double.parseDouble(dtm.getValueAt(i, 3).toString()),Double.parseDouble(dtm.getValueAt(i, 2).toString()),Double.parseDouble(dtm.getValueAt(i, 4).toString()),Double.parseDouble(dtm.getValueAt(i, 5).toString()));
-           ManageInvoiceItems ManageInvoiceItems1 = new ManageInvoiceItems(InvoiceItems1);
-           ManageInvoiceItems1.saveInvoiceItems();
-          
+                    ManageInvoiceItems ManageInvoiceItems1 = new ManageInvoiceItems(InvoiceItems1);
+                    ManageInvoiceItems1.saveInvoiceItems();
+double sQty=0, mQty=0;
+                                ManageItem item  = new ManageItem();
+                                ResultSet re = item.getItemStock(Integer.valueOf(dtm.getValueAt(i, 0).toString()));
+
+                                while(re.next()){   
+                                    sQty = re.getDouble("stockQty");
+                                    mQty = re.getDouble("maxQty");
+                                }
+
+                                sQty = sQty - Double.valueOf(dtm.getValueAt(i, 3).toString());
+                                int t = item.UpdateItemStock(Integer.valueOf(dtm.getValueAt(i, 0).toString()), sQty);
+//
+//                                if(t==1){
+//                                    ++c;
+//                                }else{
+//                                    JOptionPane.showMessageDialog(null, "Error in updating disposal item no " + dtm.getValueAt(index, 1).toString(), "SuperMarket Management", JOptionPane.ERROR_MESSAGE);
+//                                }    
                     
                 }
                 
@@ -350,6 +374,14 @@ public class PaymentPortal extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_btngenbillActionPerformed
 
+    public void setBalnce()
+    {
+       
+    }
+    public double getbalance()
+    {
+       return balance1;
+    }
     private void btnloyalcusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnloyalcusActionPerformed
                    ManageValidation.validatorText(txtsubtot, lbl_suerror);
             ManageValidation.validatorText(txtdiscount, lbl_diserror);
@@ -449,6 +481,31 @@ public class PaymentPortal extends javax.swing.JDialog {
         }
         
     }//GEN-LAST:event_btn_detuctpointActionPerformed
+
+    private void btncreditcusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncreditcusActionPerformed
+                        ManageValidation.validatorText(txtsubtot, lbl_suerror);
+            ManageValidation.validatorText(txtdiscount, lbl_diserror);
+            ManageValidation.validatorText(txtnettotal, lbl_nterror);
+            ManageValidation.validatorText(txtpaycash, lbl_pcasherror);
+            ManageValidation.validatorText(txtpaycash, lbl_pcasherror);
+            ManageValidation.validatorText(txtcashamount, lblpaycasherror);
+            ManageValidation.validatorText(txtbalancef, lbl_balerror);
+            
+            if(ManageValidation.validatorText(txtsubtot, lbl_suerror)
+                    &&ManageValidation.validatorText(txtdiscount, lbl_diserror)
+                    &&ManageValidation.validatorText(txtnettotal, lbl_nterror)
+                    &&ManageValidation.validatorText(txtpaycash, lbl_pcasherror)
+                    &&ManageValidation.validatorText(txtpaycash, lbl_pcasherror)
+                    &&ManageValidation.validatorText(txtcashamount, lblpaycasherror)
+                    &&ManageValidation.validatorText(txtbalancef, lbl_balerror))
+            {
+                balance1 = Double.parseDouble(txtbalancef.getText());
+        CreditCustomerDetails lcd = new CreditCustomerDetails(null,true);
+       lcd.setLocationRelativeTo(lcd);
+       lcd.setVisible(true);
+        
+            }        
+    }//GEN-LAST:event_btncreditcusActionPerformed
 
     /**
      * @param args the command line arguments
