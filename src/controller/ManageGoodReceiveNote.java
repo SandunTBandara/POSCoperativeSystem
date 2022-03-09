@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package controller;
 
 import com.mysql.cj.protocol.Resultset;
@@ -16,10 +12,6 @@ import javax.swing.JOptionPane;
 import model.DB;
 import model.GRN;
 
-/**
- *
- * @author SHADHANI
- */
 public class ManageGoodReceiveNote {
     GRN grn = new GRN();
     
@@ -35,11 +27,12 @@ public class ManageGoodReceiveNote {
         int result=0;
         try{
             Connection con = DB.createConnection();
-            String sql = "INSERT INTO goodreceivenote(F16No,date,status) VALUES (?,?,?)";
+            String sql = "INSERT INTO goodreceivenote(F16No,date,status, F23No) VALUES (?,?,?,?)";
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setString(1, grn.getNo());
             stmt.setDate(2, grn.getDate());
             stmt.setString(3, grn.getStatus());
+            stmt.setString(4, grn.getF23No());
     
             result = stmt.executeUpdate();
 
