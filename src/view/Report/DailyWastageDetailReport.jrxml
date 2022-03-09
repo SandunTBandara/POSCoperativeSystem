@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="1000" pageHeight="595" orientation="Landscape" columnWidth="960" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="48ddd8dd-7f84-4fad-bdf9-24e2ce02e6e7">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="fdate" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     item.`itemName` AS item_itemName,
+     disposalltemsrecords.`TotalBuyingPrice` AS disposalltemsrecords_TotalBuyingPrice,
+     disposalltemsrecords.`TotalSellingPrice` AS disposalltemsrecords_TotalSellingPrice,
+     disposalltems.`Date` AS disposalltems_Date,
+     disposalltems.`totalLost` AS disposalltems_totalLost,
+     item.`code` AS item_code,
+     disposalltemsrecords.`Qty` AS disposalltemsrecords_Qty,
+     disposalltemsrecords.`buyingPrice` AS disposalltemsrecords_buyingPrice,
+     disposalltemsrecords.`SellingPrice` AS disposalltemsrecords_SellingPrice
+FROM
+     `item` item INNER JOIN `disposalltemsrecords` disposalltemsrecords ON item.`code` = disposalltemsrecords.`Code`
+     INNER JOIN `disposalltems` disposalltems ON disposalltemsrecords.`F17No` = disposalltems.`F17No` where disposalltems.`Date` = $P{fdate}]]>
+	</queryString>
+	<field name="item_itemName" class="java.lang.String"/>
+	<field name="disposalltemsrecords_TotalBuyingPrice" class="java.lang.Double"/>
+	<field name="disposalltemsrecords_TotalSellingPrice" class="java.lang.Double"/>
+	<field name="disposalltems_Date" class="java.sql.Date"/>
+	<field name="disposalltems_totalLost" class="java.lang.Double"/>
+	<field name="item_code" class="java.lang.Integer"/>
+	<field name="disposalltemsrecords_Qty" class="java.lang.Double"/>
+	<field name="disposalltemsrecords_buyingPrice" class="java.lang.Double"/>
+	<field name="disposalltemsrecords_SellingPrice" class="java.lang.Double"/>
+	<variable name="disposalltems_totalLost_1" class="java.lang.Double" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{disposalltems_totalLost}]]></variableExpression>
+	</variable>
+	<variable name="disposalltemsrecords_TotalBuyingPrice_1" class="java.lang.Double" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{disposalltemsrecords_TotalBuyingPrice}]]></variableExpression>
+	</variable>
+	<variable name="disposalltemsrecords_TotalSellingPrice_1" class="java.lang.Double" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{disposalltemsrecords_TotalSellingPrice}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="13" y="0" width="100" height="20" uuid="12a6c247-116d-4656-a675-ffb1997f9a24"/>
+				<text><![CDATA[disposalltems_Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="126" y="2" width="100" height="20" uuid="0592c861-5595-4a2a-855d-098f497c2097"/>
+				<text><![CDATA[item_code]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="227" y="2" width="100" height="20" uuid="cf1e044c-44b3-40a2-bbec-f5ed4f8e80a8"/>
+				<text><![CDATA[item_itemName]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="326" y="2" width="100" height="20" uuid="b23ec9b5-11b9-44c5-808b-73d0790fb674"/>
+				<text><![CDATA[disposalltemsrecords_buyingPrice]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="428" y="2" width="100" height="20" uuid="5eacdf3a-2b30-438a-bf47-77b1bbac344d"/>
+				<text><![CDATA[disposalltemsrecords_SellingPrice]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="532" y="2" width="100" height="20" uuid="6616699b-8a31-4034-a701-84f54df9a4ab"/>
+				<text><![CDATA[disposalltemsrecords_Qty]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="634" y="2" width="100" height="20" uuid="2e999acf-6384-47e5-a768-a6369ec103ca"/>
+				<text><![CDATA[disposalltemsrecords_TotalBuyingPrice]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="741" y="2" width="100" height="20" uuid="8c6a50e2-384e-4023-99df-510e7a33f658"/>
+				<text><![CDATA[disposalltemsrecords_TotalSellingPrice]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="13" y="0" width="100" height="20" uuid="d2989401-4c68-45f0-88bf-879f58efa8d6"/>
+				<textFieldExpression><![CDATA[$F{disposalltems_Date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="113" y="0" width="100" height="20" uuid="6ed9b881-2ad8-4a72-9fcb-f043f9ef66c1"/>
+				<textFieldExpression><![CDATA[$F{item_code}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="226" y="0" width="100" height="20" uuid="1b3be336-0359-4a1c-9505-3eadf412e685"/>
+				<textFieldExpression><![CDATA[$F{item_itemName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="326" y="4" width="100" height="20" uuid="7ef9aca5-6a98-4b81-bc14-ee9aee40f8ad"/>
+				<textFieldExpression><![CDATA[$F{disposalltemsrecords_buyingPrice}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="428" y="6" width="100" height="20" uuid="381e3ac1-9cde-4516-956a-002c6c421694"/>
+				<textFieldExpression><![CDATA[$F{disposalltemsrecords_SellingPrice}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="532" y="9" width="100" height="20" uuid="0ef73b88-7e05-4906-ac78-3d81c728c56e"/>
+				<textFieldExpression><![CDATA[$F{disposalltemsrecords_Qty}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="634" y="5" width="100" height="20" uuid="86536768-8b83-41ef-8cf8-42195e57c6af"/>
+				<textFieldExpression><![CDATA[$F{disposalltemsrecords_TotalBuyingPrice}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="741" y="7" width="100" height="20" uuid="9d82c832-389c-4dfb-8bc9-08144c055dbd"/>
+				<textFieldExpression><![CDATA[$F{disposalltemsrecords_TotalSellingPrice}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="72" splitType="Stretch">
+			<textField>
+				<reportElement x="721" y="37" width="100" height="20" uuid="76730a88-a10c-4960-a064-789b4f917e66"/>
+				<textFieldExpression><![CDATA[$V{disposalltems_totalLost_1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="721" y="17" width="100" height="20" uuid="b2eba40f-8a26-4030-8c08-4dd74c7d61cc"/>
+				<text><![CDATA[Total Lost]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="426" y="37" width="100" height="20" uuid="9170b082-89c1-4a81-858f-179e4ef0afaf"/>
+				<textFieldExpression><![CDATA[$V{disposalltemsrecords_TotalBuyingPrice_1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="415" y="12" width="129" height="20" uuid="b8e3ebcd-630b-4abb-8451-95f5eba21a97"/>
+				<text><![CDATA[Total Buying Amount]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="582" y="37" width="100" height="20" uuid="875314fe-334a-4a37-8719-6f469d4da6d3"/>
+				<textFieldExpression><![CDATA[$V{disposalltemsrecords_TotalSellingPrice_1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="571" y="12" width="124" height="20" uuid="85d983f0-5d21-49dc-9d1d-1f401639f47a"/>
+				<text><![CDATA[Total Selling Amount]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

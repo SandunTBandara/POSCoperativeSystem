@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="20b95c3e-aa34-4271-b4b5-6e16f3d655a3">
+	<parameter name="fdate" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     getcreditformation.`invoiceNo` AS getcreditformation_invoiceNo,
+     creditcustomerinformation.`ccode` AS creditcustomerinformation_ccode,
+     creditdetails.`Date` AS creditdetails_Date,
+     creditcustomerinformation.`name` AS creditcustomerinformation_name,
+     customerinvoice.`Balance` AS customerinvoice_Balance,
+     customerinvoice.`netTotal` AS customerinvoice_netTotal,
+     customerinvoice.`ItemDiscounts` AS customerinvoice_ItemDiscounts,
+     getcreditformation.`creditAmount` AS getcreditformation_creditAmount
+FROM
+     `creditcustomerinformation` creditcustomerinformation INNER JOIN `getcreditformation` getcreditformation ON creditcustomerinformation.`CusNo` = getcreditformation.`cusNo`
+     INNER JOIN `customerinvoice` customerinvoice ON creditcustomerinformation.`CusNo` = customerinvoice.`cusNo`
+     AND customerinvoice.`invoiceNo` = getcreditformation.`invoiceNo`
+     INNER JOIN `creditdetails` creditdetails ON getcreditformation.`creditCode` = creditdetails.`creditCode` where creditdetails.`Date` = $P{fdate}]]>
+	</queryString>
+	<field name="getcreditformation_invoiceNo" class="java.lang.String"/>
+	<field name="creditcustomerinformation_ccode" class="java.lang.Integer"/>
+	<field name="creditdetails_Date" class="java.sql.Date"/>
+	<field name="creditcustomerinformation_name" class="java.lang.String"/>
+	<field name="customerinvoice_Balance" class="java.lang.Double"/>
+	<field name="customerinvoice_netTotal" class="java.lang.Double"/>
+	<field name="customerinvoice_ItemDiscounts" class="java.lang.Double"/>
+	<field name="getcreditformation_creditAmount" class="java.lang.Double"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="13" y="2" width="100" height="20" uuid="bb294bdb-18f8-4dfb-ba51-ff581c09ddab"/>
+				<text><![CDATA[creditcustomerinformation_ccode]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="124" y="2" width="100" height="20" uuid="0fb5d100-95d8-4c71-9b9f-523381dcc6ea"/>
+				<text><![CDATA[getcreditformation_invoiceNo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="232" y="2" width="100" height="20" uuid="d1697954-5385-4cdd-846c-bbf5f47aa6fd"/>
+				<text><![CDATA[creditcustomerinformation_name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="338" y="2" width="100" height="20" uuid="e9305d1b-a07f-4d7a-9f94-b3220f115299"/>
+				<text><![CDATA[customerinvoice_netTotal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="443" y="2" width="100" height="20" uuid="c5cf3c48-99b3-489b-8474-2efe68a891d2"/>
+				<text><![CDATA[customerinvoice_ItemDiscounts]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="547" y="2" width="100" height="20" uuid="b28e906a-a26e-4360-a5f9-18a2fd7b2ebd"/>
+				<text><![CDATA[customerinvoice_Balance]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="654" y="2" width="100" height="20" uuid="cfce05e9-d03b-4774-a20d-399187d671e0"/>
+				<text><![CDATA[getcreditformation_creditAmount]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="13" y="14" width="100" height="20" uuid="3dc04a06-2213-4552-9519-55dc49a46738"/>
+				<textFieldExpression><![CDATA[$F{creditcustomerinformation_ccode}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="124" y="15" width="100" height="20" uuid="f16eff12-d95d-435a-9464-f084c8a62463"/>
+				<textFieldExpression><![CDATA[$F{getcreditformation_invoiceNo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="232" y="17" width="100" height="20" uuid="fc4968d0-0a2c-4734-857d-57dd60d11a79"/>
+				<textFieldExpression><![CDATA[$F{creditcustomerinformation_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="338" y="16" width="100" height="20" uuid="9dbef4b0-e4d5-472e-b8c8-a3b1309dbf23"/>
+				<textFieldExpression><![CDATA[$F{customerinvoice_netTotal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="443" y="17" width="100" height="20" uuid="68213d67-1fc9-48c1-b36f-90a80949b8c1"/>
+				<textFieldExpression><![CDATA[$F{customerinvoice_ItemDiscounts}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="547" y="16" width="100" height="20" uuid="694d20fb-77c1-49fa-889a-db6409556fee"/>
+				<textFieldExpression><![CDATA[$F{customerinvoice_Balance}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="654" y="16" width="100" height="20" uuid="38adff32-4eef-4045-ae66-a5877cb64f49"/>
+				<textFieldExpression><![CDATA[$F{getcreditformation_creditAmount}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
