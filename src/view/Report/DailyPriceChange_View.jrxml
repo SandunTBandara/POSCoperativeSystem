@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="1300" pageHeight="595" orientation="Landscape" columnWidth="1260" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7235d301-4ade-455b-9c39-94cd642061b2">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="1400" pageHeight="595" orientation="Landscape" columnWidth="1360" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7235d301-4ade-455b-9c39-94cd642061b2">
 	<property name="ireport.zoom" value="1.0"/>
-	<property name="ireport.x" value="140"/>
+	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="fdate" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
@@ -34,105 +34,194 @@ FROM
 	<field name="pricechangeitems_Lost" class="java.lang.Double"/>
 	<field name="pricechangeitems_Profit" class="java.lang.Double"/>
 	<field name="pricechangeitems_F17No" class="java.lang.String"/>
+	<variable name="pricechangeitems_Lost_1" class="java.lang.Double" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{pricechangeitems_Lost}]]></variableExpression>
+	</variable>
+	<variable name="pricechangeitems_Profit_1" class="java.lang.Double" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{pricechangeitems_Profit}]]></variableExpression>
+	</variable>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch"/>
+		<band height="106" splitType="Stretch">
+			<staticText>
+				<reportElement x="350" y="17" width="594" height="57" uuid="2bd4a585-8e96-4af7-8975-7a677dc1ea61"/>
+				<textElement>
+					<font size="26" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DAILY PRICE CHANGE ITEM SALES REPORT]]></text>
+			</staticText>
+			<image>
+				<reportElement x="954" y="17" width="113" height="65" uuid="271c58e8-8324-4906-8b97-78b139210dba"/>
+				<imageExpression><![CDATA["C:\\Users\\Sanu\\Downloads\\apple.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="470" y="74" width="348" height="20" uuid="3b9e38af-6e11-4ee7-8747-8e1b2ae55f58"/>
+				<textElement>
+					<font fontName="Nirmala UI" size="14"/>
+				</textElement>
+				<text><![CDATA[සි.ස යක්කලමුල්ල විවිධ සේවා සමුපකාර සමිතිය ]]></text>
+			</staticText>
+		</band>
 	</title>
 	<pageHeader>
-		<band height="35" splitType="Stretch"/>
+		<band height="20" splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="61" splitType="Stretch">
+		<band height="35" splitType="Stretch">
 			<staticText>
-				<reportElement x="32" y="2" width="100" height="20" uuid="e066470e-7e1d-4f9f-8549-14934c20ece6"/>
-				<text><![CDATA[pricechangeitems_F17No]]></text>
+				<reportElement x="31" y="2" width="100" height="20" uuid="e066470e-7e1d-4f9f-8549-14934c20ece6"/>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[F17No]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="153" y="2" width="100" height="20" uuid="6d14eb8a-318a-4417-a465-b898d005195e"/>
-				<text><![CDATA[item_code]]></text>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Item_code]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="297" y="2" width="100" height="20" uuid="bae29d67-d3ce-474c-a790-611932992999"/>
-				<text><![CDATA[item_itemName]]></text>
+				<reportElement x="272" y="2" width="100" height="20" uuid="bae29d67-d3ce-474c-a790-611932992999"/>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ItemName]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="389" y="2" width="100" height="20" uuid="19604960-2382-4317-b028-13409effe941"/>
-				<text><![CDATA[pricechangeitems_Qty]]></text>
+				<reportElement x="389" y="2" width="143" height="20" uuid="19604960-2382-4317-b028-13409effe941"/>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Price Change Item Code]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="504" y="2" width="100" height="20" uuid="e453db4c-af4e-41d7-921f-7cebbbc42a47"/>
-				<text><![CDATA[item_costPrice]]></text>
+				<reportElement x="560" y="2" width="100" height="20" uuid="e453db4c-af4e-41d7-921f-7cebbbc42a47"/>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cost Price]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="613" y="2" width="100" height="20" uuid="a5c68e20-2cb5-497f-8585-bf3c9875f223"/>
-				<text><![CDATA[item_sellingPrice]]></text>
+				<reportElement x="686" y="2" width="100" height="20" uuid="a5c68e20-2cb5-497f-8585-bf3c9875f223"/>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Selling Price]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="725" y="2" width="100" height="20" uuid="14b19429-ed51-4df2-b3a7-41bfe0770911"/>
-				<text><![CDATA[pricechangeitems_DecreasedPrice]]></text>
+				<reportElement x="798" y="2" width="121" height="20" uuid="14b19429-ed51-4df2-b3a7-41bfe0770911"/>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Decreased Price]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="831" y="2" width="100" height="20" uuid="b61f4053-d815-4e68-887b-ac02298ac073"/>
-				<text><![CDATA[pricechangeitems_IncreasedPrice]]></text>
+				<reportElement x="944" y="2" width="121" height="20" uuid="b61f4053-d815-4e68-887b-ac02298ac073"/>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Increased Price]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="929" y="2" width="100" height="20" uuid="77b36d2e-182b-474b-8d0b-e498cf3993d8"/>
-				<text><![CDATA[pricechangeitems_Lost]]></text>
+				<reportElement x="1087" y="2" width="100" height="20" uuid="77b36d2e-182b-474b-8d0b-e498cf3993d8"/>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Lost Amount]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="1054" y="2" width="100" height="20" uuid="b284e5af-3513-4f0c-af31-3983bb66fb27"/>
-				<text><![CDATA[pricechangeitems_Profit]]></text>
+				<reportElement x="1205" y="2" width="100" height="20" uuid="b284e5af-3513-4f0c-af31-3983bb66fb27"/>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Profit Amount]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="125" splitType="Stretch">
+		<band height="58" splitType="Stretch">
 			<textField>
-				<reportElement x="32" y="59" width="100" height="20" uuid="7b87c74d-0539-48cb-9c20-495d63846707"/>
+				<reportElement x="31" y="11" width="100" height="20" uuid="7b87c74d-0539-48cb-9c20-495d63846707"/>
 				<textFieldExpression><![CDATA[$F{pricechangeitems_F17No}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="153" y="59" width="100" height="20" uuid="42b27f9b-5f36-45b8-98d6-849cf0206529"/>
+				<reportElement x="152" y="11" width="100" height="20" uuid="42b27f9b-5f36-45b8-98d6-849cf0206529"/>
 				<textFieldExpression><![CDATA[$F{item_code}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="273" y="59" width="100" height="20" uuid="d495a0e8-9ad5-41fb-866f-880ae9def5c5"/>
+				<reportElement x="272" y="11" width="100" height="20" uuid="d495a0e8-9ad5-41fb-866f-880ae9def5c5"/>
 				<textFieldExpression><![CDATA[$F{item_itemName}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="389" y="61" width="100" height="20" uuid="dfcb5e46-a39d-4991-882e-9a8e2b08c188"/>
+				<reportElement x="411" y="11" width="100" height="20" uuid="dfcb5e46-a39d-4991-882e-9a8e2b08c188"/>
 				<textFieldExpression><![CDATA[$F{pricechangeitems_Qty}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="504" y="59" width="100" height="20" uuid="254a1709-a8dc-411d-a909-bbd68d350c1c"/>
+				<reportElement x="560" y="11" width="100" height="20" uuid="254a1709-a8dc-411d-a909-bbd68d350c1c"/>
 				<textFieldExpression><![CDATA[$F{item_costPrice}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="613" y="62" width="100" height="20" uuid="85e38cb2-fd86-4d32-8ab7-67e0915ed8a4"/>
+				<reportElement x="686" y="11" width="100" height="20" uuid="85e38cb2-fd86-4d32-8ab7-67e0915ed8a4"/>
 				<textFieldExpression><![CDATA[$F{item_sellingPrice}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="713" y="61" width="100" height="20" uuid="004b37a9-c686-48e2-bb90-81173ede3121"/>
+				<reportElement x="798" y="11" width="100" height="20" uuid="004b37a9-c686-48e2-bb90-81173ede3121"/>
 				<textFieldExpression><![CDATA[$F{pricechangeitems_DecreasedPrice}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="813" y="59" width="100" height="20" uuid="ac1bf736-ea3e-40ec-878b-3b60632ddb0c"/>
+				<reportElement x="954" y="11" width="100" height="20" uuid="ac1bf736-ea3e-40ec-878b-3b60632ddb0c"/>
 				<textFieldExpression><![CDATA[$F{pricechangeitems_IncreasedPrice}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="929" y="59" width="100" height="20" uuid="fe96bef6-4adb-4d92-b524-221fd0d22511"/>
+				<reportElement x="1087" y="11" width="100" height="20" uuid="fe96bef6-4adb-4d92-b524-221fd0d22511"/>
 				<textFieldExpression><![CDATA[$F{pricechangeitems_Lost}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="1041" y="59" width="100" height="20" uuid="1f972def-2673-48b6-a1fd-cf70f7ea8fb0"/>
+				<reportElement x="1205" y="11" width="100" height="20" uuid="1f972def-2673-48b6-a1fd-cf70f7ea8fb0"/>
 				<textFieldExpression><![CDATA[$F{pricechangeitems_Profit}]]></textFieldExpression>
 			</textField>
+			<line>
+				<reportElement x="0" y="44" width="1360" height="1" uuid="3bede84c-ec8f-4e59-b7bf-144e5e0f2502"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="45" splitType="Stretch"/>
+		<band height="75" splitType="Stretch">
+			<textField>
+				<reportElement x="1087" y="13" width="100" height="45" uuid="56c4939b-2156-441e-8fc4-fb57dc1a3b39"/>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{pricechangeitems_Lost_1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1205" y="13" width="100" height="45" uuid="8c08406d-828c-4193-9cd9-f2959061d0ee"/>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{pricechangeitems_Profit_1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="970" y="0" width="111" height="45" uuid="92bec9f1-feeb-4032-961a-3706e7fe45a9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="10" y="54" width="1360" height="1" uuid="b571d093-2e63-4fcf-b7a9-d4ab015ae3f2"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+		</band>
 	</columnFooter>
 	<pageFooter>
 		<band height="54" splitType="Stretch"/>

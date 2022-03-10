@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="1500" pageHeight="595" orientation="Landscape" columnWidth="1460" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1af91d1b-2de6-48d8-905e-e699adfdabc9">
+	<property name="ireport.zoom" value="1.4641000000000008"/>
+	<property name="ireport.x" value="1021"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="fdate" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     goodreceivenote.`date` AS goodreceivenote_date,
+     supplier.`Sname` AS supplier_Sname,
+     goodreceivenoterecords.`PaymentType` AS goodreceivenoterecords_PaymentType,
+     goodreceivenoterecords.`totalsellingprice` AS goodreceivenoterecords_totalsellingprice,
+     goodreceivenoterecords.`totalBuyingPrice` AS goodreceivenoterecords_totalBuyingPrice,
+     goodreceivenoterecords.`Bdiscount` AS goodreceivenoterecords_Bdiscount,
+     goodreceivenoterecords.`Bvat` AS goodreceivenoterecords_Bvat,
+     goodreceivenoterecords.`itemdecrease` AS goodreceivenoterecords_itemdecrease,
+     goodreceivenoterecords.`loadRent` AS goodreceivenoterecords_loadRent,
+     goodreceivenoterecords.`SellingFreeIssue` AS goodreceivenoterecords_SellingFreeIssue,
+     goodreceivenoterecords.`SubtotalAmount` AS goodreceivenoterecords_SubtotalAmount,
+     goodreceivenoterecords.`SubTotalSellingPrice` AS goodreceivenoterecords_SubTotalSellingPrice
+FROM
+     `goodreceivenote` goodreceivenote INNER JOIN `goodreceivenoterecords` goodreceivenoterecords ON goodreceivenote.`F16No` = goodreceivenoterecords.`F16No`
+     INNER JOIN `supplier` supplier ON goodreceivenoterecords.`spcode` = supplier.`scode` where goodreceivenote.`date` = $P{fdate}]]>
+	</queryString>
+	<field name="goodreceivenote_date" class="java.sql.Timestamp"/>
+	<field name="supplier_Sname" class="java.lang.String"/>
+	<field name="goodreceivenoterecords_PaymentType" class="java.lang.String"/>
+	<field name="goodreceivenoterecords_totalsellingprice" class="java.lang.Double"/>
+	<field name="goodreceivenoterecords_totalBuyingPrice" class="java.lang.Double"/>
+	<field name="goodreceivenoterecords_Bdiscount" class="java.lang.Double"/>
+	<field name="goodreceivenoterecords_Bvat" class="java.lang.Double"/>
+	<field name="goodreceivenoterecords_itemdecrease" class="java.lang.Double"/>
+	<field name="goodreceivenoterecords_loadRent" class="java.lang.Double"/>
+	<field name="goodreceivenoterecords_SellingFreeIssue" class="java.lang.Double"/>
+	<field name="goodreceivenoterecords_SubtotalAmount" class="java.lang.Double"/>
+	<field name="goodreceivenoterecords_SubTotalSellingPrice" class="java.lang.Double"/>
+	<variable name="goodreceivenoterecords_totalBuyingPrice_1" class="java.lang.Double" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{goodreceivenoterecords_totalBuyingPrice}]]></variableExpression>
+	</variable>
+	<variable name="goodreceivenoterecords_totalsellingprice_1" class="java.lang.Double" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{goodreceivenoterecords_totalsellingprice}]]></variableExpression>
+	</variable>
+	<variable name="goodreceivenoterecords_Bdiscount_1" class="java.lang.Double" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{goodreceivenoterecords_Bdiscount}]]></variableExpression>
+	</variable>
+	<variable name="goodreceivenoterecords_Bvat_1" class="java.lang.Double" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{goodreceivenoterecords_Bvat}]]></variableExpression>
+	</variable>
+	<variable name="goodreceivenoterecords_loadRent_1" class="java.lang.Double" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{goodreceivenoterecords_loadRent}]]></variableExpression>
+	</variable>
+	<variable name="goodreceivenoterecords_itemdecrease_1" class="java.lang.Double" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{goodreceivenoterecords_itemdecrease}]]></variableExpression>
+	</variable>
+	<variable name="goodreceivenoterecords_loadRent_2" class="java.lang.Double" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{goodreceivenoterecords_loadRent}]]></variableExpression>
+	</variable>
+	<variable name="goodreceivenoterecords_SellingFreeIssue_1" class="java.lang.Double" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{goodreceivenoterecords_SellingFreeIssue}]]></variableExpression>
+	</variable>
+	<variable name="goodreceivenoterecords_SubtotalAmount_1" class="java.lang.Double" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{goodreceivenoterecords_SubtotalAmount}]]></variableExpression>
+	</variable>
+	<variable name="goodreceivenoterecords_SubTotalSellingPrice_1" class="java.lang.Double" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{goodreceivenoterecords_SubTotalSellingPrice}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="111" splitType="Stretch">
+			<staticText>
+				<reportElement x="382" y="19" width="507" height="57" uuid="96a78e12-c2f6-46b4-81ba-d588b9593f75"/>
+				<textElement>
+					<font size="26" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DAILY INVOICE ITEM SALES REPORT]]></text>
+			</staticText>
+			<image>
+				<reportElement x="889" y="19" width="113" height="65" uuid="85034092-95a2-422a-a060-34b6fd207348"/>
+				<imageExpression><![CDATA["C:\\Users\\Sanu\\Downloads\\apple.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="460" y="78" width="348" height="20" uuid="60faac08-f4d5-45ae-b672-70c08c00674e"/>
+				<textElement>
+					<font fontName="Nirmala UI" size="14"/>
+				</textElement>
+				<text><![CDATA[සි.ස යක්කලමුල්ල විවිධ සේවා සමුපකාර සමිතිය ]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20" uuid="f0a1a47b-5a79-4274-b737-d7603f97175a"/>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="104" y="2" width="100" height="20" uuid="bd20112b-24f8-4ebf-a65c-1f41ee1d5355"/>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Supplier]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="206" y="2" width="100" height="20" uuid="2e09bb56-a04e-42cd-bc48-a72276dd3fad"/>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Pay Type]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="310" y="2" width="135" height="20" uuid="3e33d399-9cd0-4570-bdda-585359ba3d1d"/>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Buying Price]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="462" y="2" width="133" height="20" uuid="0d33bcce-b2a2-455c-bf6d-1dc55b8c5836"/>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Selling price]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="616" y="2" width="100" height="20" uuid="8cffc4f2-7d8b-4ab4-9a20-135cfd208fb4"/>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Discount]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="729" y="2" width="100" height="20" uuid="f2269405-0159-41e7-a645-46dcd2773e3d"/>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Vat Value]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="829" y="2" width="100" height="20" uuid="270c7d00-53b5-4f5d-8eca-e3e33d30f8e4"/>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Item DIcrease]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="953" y="2" width="100" height="20" uuid="59f13c30-b4d1-48be-b2b0-851ef9feba60"/>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Load Rent]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1059" y="2" width="123" height="20" uuid="58765f61-1e19-4386-b1a6-7651e3ac009c"/>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Free Issue Cost]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1192" y="0" width="141" height="20" uuid="9b2f098a-3af2-471e-9233-046a0c2d20a5"/>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sub Total Amount]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1333" y="0" width="122" height="20" uuid="f4c7914b-ee31-4340-8b68-fd44990497e2"/>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sub Total Selling Price]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="46" splitType="Stretch">
+			<textField>
+				<reportElement x="1" y="2" width="100" height="20" uuid="8e63e7d4-ae79-4e7b-b564-aae32659e706"/>
+				<textFieldExpression><![CDATA[$F{goodreceivenote_date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="104" y="3" width="100" height="20" uuid="d5ac5820-eba0-4c02-a31b-20f39ec3add4"/>
+				<textFieldExpression><![CDATA[$F{supplier_Sname}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="206" y="2" width="100" height="20" uuid="a5fc8a25-7896-4c12-8e4f-72db192c4437"/>
+				<textFieldExpression><![CDATA[$F{goodreceivenoterecords_PaymentType}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="332" y="5" width="100" height="20" uuid="bdf66144-b584-4961-92f6-35c1dd339568"/>
+				<textFieldExpression><![CDATA[$F{goodreceivenoterecords_totalBuyingPrice}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="484" y="3" width="100" height="20" uuid="6d8b4940-7294-457a-8bbf-28d99067b3b0"/>
+				<textFieldExpression><![CDATA[$F{goodreceivenoterecords_totalsellingprice}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="626" y="2" width="100" height="20" uuid="ba953624-bc07-4753-98d7-50468bf5acd3"/>
+				<textFieldExpression><![CDATA[$F{goodreceivenoterecords_Bdiscount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="759" y="7" width="100" height="20" uuid="56828c33-b364-4ef9-a122-2bdfcf6bda83"/>
+				<textFieldExpression><![CDATA[$F{goodreceivenoterecords_Bvat}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="866" y="5" width="100" height="20" uuid="acd5945e-a8c1-4cbc-9492-883dee2dfeb1"/>
+				<textFieldExpression><![CDATA[$F{goodreceivenoterecords_itemdecrease}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="971" y="5" width="100" height="20" uuid="a91dbe61-e417-4321-a180-1e545a52a954"/>
+				<textFieldExpression><![CDATA[$F{goodreceivenoterecords_loadRent}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1077" y="3" width="100" height="20" uuid="c6ea45aa-265f-4293-adfe-ef1bb9f4481e"/>
+				<textFieldExpression><![CDATA[$F{goodreceivenoterecords_SellingFreeIssue}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1220" y="3" width="100" height="20" uuid="c3288cfa-1cc9-47ea-896a-c06630366d1e"/>
+				<textFieldExpression><![CDATA[$F{goodreceivenoterecords_SubtotalAmount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1355" y="2" width="100" height="20" uuid="a0102787-06df-415f-922f-dee2f9bec33f"/>
+				<textFieldExpression><![CDATA[$F{goodreceivenoterecords_SubTotalSellingPrice}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="1" y="27" width="1454" height="2" uuid="61534a47-b234-41c8-967c-a0d966569d9a"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="74" splitType="Stretch">
+			<staticText>
+				<reportElement x="-2" y="15" width="100" height="45" uuid="53903528-2f38-47d2-bfa0-ca27d374e377"/>
+				<textElement>
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="335" y="28" width="100" height="20" uuid="13a007ae-ab77-4e29-8807-08ed58055418"/>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{goodreceivenoterecords_totalBuyingPrice_1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="488" y="28" width="100" height="20" uuid="3c6254e7-0532-43d6-ab1f-7b5911016900"/>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{goodreceivenoterecords_totalsellingprice_1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="629" y="25" width="100" height="20" uuid="0a3f0d6f-191f-44e4-9666-78c5f8d7cafb"/>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{goodreceivenoterecords_Bdiscount_1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="759" y="27" width="100" height="20" uuid="d007cf9b-dbcd-4472-b42a-977b347db4bf"/>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{goodreceivenoterecords_Bvat_1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="866" y="27" width="100" height="20" uuid="0fb9a1ac-00ff-4bba-a95a-7effecead9ee"/>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{goodreceivenoterecords_itemdecrease_1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="976" y="30" width="100" height="20" uuid="60dbdc6c-1f12-490c-b521-22bcc0899314"/>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{goodreceivenoterecords_loadRent_2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1082" y="29" width="100" height="20" uuid="707d704c-664b-4ac9-af09-b86d4111c279"/>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{goodreceivenoterecords_SellingFreeIssue_1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1355" y="28" width="100" height="20" uuid="f8082b64-dca3-4783-9850-e356fbbe42bc"/>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{goodreceivenoterecords_SubTotalSellingPrice_1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1220" y="28" width="100" height="20" uuid="a19b4622-7fe0-411e-ba28-126c164cc58e"/>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{goodreceivenoterecords_SubtotalAmount_1}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="1" y="63" width="1454" height="1" uuid="e3d3330a-4d38-4aae-8991-3f2d4bdcb092"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="4" y="14" width="1451" height="1" uuid="4b38bd94-ac67-4c6f-b1ad-6a74f10751cb"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="43" splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null"  pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1a08feba-35b6-42e0-ba70-56c25adaecd5">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="fdate" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     customerinvoice.`invoiceNo` AS customerinvoice_invoiceNo,
+     customerinvoice.`ItemDiscounts` AS customerinvoice_ItemDiscounts,
+     customerinvoice.`subTotal` AS customerinvoice_subTotal,
+     customerinvoice.`Balance` AS customerinvoice_Balance,
+     customerinvoice.`Date` AS customerinvoice_Date,
+     customerinvoice.`Paycash` AS customerinvoice_Paycash,
+     customerinvoice.`shiftNo` AS customerinvoice_shiftNo
+FROM
+     `customerinvoice` customerinvoice where customerinvoice.`Date` = $P{fdate}]]>
+	</queryString>
+	<field name="customerinvoice_invoiceNo" class="java.lang.String"/>
+	<field name="customerinvoice_ItemDiscounts" class="java.lang.Double"/>
+	<field name="customerinvoice_subTotal" class="java.lang.Double"/>
+	<field name="customerinvoice_Balance" class="java.lang.Double"/>
+	<field name="customerinvoice_Date" class="java.lang.String"/>
+	<field name="customerinvoice_Paycash" class="java.lang.Double"/>
+	<field name="customerinvoice_shiftNo" class="java.lang.String"/>
+	<variable name="customerinvoice_subTotal_1" class="java.lang.Double" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{customerinvoice_subTotal}]]></variableExpression>
+	</variable>
+	<variable name="customerinvoice_ItemDiscounts_1" class="java.lang.Double" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{customerinvoice_ItemDiscounts}]]></variableExpression>
+	</variable>
+	<variable name="customerinvoice_Balance_1" class="java.lang.Double" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{customerinvoice_Balance}]]></variableExpression>
+	</variable>
+	<variable name="customerinvoice_Paycash_1" class="java.lang.Double" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{customerinvoice_Paycash}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20" uuid="e821664f-d3ce-406b-bcc3-81208a46dd25"/>
+				<text><![CDATA[customerinvoice_invoiceNo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="106" y="2" width="100" height="20" uuid="2b33e5f0-a2f0-47ca-ad08-f32bd8eef4d1"/>
+				<text><![CDATA[customerinvoice_subTotal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="210" y="2" width="100" height="20" uuid="f38ceadc-7bb2-4411-864e-c72bf6b2961f"/>
+				<text><![CDATA[customerinvoice_ItemDiscounts]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="316" y="2" width="100" height="20" uuid="b61d1596-0038-4c80-9649-39ec04acc8d2"/>
+				<text><![CDATA[customerinvoice_Balance]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="420" y="2" width="100" height="20" uuid="7bc5aad1-8755-4dad-a6fd-42cd5e188415"/>
+				<text><![CDATA[customerinvoice_Paycash]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="528" y="2" width="100" height="20" uuid="1ae416a9-682a-4730-aa08-065d98ea5fbb"/>
+				<text><![CDATA[customerinvoice_shiftNo]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="22" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="20" uuid="5379e424-85e6-44a4-80e8-b7917b64fb8b"/>
+				<textFieldExpression><![CDATA[$F{customerinvoice_invoiceNo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="106" y="0" width="100" height="20" uuid="40fbf4e5-1fdc-46c5-ba3b-9f03574669d3"/>
+				<textFieldExpression><![CDATA[$F{customerinvoice_subTotal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="210" y="0" width="100" height="20" uuid="dc1aaa75-b610-4e4e-b525-80b190125a0b"/>
+				<textFieldExpression><![CDATA[$F{customerinvoice_ItemDiscounts}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="316" y="1" width="100" height="20" uuid="71856e42-18ab-4a7a-a22e-5e67aae47927"/>
+				<textFieldExpression><![CDATA[$F{customerinvoice_Balance}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="420" y="2" width="100" height="20" uuid="79bca3cc-43a3-4349-9708-f52340cd6b3b"/>
+				<textFieldExpression><![CDATA[$F{customerinvoice_Paycash}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="528" y="2" width="100" height="20" uuid="0b025645-4fe8-450a-b815-6f248428b374"/>
+				<textFieldExpression><![CDATA[$F{customerinvoice_shiftNo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="78" splitType="Stretch">
+			<textField>
+				<reportElement x="106" y="38" width="100" height="40" uuid="12c051d1-f3b6-4763-9a9b-511d7337bcc0"/>
+				<textFieldExpression><![CDATA[$V{customerinvoice_subTotal_1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="5" width="100" height="73" uuid="eb68c441-8591-40b0-be74-9468910fe487"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="210" y="38" width="100" height="40" uuid="07c2cded-2db2-4039-9a49-b9c71c4dee5f"/>
+				<textFieldExpression><![CDATA[$V{customerinvoice_ItemDiscounts_1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="316" y="38" width="100" height="40" uuid="0f503be1-dd76-47d0-9a42-1207ecb88f5d"/>
+				<textFieldExpression><![CDATA[$V{customerinvoice_Balance_1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="420" y="37" width="100" height="41" uuid="6ec7fcb8-17a6-4454-a95e-7b8eb15c9229"/>
+				<textFieldExpression><![CDATA[$V{customerinvoice_Paycash_1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="106" y="5" width="100" height="31" uuid="9ad9e038-dfc2-4676-9642-7643a442cc27"/>
+				<text><![CDATA[total sub total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="210" y="5" width="100" height="31" uuid="22f8e74a-c825-45b4-9ee2-96340d4774d3"/>
+				<text><![CDATA[total sub total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="210" y="5" width="100" height="31" uuid="e6db08a7-95c4-4322-b6ce-18ac2210db6e"/>
+				<text><![CDATA[total sub total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="316" y="5" width="100" height="33" uuid="8a1a0ebe-4f33-47d7-a2e9-2e7385b5fa8c"/>
+				<text><![CDATA[Total Net Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="420" y="5" width="100" height="31" uuid="667b8b1e-71a1-4948-9eb7-a7d4308b08a6"/>
+				<text><![CDATA[total  C]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

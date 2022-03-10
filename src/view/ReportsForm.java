@@ -6,6 +6,13 @@
 package view;
 
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import view.Report.DailyGRNsummaryreport;
+import view.Report.DailyInvoiceDetailsReport;
+import view.Report.DailyInvoiceItemSalesReport;
+import view.Report.DailyInvoiceSummaryReport;
+import view.Report.DailyWastageReport;
+import view.Report.Daily_Invoice_Credit_Sales;
+import view.Report.dailyitemchangeviewreport;
 
 /**
  *
@@ -44,16 +51,8 @@ public class ReportsForm extends javax.swing.JInternalFrame {
         btnsubloc1 = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         btncategorydetails = new javax.swing.JButton();
-        jPanel7 = new javax.swing.JPanel();
-        btnmembercards1 = new javax.swing.JButton();
-        jPanel8 = new javax.swing.JPanel();
-        btncusname = new javax.swing.JButton();
         jPanel9 = new javax.swing.JPanel();
         btnItemAlertBin = new javax.swing.JButton();
-        jPanel10 = new javax.swing.JPanel();
-        btnloancusdetails1 = new javax.swing.JButton();
-        jPanel11 = new javax.swing.JPanel();
-        btnloandetails1 = new javax.swing.JButton();
         kGradientPanel3 = new keeptoo.KGradientPanel();
         lbldepartmentdet = new javax.swing.JLabel();
         lbldepartmentcount = new javax.swing.JLabel();
@@ -102,12 +101,12 @@ public class ReportsForm extends javax.swing.JInternalFrame {
         });
         jPanel1.add(btn_pricechangereport, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 360, 50));
 
-        kGradientPanel1.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, 400, 70));
+        kGradientPanel1.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 400, 70));
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnrackdetails.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        btnrackdetails.setText("NdKav rdlal úia;r");
+        btnrackdetails.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnrackdetails.setText("Daily Invoice Summary Report");
         btnrackdetails.setBorder(null);
         btnrackdetails.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -116,12 +115,12 @@ public class ReportsForm extends javax.swing.JInternalFrame {
         });
         jPanel2.add(btnrackdetails, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 360, 50));
 
-        kGradientPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 400, 70));
+        kGradientPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, 400, 70));
 
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnitemdetails1.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        btnitemdetails1.setText("NdKav j, úia;r");
+        btnitemdetails1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnitemdetails1.setText("Daily Wastage Report");
         btnitemdetails1.setBorder(null);
         btnitemdetails1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -130,12 +129,12 @@ public class ReportsForm extends javax.swing.JInternalFrame {
         });
         jPanel3.add(btnitemdetails1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 360, 50));
 
-        kGradientPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 130, 400, 70));
+        kGradientPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 190, 400, 70));
 
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnsupplierdetails1.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        btnsupplierdetails1.setText("iemhqï lrejkaf.a úia;r");
+        btnsupplierdetails1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnsupplierdetails1.setText("Daily Invoice Details Report");
         btnsupplierdetails1.setBorder(null);
         btnsupplierdetails1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -144,12 +143,12 @@ public class ReportsForm extends javax.swing.JInternalFrame {
         });
         jPanel4.add(btnsupplierdetails1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 360, 50));
 
-        kGradientPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 40, 400, 70));
+        kGradientPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 100, 400, 70));
 
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnsubloc1.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        btnsubloc1.setText("wf,úie,a j, úia;r");
+        btnsubloc1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnsubloc1.setText("Daily Invoice Item Seles Report");
         btnsubloc1.setToolTipText("");
         btnsubloc1.setBorder(null);
         btnsubloc1.addActionListener(new java.awt.event.ActionListener() {
@@ -159,12 +158,12 @@ public class ReportsForm extends javax.swing.JInternalFrame {
         });
         jPanel5.add(btnsubloc1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 360, 50));
 
-        kGradientPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, 400, 70));
+        kGradientPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 300, 400, 70));
 
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btncategorydetails.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        btncategorydetails.setText("NdKav LdKav úia;r");
+        btncategorydetails.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btncategorydetails.setText("Daily GRN Summery Report");
         btncategorydetails.setBorder(null);
         btncategorydetails.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -173,37 +172,12 @@ public class ReportsForm extends javax.swing.JInternalFrame {
         });
         jPanel6.add(btncategorydetails, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 360, 50));
 
-        kGradientPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 40, 400, 70));
-
-        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        btnmembercards1.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        btnmembercards1.setText("idudðl ldâm;a j¾.");
-        btnmembercards1.setToolTipText("");
-        btnmembercards1.setBorder(null);
-        jPanel7.add(btnmembercards1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 450, 50));
-
-        kGradientPanel1.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 340, 490, 70));
-
-        jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        btncusname.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        btncusname.setText("iudðl ldâm;a kï we;=,;a lsÍu");
-        btncusname.setToolTipText("");
-        btncusname.setBorder(null);
-        btncusname.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btncusnameActionPerformed(evt);
-            }
-        });
-        jPanel8.add(btncusname, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 450, 50));
-
-        kGradientPanel1.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 340, 490, 70));
+        kGradientPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 100, 400, 70));
 
         jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnItemAlertBin.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        btnItemAlertBin.setText("NdKav rdlal j, weiqreï úia;r");
+        btnItemAlertBin.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnItemAlertBin.setText("Daily Invoice Credit Sales");
         btnItemAlertBin.setBorder(null);
         btnItemAlertBin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -212,37 +186,7 @@ public class ReportsForm extends javax.swing.JInternalFrame {
         });
         jPanel9.add(btnItemAlertBin, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 360, 50));
 
-        kGradientPanel1.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 130, 400, 70));
-
-        jPanel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        btnloancusdetails1.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        btnloancusdetails1.setText("Kh .kqfokq lrejkaf.a úia;r");
-        btnloancusdetails1.setToolTipText("");
-        btnloancusdetails1.setBorder(null);
-        btnloancusdetails1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnloancusdetails1ActionPerformed(evt);
-            }
-        });
-        jPanel10.add(btnloancusdetails1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 360, 50));
-
-        kGradientPanel1.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 220, 400, 70));
-
-        jPanel11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        btnloandetails1.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        btnloandetails1.setText("Kh j¾. j, úia;r");
-        btnloandetails1.setToolTipText("");
-        btnloandetails1.setBorder(null);
-        btnloandetails1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnloandetails1ActionPerformed(evt);
-            }
-        });
-        jPanel11.add(btnloandetails1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 360, 50));
-
-        kGradientPanel1.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 220, 400, 70));
+        kGradientPanel1.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 190, 400, 70));
 
         kGradientPanel3.setkEndColor(new java.awt.Color(51, 255, 204));
         kGradientPanel3.setkStartColor(new java.awt.Color(204, 255, 255));
@@ -394,81 +338,61 @@ public class ReportsForm extends javax.swing.JInternalFrame {
        /* DepartmentInformation dj = new DepartmentInformation(null,true);
 
         dj.setVisible(true);*/
+       
+       dailyitemchangeviewreport dailyitemchangeviewreport1 = new dailyitemchangeviewreport();
+       dailyitemchangeviewreport1.setVisible(true);
+       
 
     }//GEN-LAST:event_btn_pricechangereportActionPerformed
 
     private void btnrackdetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnrackdetailsActionPerformed
-       /* BinInformation ca = new BinInformation(null,true);
-        ca.setVisible(true);*/
+      DailyInvoiceSummaryReport DailyInvoiceSummaryReport1 = new DailyInvoiceSummaryReport();
+      DailyInvoiceSummaryReport1.setVisible(true);
     }//GEN-LAST:event_btnrackdetailsActionPerformed
 
     private void btnitemdetails1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnitemdetails1ActionPerformed
-       /* ItemInformation IM = new ItemInformation(null,true);
-        IM.setVisible(true);*/
+      DailyWastageReport DailyWastageReport1 = new DailyWastageReport();
+      DailyWastageReport1.setVisible(true);
     }//GEN-LAST:event_btnitemdetails1ActionPerformed
 
     private void btnsupplierdetails1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsupplierdetails1ActionPerformed
-       /* dep1 sup = new dep1(null,true);
-        sup.setVisible(true);*/
+       DailyInvoiceDetailsReport DailyInvoiceDetailsReport1 = new DailyInvoiceDetailsReport();
+       DailyInvoiceDetailsReport1.setVisible(true);
 
     }//GEN-LAST:event_btnsupplierdetails1ActionPerformed
 
     private void btnsubloc1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsubloc1ActionPerformed
-      /*  StoresDetails StoresDetails1 = new StoresDetails(null,true);
-        StoresDetails1.setVisible(true);*/
+      DailyInvoiceItemSalesReport DailyInvoiceItemSalesReport1 = new DailyInvoiceItemSalesReport();
+      DailyInvoiceItemSalesReport1.setVisible(true);
     }//GEN-LAST:event_btnsubloc1ActionPerformed
 
     private void btncategorydetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncategorydetailsActionPerformed
-        /*CategoryInformation ca = new CategoryInformation(null,true);
-        ca.setVisible(true);*/
+          DailyGRNsummaryreport DailyGRNsummaryreport1 =new DailyGRNsummaryreport();
+          DailyGRNsummaryreport1.setVisible(true);
     }//GEN-LAST:event_btncategorydetailsActionPerformed
 
-    private void btncusnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncusnameActionPerformed
-       /* LoyalityMemberInformation LoyalityMemberInformation1 = new LoyalityMemberInformation(null,true);
-        LoyalityMemberInformation1.setVisible(true);*/
-
-    }//GEN-LAST:event_btncusnameActionPerformed
-
     private void btnItemAlertBinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnItemAlertBinActionPerformed
-        /*ItemAlerttoBinLocation alert = new ItemAlerttoBinLocation(null, true);
-        alert.setVisible(true);*/
+     Daily_Invoice_Credit_Sales Daily_Invoice_Credit_Sales1 = new Daily_Invoice_Credit_Sales();
+     Daily_Invoice_Credit_Sales1.setVisible(true);
     }//GEN-LAST:event_btnItemAlertBinActionPerformed
-
-    private void btnloancusdetails1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnloancusdetails1ActionPerformed
-        /*creditCustomer Cm = new creditCustomer(null,true);
-        Cm.setVisible(true);*/
-    }//GEN-LAST:event_btnloancusdetails1ActionPerformed
-
-    private void btnloandetails1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnloandetails1ActionPerformed
-       /* credittypeInfor credittypeInfor1 = new credittypeInfor(null,true);
-        credittypeInfor1.setVisible(true);*/
-    }//GEN-LAST:event_btnloandetails1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnItemAlertBin;
     private javax.swing.JButton btn_pricechangereport;
     private javax.swing.JButton btncategorydetails;
-    private javax.swing.JButton btncusname;
     private javax.swing.JButton btnitemdetails1;
-    private javax.swing.JButton btnloancusdetails1;
-    private javax.swing.JButton btnloandetails1;
-    private javax.swing.JButton btnmembercards1;
     private javax.swing.JButton btnrackdetails;
     private javax.swing.JButton btnsubloc1;
     private javax.swing.JButton btnsupplierdetails1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel10;
-    private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private keeptoo.KGradientPanel kGradientPanel1;
     private keeptoo.KGradientPanel kGradientPanel10;

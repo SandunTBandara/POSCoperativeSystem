@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="20b95c3e-aa34-4271-b4b5-6e16f3d655a3">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="1100" pageHeight="595" orientation="Landscape" columnWidth="1060" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="20b95c3e-aa34-4271-b4b5-6e16f3d655a3">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
 	<parameter name="fdate" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
@@ -27,81 +30,145 @@ FROM
 	<field name="customerinvoice_netTotal" class="java.lang.Double"/>
 	<field name="customerinvoice_ItemDiscounts" class="java.lang.Double"/>
 	<field name="getcreditformation_creditAmount" class="java.lang.Double"/>
+	<variable name="getcreditformation_creditAmount_1" class="java.lang.Double" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{getcreditformation_creditAmount}]]></variableExpression>
+	</variable>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch"/>
+		<band height="105" splitType="Stretch">
+			<staticText>
+				<reportElement x="238" y="13" width="507" height="57" uuid="da0ba811-46ec-45e1-9e46-d8b1fa3bc885"/>
+				<textElement>
+					<font size="26" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DAILY INVOICE ITEM SALES REPORT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="316" y="72" width="348" height="20" uuid="2e6b048d-b7e6-48f6-b73b-90e6fe2b0dba"/>
+				<textElement>
+					<font fontName="Nirmala UI" size="14"/>
+				</textElement>
+				<text><![CDATA[සි.ස යක්කලමුල්ල විවිධ සේවා සමුපකාර සමිතිය ]]></text>
+			</staticText>
+			<image>
+				<reportElement x="745" y="13" width="113" height="65" uuid="17c64014-b680-4831-906c-0ef32acdd901"/>
+				<imageExpression><![CDATA["C:\\Users\\Sanu\\Downloads\\apple.jpg"]]></imageExpression>
+			</image>
+		</band>
 	</title>
 	<pageHeader>
 		<band height="35" splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="61" splitType="Stretch">
+		<band height="36" splitType="Stretch">
 			<staticText>
-				<reportElement x="13" y="2" width="100" height="20" uuid="bb294bdb-18f8-4dfb-ba51-ff581c09ddab"/>
-				<text><![CDATA[creditcustomerinformation_ccode]]></text>
+				<reportElement x="13" y="2" width="186" height="20" uuid="bb294bdb-18f8-4dfb-ba51-ff581c09ddab"/>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Credit Customer Code]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="124" y="2" width="100" height="20" uuid="0fb5d100-95d8-4c71-9b9f-523381dcc6ea"/>
-				<text><![CDATA[getcreditformation_invoiceNo]]></text>
+				<reportElement x="238" y="2" width="132" height="20" uuid="0fb5d100-95d8-4c71-9b9f-523381dcc6ea"/>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Invoice No]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="232" y="2" width="100" height="20" uuid="d1697954-5385-4cdd-846c-bbf5f47aa6fd"/>
-				<text><![CDATA[creditcustomerinformation_name]]></text>
+				<reportElement x="381" y="2" width="144" height="20" uuid="d1697954-5385-4cdd-846c-bbf5f47aa6fd"/>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Customer Name]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="338" y="2" width="100" height="20" uuid="e9305d1b-a07f-4d7a-9f94-b3220f115299"/>
-				<text><![CDATA[customerinvoice_netTotal]]></text>
+				<reportElement x="531" y="2" width="100" height="20" uuid="e9305d1b-a07f-4d7a-9f94-b3220f115299"/>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Net Total]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="443" y="2" width="100" height="20" uuid="c5cf3c48-99b3-489b-8474-2efe68a891d2"/>
-				<text><![CDATA[customerinvoice_ItemDiscounts]]></text>
+				<reportElement x="636" y="2" width="100" height="20" uuid="c5cf3c48-99b3-489b-8474-2efe68a891d2"/>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ItemDiscounts]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="547" y="2" width="100" height="20" uuid="b28e906a-a26e-4360-a5f9-18a2fd7b2ebd"/>
-				<text><![CDATA[customerinvoice_Balance]]></text>
+				<reportElement x="747" y="2" width="100" height="20" uuid="b28e906a-a26e-4360-a5f9-18a2fd7b2ebd"/>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Amount]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="654" y="2" width="100" height="20" uuid="cfce05e9-d03b-4774-a20d-399187d671e0"/>
-				<text><![CDATA[getcreditformation_creditAmount]]></text>
+				<reportElement x="865" y="2" width="154" height="20" uuid="cfce05e9-d03b-4774-a20d-399187d671e0"/>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Credit Amount]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="125" splitType="Stretch">
+		<band height="59" splitType="Stretch">
 			<textField>
 				<reportElement x="13" y="14" width="100" height="20" uuid="3dc04a06-2213-4552-9519-55dc49a46738"/>
 				<textFieldExpression><![CDATA[$F{creditcustomerinformation_ccode}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="124" y="15" width="100" height="20" uuid="f16eff12-d95d-435a-9464-f084c8a62463"/>
+				<reportElement x="238" y="14" width="100" height="20" uuid="f16eff12-d95d-435a-9464-f084c8a62463"/>
 				<textFieldExpression><![CDATA[$F{getcreditformation_invoiceNo}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="232" y="17" width="100" height="20" uuid="fc4968d0-0a2c-4734-857d-57dd60d11a79"/>
+				<reportElement x="395" y="14" width="100" height="20" uuid="fc4968d0-0a2c-4734-857d-57dd60d11a79"/>
 				<textFieldExpression><![CDATA[$F{creditcustomerinformation_name}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="338" y="16" width="100" height="20" uuid="9dbef4b0-e4d5-472e-b8c8-a3b1309dbf23"/>
+				<reportElement x="540" y="16" width="100" height="20" uuid="9dbef4b0-e4d5-472e-b8c8-a3b1309dbf23"/>
 				<textFieldExpression><![CDATA[$F{customerinvoice_netTotal}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="443" y="17" width="100" height="20" uuid="68213d67-1fc9-48c1-b36f-90a80949b8c1"/>
+				<reportElement x="665" y="16" width="100" height="20" uuid="68213d67-1fc9-48c1-b36f-90a80949b8c1"/>
 				<textFieldExpression><![CDATA[$F{customerinvoice_ItemDiscounts}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="547" y="16" width="100" height="20" uuid="694d20fb-77c1-49fa-889a-db6409556fee"/>
+				<reportElement x="765" y="16" width="100" height="20" uuid="694d20fb-77c1-49fa-889a-db6409556fee"/>
 				<textFieldExpression><![CDATA[$F{customerinvoice_Balance}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="654" y="16" width="100" height="20" uuid="38adff32-4eef-4045-ae66-a5877cb64f49"/>
+				<reportElement x="897" y="14" width="100" height="20" uuid="38adff32-4eef-4045-ae66-a5877cb64f49"/>
 				<textFieldExpression><![CDATA[$F{getcreditformation_creditAmount}]]></textFieldExpression>
 			</textField>
+			<line>
+				<reportElement x="13" y="48" width="1006" height="1" uuid="f0022f9b-85a1-4c06-9963-07f988e73c74"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="45" splitType="Stretch"/>
+		<band height="45" splitType="Stretch">
+			<staticText>
+				<reportElement x="678" y="0" width="105" height="45" uuid="f80f25c0-baf3-448f-8509-559ea59de521"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="789" y="0" width="182" height="45" uuid="75719490-5b5d-4ebb-90a4-bb79efee90b8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="15" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{getcreditformation_creditAmount_1}]]></textFieldExpression>
+			</textField>
+		</band>
 	</columnFooter>
 	<pageFooter>
 		<band height="54" splitType="Stretch"/>

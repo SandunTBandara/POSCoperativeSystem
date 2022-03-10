@@ -77,9 +77,6 @@ public class Dashboard1 extends javax.swing.JFrame {
         btn_basicinformsation = new javax.swing.JButton();
         kGradientPanel2 = new keeptoo.KGradientPanel();
         jLabel1 = new javax.swing.JLabel();
-        btn_maximize = new javax.swing.JButton();
-        btn_minimize = new javax.swing.JButton();
-        btn_close = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jmenupanel = new javax.swing.JPanel();
 
@@ -170,28 +167,6 @@ public class Dashboard1 extends javax.swing.JFrame {
 
         jDesktopPane1.add(kGradientPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 390, 50));
 
-        btn_maximize.setBackground(new java.awt.Color(51, 102, 0));
-        btn_maximize.setBorder(null);
-        btn_maximize.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_maximizeActionPerformed(evt);
-            }
-        });
-        jDesktopPane1.add(btn_maximize, new org.netbeans.lib.awtextra.AbsoluteConstraints(1760, 30, 50, 60));
-
-        btn_minimize.setBackground(new java.awt.Color(51, 102, 0));
-        btn_minimize.setBorder(null);
-        jDesktopPane1.add(btn_minimize, new org.netbeans.lib.awtextra.AbsoluteConstraints(1690, 30, 50, 60));
-
-        btn_close.setBackground(new java.awt.Color(51, 102, 0));
-        btn_close.setBorder(null);
-        btn_close.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_closeActionPerformed(evt);
-            }
-        });
-        jDesktopPane1.add(btn_close, new org.netbeans.lib.awtextra.AbsoluteConstraints(1830, 30, 50, 60));
-
         jLabel8.setBackground(new java.awt.Color(255, 255, 255));
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
@@ -214,15 +189,6 @@ public class Dashboard1 extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btn_maximizeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_maximizeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_maximizeActionPerformed
-
-    private void btn_closeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_closeActionPerformed
-        // TODO add your handling code here:
-        this.dispose();
-    }//GEN-LAST:event_btn_closeActionPerformed
 
     private void btn_basicinformsationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_basicinformsationActionPerformed
              
@@ -303,10 +269,7 @@ public class Dashboard1 extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_basicinformsation;
-    private javax.swing.JButton btn_close;
-    private javax.swing.JButton btn_maximize;
     private javax.swing.JButton btn_menu;
-    private javax.swing.JButton btn_minimize;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;

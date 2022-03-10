@@ -43,109 +43,179 @@ FROM
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch"/>
+		<band height="112" splitType="Stretch">
+			<staticText>
+				<reportElement x="193" y="18" width="507" height="57" uuid="d689e060-cd4c-4187-b4dd-f7932eb9d09c"/>
+				<textElement>
+					<font size="26" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DAILY INVOICE ITEM SALES REPORT]]></text>
+			</staticText>
+			<image>
+				<reportElement x="700" y="18" width="113" height="65" uuid="a17bf4fa-a455-41da-ac5c-a7b735b35b69"/>
+				<imageExpression><![CDATA["C:\\Users\\Sanu\\Downloads\\apple.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="271" y="77" width="348" height="20" uuid="2f35479f-7ae6-4529-bdea-610d0ad884e4"/>
+				<textElement>
+					<font fontName="Nirmala UI" size="14"/>
+				</textElement>
+				<text><![CDATA[සි.ස යක්කලමුල්ල විවිධ සේවා සමුපකාර සමිතිය ]]></text>
+			</staticText>
+		</band>
 	</title>
 	<pageHeader>
-		<band height="35" splitType="Stretch"/>
+		<band height="29" splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="61" splitType="Stretch">
+		<band height="31" splitType="Stretch">
 			<staticText>
 				<reportElement x="13" y="0" width="100" height="20" uuid="12a6c247-116d-4656-a675-ffb1997f9a24"/>
-				<text><![CDATA[disposalltems_Date]]></text>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="126" y="2" width="100" height="20" uuid="0592c861-5595-4a2a-855d-098f497c2097"/>
-				<text><![CDATA[item_code]]></text>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Item Code]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="227" y="2" width="100" height="20" uuid="cf1e044c-44b3-40a2-bbec-f5ed4f8e80a8"/>
-				<text><![CDATA[item_itemName]]></text>
+				<reportElement x="250" y="0" width="100" height="20" uuid="cf1e044c-44b3-40a2-bbec-f5ed4f8e80a8"/>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Item Name]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="326" y="2" width="100" height="20" uuid="b23ec9b5-11b9-44c5-808b-73d0790fb674"/>
-				<text><![CDATA[disposalltemsrecords_buyingPrice]]></text>
+				<reportElement x="360" y="2" width="100" height="20" uuid="b23ec9b5-11b9-44c5-808b-73d0790fb674"/>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Buying Price]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="428" y="2" width="100" height="20" uuid="5eacdf3a-2b30-438a-bf47-77b1bbac344d"/>
-				<text><![CDATA[disposalltemsrecords_SellingPrice]]></text>
+				<reportElement x="472" y="2" width="100" height="20" uuid="5eacdf3a-2b30-438a-bf47-77b1bbac344d"/>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SellingPrice]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="532" y="2" width="100" height="20" uuid="6616699b-8a31-4034-a701-84f54df9a4ab"/>
-				<text><![CDATA[disposalltemsrecords_Qty]]></text>
+				<reportElement x="576" y="2" width="100" height="20" uuid="6616699b-8a31-4034-a701-84f54df9a4ab"/>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Quantity]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="634" y="2" width="100" height="20" uuid="2e999acf-6384-47e5-a768-a6369ec103ca"/>
-				<text><![CDATA[disposalltemsrecords_TotalBuyingPrice]]></text>
+				<reportElement x="678" y="2" width="144" height="20" uuid="2e999acf-6384-47e5-a768-a6369ec103ca"/>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Buying Price]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="741" y="2" width="100" height="20" uuid="8c6a50e2-384e-4023-99df-510e7a33f658"/>
-				<text><![CDATA[disposalltemsrecords_TotalSellingPrice]]></text>
+				<reportElement x="823" y="2" width="133" height="20" uuid="8c6a50e2-384e-4023-99df-510e7a33f658"/>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Selling Price]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="125" splitType="Stretch">
+		<band height="44" splitType="Stretch">
 			<textField>
 				<reportElement x="13" y="0" width="100" height="20" uuid="d2989401-4c68-45f0-88bf-879f58efa8d6"/>
 				<textFieldExpression><![CDATA[$F{disposalltems_Date}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="113" y="0" width="100" height="20" uuid="6ed9b881-2ad8-4a72-9fcb-f043f9ef66c1"/>
+				<reportElement x="126" y="0" width="100" height="20" uuid="6ed9b881-2ad8-4a72-9fcb-f043f9ef66c1"/>
 				<textFieldExpression><![CDATA[$F{item_code}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="226" y="0" width="100" height="20" uuid="1b3be336-0359-4a1c-9505-3eadf412e685"/>
+				<reportElement x="262" y="0" width="100" height="20" uuid="1b3be336-0359-4a1c-9505-3eadf412e685"/>
 				<textFieldExpression><![CDATA[$F{item_itemName}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="326" y="4" width="100" height="20" uuid="7ef9aca5-6a98-4b81-bc14-ee9aee40f8ad"/>
+				<reportElement x="372" y="0" width="100" height="20" uuid="7ef9aca5-6a98-4b81-bc14-ee9aee40f8ad"/>
 				<textFieldExpression><![CDATA[$F{disposalltemsrecords_buyingPrice}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="428" y="6" width="100" height="20" uuid="381e3ac1-9cde-4516-956a-002c6c421694"/>
+				<reportElement x="488" y="0" width="100" height="20" uuid="381e3ac1-9cde-4516-956a-002c6c421694"/>
 				<textFieldExpression><![CDATA[$F{disposalltemsrecords_SellingPrice}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="532" y="9" width="100" height="20" uuid="0ef73b88-7e05-4906-ac78-3d81c728c56e"/>
+				<reportElement x="600" y="0" width="100" height="20" uuid="0ef73b88-7e05-4906-ac78-3d81c728c56e"/>
 				<textFieldExpression><![CDATA[$F{disposalltemsrecords_Qty}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="634" y="5" width="100" height="20" uuid="86536768-8b83-41ef-8cf8-42195e57c6af"/>
+				<reportElement x="713" y="0" width="100" height="20" uuid="86536768-8b83-41ef-8cf8-42195e57c6af"/>
 				<textFieldExpression><![CDATA[$F{disposalltemsrecords_TotalBuyingPrice}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="741" y="7" width="100" height="20" uuid="9d82c832-389c-4dfb-8bc9-08144c055dbd"/>
+				<reportElement x="846" y="0" width="100" height="20" uuid="9d82c832-389c-4dfb-8bc9-08144c055dbd"/>
 				<textFieldExpression><![CDATA[$F{disposalltemsrecords_TotalSellingPrice}]]></textFieldExpression>
 			</textField>
+			<line>
+				<reportElement x="0" y="27" width="956" height="1" uuid="7cefd48b-e25b-4bd8-b7c2-ddbcdc131a21"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="72" splitType="Stretch">
+		<band height="84" splitType="Stretch">
 			<textField>
-				<reportElement x="721" y="37" width="100" height="20" uuid="76730a88-a10c-4960-a064-789b4f917e66"/>
+				<reportElement x="822" y="52" width="90" height="20" uuid="76730a88-a10c-4960-a064-789b4f917e66"/>
 				<textFieldExpression><![CDATA[$V{disposalltems_totalLost_1}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="721" y="17" width="100" height="20" uuid="b2eba40f-8a26-4030-8c08-4dd74c7d61cc"/>
+				<reportElement x="822" y="20" width="90" height="20" uuid="b2eba40f-8a26-4030-8c08-4dd74c7d61cc"/>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
 				<text><![CDATA[Total Lost]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="426" y="37" width="100" height="20" uuid="9170b082-89c1-4a81-858f-179e4ef0afaf"/>
+				<reportElement x="542" y="52" width="90" height="20" uuid="9170b082-89c1-4a81-858f-179e4ef0afaf"/>
 				<textFieldExpression><![CDATA[$V{disposalltemsrecords_TotalBuyingPrice_1}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="415" y="12" width="129" height="20" uuid="b8e3ebcd-630b-4abb-8451-95f5eba21a97"/>
+				<reportElement x="527" y="20" width="119" height="20" uuid="b8e3ebcd-630b-4abb-8451-95f5eba21a97"/>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
 				<text><![CDATA[Total Buying Amount]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="582" y="37" width="100" height="20" uuid="875314fe-334a-4a37-8719-6f469d4da6d3"/>
+				<reportElement x="688" y="52" width="90" height="20" uuid="875314fe-334a-4a37-8719-6f469d4da6d3"/>
 				<textFieldExpression><![CDATA[$V{disposalltemsrecords_TotalSellingPrice_1}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="571" y="12" width="124" height="20" uuid="85d983f0-5d21-49dc-9d1d-1f401639f47a"/>
+				<reportElement x="676" y="20" width="114" height="20" uuid="85d983f0-5d21-49dc-9d1d-1f401639f47a"/>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
 				<text><![CDATA[Total Selling Amount]]></text>
 			</staticText>
+			<line>
+				<reportElement x="10" y="78" width="946" height="1" uuid="c9289e02-5087-40bd-9a89-64bb04fcccde"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="10" y="11" width="946" height="1" uuid="2b194386-50fb-40ef-be12-0682abb3281e"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
 		</band>
 	</columnFooter>
 	<pageFooter>
