@@ -5,6 +5,8 @@
  */
 package view;
 
+import view.FrontEnd.CashierLogin;
+
 /**
  *
  * @author Sanu
@@ -57,6 +59,7 @@ public class Home1 extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        panel1 = new java.awt.Panel();
         lblWelcome = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -67,12 +70,22 @@ public class Home1 extends javax.swing.JFrame {
         kGradientPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel3.setBackground(new java.awt.Color(0, 51, 102));
+        jPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel3MouseClicked(evt);
+            }
+        });
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setBackground(new java.awt.Color(204, 204, 255));
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Cashier Login");
+        jLabel2.setText("Front End Login");
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+        });
         jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, -1, -1));
 
         kGradientPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 644, 121));
@@ -86,13 +99,33 @@ public class Home1 extends javax.swing.JFrame {
 
         kGradientPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 180, 620, 110));
 
+        panel1.setBackground(new java.awt.Color(0, 0, 0));
+        panel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         lblWelcome.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        kGradientPanel1.add(lblWelcome, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 680, 70));
+        lblWelcome.setForeground(new java.awt.Color(255, 204, 255));
+        panel1.add(lblWelcome, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 0, 590, 70));
+
+        kGradientPanel1.add(panel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, 840, -1));
 
         getContentPane().add(kGradientPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 940, 550));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        CashierLogin CashierLogin1 = new CashierLogin();
+        CashierLogin1.setVisible(true);
+        this.dispose();
+        
+    }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void jPanel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseClicked
+           CashierLogin CashierLogin1 = new CashierLogin();
+        CashierLogin1.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jPanel3MouseClicked
 
     /**
      * @param args the command line arguments
@@ -136,5 +169,6 @@ public class Home1 extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private keeptoo.KGradientPanel kGradientPanel1;
     private javax.swing.JLabel lblWelcome;
+    private java.awt.Panel panel1;
     // End of variables declaration//GEN-END:variables
 }
