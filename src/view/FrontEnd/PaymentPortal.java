@@ -86,7 +86,6 @@ public class PaymentPortal extends javax.swing.JDialog {
         txtbalancef = new javax.swing.JTextField();
         btngenbill = new javax.swing.JButton();
         btnloyalcus = new javax.swing.JButton();
-        btncreditcus = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         btn_detuctpoint = new javax.swing.JButton();
         lbl_diserror = new javax.swing.JLabel();
@@ -126,6 +125,7 @@ public class PaymentPortal extends javax.swing.JDialog {
         txtsubtot.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jPanel1.add(txtsubtot, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 120, 250, -1));
 
+        txtdiscount.setEditable(false);
         txtdiscount.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         txtdiscount.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -138,6 +138,11 @@ public class PaymentPortal extends javax.swing.JDialog {
         jPanel1.add(txtdiscount, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 190, 250, -1));
 
         txtnettotal.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        txtnettotal.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtnettotalKeyReleased(evt);
+            }
+        });
         jPanel1.add(txtnettotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 260, 250, -1));
 
         txtpaycash.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -153,13 +158,20 @@ public class PaymentPortal extends javax.swing.JDialog {
         });
         jPanel1.add(txtpaycash, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 330, 250, -1));
 
+        txtcashamount.setEditable(false);
         txtcashamount.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        txtcashamount.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtcashamountKeyReleased(evt);
+            }
+        });
         jPanel1.add(txtcashamount, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 400, 250, -1));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel6.setText("Balance");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 490, -1, -1));
 
+        txtbalancef.setEditable(false);
         txtbalancef.setBackground(new java.awt.Color(0, 0, 0));
         txtbalancef.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         txtbalancef.setForeground(new java.awt.Color(204, 0, 0));
@@ -189,17 +201,7 @@ public class PaymentPortal extends javax.swing.JDialog {
                 btnloyalcusActionPerformed(evt);
             }
         });
-        jPanel1.add(btnloyalcus, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 200, 270, 60));
-
-        btncreditcus.setBackground(new java.awt.Color(204, 255, 255));
-        btncreditcus.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        btncreditcus.setText("Credit Customers");
-        btncreditcus.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btncreditcusActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btncreditcus, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 310, 270, 60));
+        jPanel1.add(btnloyalcus, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 400, 270, 60));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel7.setText("Payment Portal");
@@ -249,6 +251,9 @@ public class PaymentPortal extends javax.swing.JDialog {
     }//GEN-LAST:event_txtbalancefActionPerformed
     
     static double balance1 = 0;
+    static double discount1 = 0;
+    static double paycash1 = 0;
+    static double cashamount1 = 0;
     private void btngenbillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btngenbillActionPerformed
         String memID = null; 
         String InvoiceID = null;
@@ -356,11 +361,19 @@ double sQty=0, mQty=0;
                 }
                 
                 txtsubtot.setText("");
-                txtdiscount.setText("");
+//                txtdiscount.setText("");
                 txtnettotal.setText("");
-                txtpaycash.setText("");
-                txtcashamount.setText("");
-                txtbalancef.setText("");
+//                txtpaycash.setText("");
+//                txtcashamount.setText("");
+//                txtbalancef.setText("");
+              discount1 = Double.parseDouble(txtdiscount.getText());;
+          paycash1 = Double.parseDouble(txtpaycash.getText());;
+          cashamount1 = Double.parseDouble(txtcashamount.getText());
+          balance1 = Double.parseDouble(txtbalancef.getText());
+          BIll b1 = new BIll(null,true);
+          b1.setLocationRelativeTo(this);
+          b1.setVisible(true);
+          this.dispose();
                 }
                 else
                 {
@@ -377,6 +390,18 @@ double sQty=0, mQty=0;
     public void setBalnce()
     {
        
+    }
+             public double getcashamount()
+    {
+       return cashamount1;
+    }
+            public double getpaycash1()
+    {
+       return paycash1;
+    }
+        public double getdiscount()
+    {
+       return discount1;
     }
     public double getbalance()
     {
@@ -411,11 +436,12 @@ double sQty=0, mQty=0;
     }//GEN-LAST:event_txtdiscountKeyTyped
     
     private void txtdiscountKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtdiscountKeyReleased
-    
+        ManageValidation.validateNumber(txtdiscount, 7);     
     }//GEN-LAST:event_txtdiscountKeyReleased
 
     private void txtpaycashKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtpaycashKeyReleased
-         double nettotal = Double.parseDouble(txtnettotal.getText());
+         ManageValidation.validateNumber(txtpaycash, 7); 
+        double nettotal = Double.parseDouble(txtnettotal.getText());
          double paycash  = Double.parseDouble(txtpaycash.getText());
          double creditamount = paycash - nettotal;
          txtcashamount.setText(Double.toString(creditamount));
@@ -482,30 +508,13 @@ double sQty=0, mQty=0;
         
     }//GEN-LAST:event_btn_detuctpointActionPerformed
 
-    private void btncreditcusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncreditcusActionPerformed
-                        ManageValidation.validatorText(txtsubtot, lbl_suerror);
-            ManageValidation.validatorText(txtdiscount, lbl_diserror);
-            ManageValidation.validatorText(txtnettotal, lbl_nterror);
-            ManageValidation.validatorText(txtpaycash, lbl_pcasherror);
-            ManageValidation.validatorText(txtpaycash, lbl_pcasherror);
-            ManageValidation.validatorText(txtcashamount, lblpaycasherror);
-            ManageValidation.validatorText(txtbalancef, lbl_balerror);
-            
-            if(ManageValidation.validatorText(txtsubtot, lbl_suerror)
-                    &&ManageValidation.validatorText(txtdiscount, lbl_diserror)
-                    &&ManageValidation.validatorText(txtnettotal, lbl_nterror)
-                    &&ManageValidation.validatorText(txtpaycash, lbl_pcasherror)
-                    &&ManageValidation.validatorText(txtpaycash, lbl_pcasherror)
-                    &&ManageValidation.validatorText(txtcashamount, lblpaycasherror)
-                    &&ManageValidation.validatorText(txtbalancef, lbl_balerror))
-            {
-                balance1 = Double.parseDouble(txtbalancef.getText());
-        CreditCustomerDetails lcd = new CreditCustomerDetails(null,true);
-       lcd.setLocationRelativeTo(lcd);
-       lcd.setVisible(true);
-        
-            }        
-    }//GEN-LAST:event_btncreditcusActionPerformed
+    private void txtnettotalKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtnettotalKeyReleased
+       ManageValidation.validateNumber(txtnettotal, 7); 
+    }//GEN-LAST:event_txtnettotalKeyReleased
+
+    private void txtcashamountKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtcashamountKeyReleased
+       ManageValidation.validateNumber(txtcashamount, 7); 
+    }//GEN-LAST:event_txtcashamountKeyReleased
 
     /**
      * @param args the command line arguments
@@ -551,7 +560,6 @@ double sQty=0, mQty=0;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_detuctpoint;
-    private javax.swing.JButton btncreditcus;
     private javax.swing.JButton btngenbill;
     private javax.swing.JButton btnloyalcus;
     private javax.swing.JLabel jLabel1;

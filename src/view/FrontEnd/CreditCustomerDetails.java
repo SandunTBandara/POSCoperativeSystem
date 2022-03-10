@@ -7,10 +7,13 @@ package view.FrontEnd;
 
 import controller.ManageCahsierLogin;
 import controller.ManageCreditCustomer;
+import controller.ManageCustomerInvoice;
 import controller.ManageValidation;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import controller.ManagePayCreditInformation;
+import controller.ManagegetCredit;
+import model.GetCredit;
 import model.paycreditinformation;
 
 /**
@@ -25,7 +28,7 @@ public class CreditCustomerDetails extends javax.swing.JDialog {
     public CreditCustomerDetails(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        setShiftNumber();
+        setInvoiceNumber();
        
     }
 
@@ -47,15 +50,16 @@ public class CreditCustomerDetails extends javax.swing.JDialog {
         txt_CreditCode = new javax.swing.JTextField();
         btn_addtotalpoint = new javax.swing.JButton();
         lbl_BalanceAmount = new javax.swing.JLabel();
-        lbl_Date = new javax.swing.JLabel();
+        lbl_creditamounnt = new javax.swing.JLabel();
         lbl_totalpoint = new javax.swing.JLabel();
-        lbl_ShiftNo = new javax.swing.JLabel();
+        lbl_InvoiceNo = new javax.swing.JLabel();
         btn_cancel = new javax.swing.JButton();
         btn_barcodeadd = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         txt_cusno = new javax.swing.JTextField();
         lbl_cusnoerror = new javax.swing.JLabel();
         lblccode_error = new javax.swing.JLabel();
+        lbl_cus_error = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
 
@@ -72,7 +76,7 @@ public class CreditCustomerDetails extends javax.swing.JDialog {
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, 159, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel2.setText("Shift No");
+        jLabel2.setText("Invoice No");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
@@ -80,15 +84,20 @@ public class CreditCustomerDetails extends javax.swing.JDialog {
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 270, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel5.setText("Date");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 330, 70, 40));
+        jLabel5.setText("Credit Amount");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 330, 200, 40));
+
+        txt_CreditCode.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_CreditCodeKeyReleased(evt);
+            }
+        });
         jPanel1.add(txt_CreditCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 130, 223, 37));
 
         btn_addtotalpoint.setBackground(new java.awt.Color(0, 0, 0));
         btn_addtotalpoint.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         btn_addtotalpoint.setForeground(new java.awt.Color(204, 204, 255));
         btn_addtotalpoint.setText("Add Credit");
-        btn_addtotalpoint.setActionCommand("Add Credit");
         btn_addtotalpoint.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_addtotalpointActionPerformed(evt);
@@ -99,14 +108,14 @@ public class CreditCustomerDetails extends javax.swing.JDialog {
         lbl_BalanceAmount.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jPanel1.add(lbl_BalanceAmount, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 260, 220, 40));
 
-        lbl_Date.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jPanel1.add(lbl_Date, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 330, 220, 40));
+        lbl_creditamounnt.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jPanel1.add(lbl_creditamounnt, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 330, 220, 40));
 
         lbl_totalpoint.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jPanel1.add(lbl_totalpoint, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 380, 220, 40));
 
-        lbl_ShiftNo.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jPanel1.add(lbl_ShiftNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 200, 220, 40));
+        lbl_InvoiceNo.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jPanel1.add(lbl_InvoiceNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 200, 220, 40));
 
         btn_cancel.setBackground(new java.awt.Color(0, 0, 0));
         btn_cancel.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
@@ -133,6 +142,12 @@ public class CreditCustomerDetails extends javax.swing.JDialog {
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel4.setText("Customer N0");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 160, 40));
+
+        txt_cusno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_cusnoActionPerformed(evt);
+            }
+        });
         jPanel1.add(txt_cusno, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 50, 220, 40));
 
         lbl_cusnoerror.setForeground(new java.awt.Color(255, 0, 51));
@@ -140,6 +155,9 @@ public class CreditCustomerDetails extends javax.swing.JDialog {
 
         lblccode_error.setForeground(new java.awt.Color(255, 0, 0));
         jPanel1.add(lblccode_error, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 170, 110, -1));
+
+        lbl_cus_error.setForeground(new java.awt.Color(255, 0, 51));
+        jPanel1.add(lbl_cus_error, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 90, 110, -1));
 
         kGradientPanel1.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 790, 550));
 
@@ -158,19 +176,21 @@ public class CreditCustomerDetails extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void setShiftNumber()
+    public void setInvoiceNumber()
     {
+        String InvoiceID  = "";
         try{
-                      ResultSet result = null;
-                   String shiftNo = "";
-                   ManageCahsierLogin ManageCahsierLogin1 = new ManageCahsierLogin();
-                   result = ManageCahsierLogin1.getcashierlogin();
-                   while(result.next())
+//                     Invoice Invoice1 = new Invoice();
+//                    InvoiceID = Invoice1.getIvoiceID();
+ResultSet result1 = null;
+          ManageCustomerInvoice ManageCustomerInvoice1 = new ManageCustomerInvoice();
+          result1 = ManageCustomerInvoice1.GetInvoiceNo();
+                   while(result1.next())
                    {
-                     shiftNo = result.getString("shiftNo").toString();
+                     InvoiceID = result1.getString("invoiceNo");
                    }
                    
-                   lbl_ShiftNo.setText(shiftNo);
+                   lbl_InvoiceNo.setText(InvoiceID);
                    
         }
         catch(Exception e)
@@ -196,6 +216,8 @@ public class CreditCustomerDetails extends javax.swing.JDialog {
                    {
                      maxamount = result.getDouble("creditLimit");
                    }
+                   
+                   
                   
                    
                    PaymentPortal PaymentPortal1 = new  PaymentPortal(null,true);
@@ -204,8 +226,11 @@ public class CreditCustomerDetails extends javax.swing.JDialog {
                   
                    if(maxamount>=balance)
                    {
+                       lbl_BalanceAmount.setText(Double.toString(maxamount));
                         paycredit = maxamount - balance;
-                      lbl_BalanceAmount.setText(Double.toString(paycredit));
+                      
+                      lbl_creditamounnt.setText(Double.toString(balance));
+                      
                    }
                    else
                    {
@@ -230,9 +255,18 @@ public class CreditCustomerDetails extends javax.swing.JDialog {
                    ManageCreditCustomer m1 = new  ManageCreditCustomer();
                    result = m1.UpdateItemStock(Integer.parseInt(txt_cusno.getText()), paycredit);
                    
-                   paycreditinformation paycreditinformation1 = new paycreditinformation(lbl_ShiftNo.getText(),Integer.parseInt(txt_CreditCode.getText()),balance,lbl_Date.getText().toString());
-                   ManagePayCreditInformation ManagePayCreditInformation1 = new ManagePayCreditInformation(paycreditinformation1);
-                  rst =  ManagePayCreditInformation1.savepaycreditcustomer();
+//                   paycreditinformation paycreditinformation1 = new paycreditinformation(lbl_InvoiceNo.getText(),Integer.parseInt(txt_CreditCode.getText()),balance,lbl_creditAmount.getText().toString());
+//                   ManagePayCreditInformation ManagePayCreditInformation1 = new ManagePayCreditInformation(paycreditinformation1);
+//                  rst =  ManagePayCreditInformation1.savepaycreditcustomer();
+
+                   int result2;
+                   GetCredit g1 = new GetCredit(Integer.parseInt(txt_cusno.getText()),Integer.parseInt(txt_CreditCode.getText().toString()),Double.parseDouble(lbl_BalanceAmount.getText()),Double.parseDouble(lbl_creditamounnt.getText()),lbl_InvoiceNo.getText());
+                   ManagegetCredit ManagegetCredit1 = new ManagegetCredit(g1);
+                   result2 = ManagegetCredit1.saveGetCredit();
+                   if(result2>0)
+                   {
+                     JOptionPane.showMessageDialog(null, "Credit amount succesfully added","Super Market POS System",JOptionPane.INFORMATION_MESSAGE);
+                   }
                    
                 }
         if(result>0 && rst>0)
@@ -248,11 +282,14 @@ public class CreditCustomerDetails extends javax.swing.JDialog {
     }//GEN-LAST:event_btn_cancelActionPerformed
 
     private void btn_barcodeaddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_barcodeaddActionPerformed
-       setbalanceamount();
-       String date = "";
-       Invoice i1 = new Invoice();
-       date = i1.getdate();
-       lbl_Date.setText(date);
+        ManageValidation.validatorText(txt_cusno, lbl_cusnoerror);
+        if(ManageValidation.validatorText(txt_cusno, lbl_cusnoerror))
+        {
+        setbalanceamount();}
+//       String date = "";
+//       Invoice i1 = new Invoice();
+//       date = i1.getdate();
+//       lbl_creditAmount.setText(date);
 //        ResultSet result = null;
 //        try{
 //            ManageLoyalityCustomer mlc1 = new ManageLoyalityCustomer();
@@ -276,6 +313,14 @@ public class CreditCustomerDetails extends javax.swing.JDialog {
 //
 //        }
     }//GEN-LAST:event_btn_barcodeaddActionPerformed
+
+    private void txt_cusnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_cusnoActionPerformed
+        ManageValidation.validateNumber(txt_cusno, 5);
+    }//GEN-LAST:event_txt_cusnoActionPerformed
+
+    private void txt_CreditCodeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_CreditCodeKeyReleased
+        ManageValidation.validateNumber(txt_CreditCode, 5);
+    }//GEN-LAST:event_txt_CreditCodeKeyReleased
 
     /**
      * @param args the command line arguments
@@ -333,8 +378,9 @@ public class CreditCustomerDetails extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel2;
     private keeptoo.KGradientPanel kGradientPanel1;
     private javax.swing.JLabel lbl_BalanceAmount;
-    private javax.swing.JLabel lbl_Date;
-    private javax.swing.JLabel lbl_ShiftNo;
+    private javax.swing.JLabel lbl_InvoiceNo;
+    private javax.swing.JLabel lbl_creditamounnt;
+    private javax.swing.JLabel lbl_cus_error;
     private javax.swing.JLabel lbl_cusnoerror;
     private javax.swing.JLabel lbl_totalpoint;
     private javax.swing.JLabel lblccode_error;

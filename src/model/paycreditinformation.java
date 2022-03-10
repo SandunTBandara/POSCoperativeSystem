@@ -15,14 +15,15 @@ public class paycreditinformation {
     private double bamount;
     private double payamount;
     private String date;
-    
-    public paycreditinformation(String shiftno,int ccode,double bamount,String date)
+    private double total_payamount;
+    public paycreditinformation(String shiftno,int ccode,double bamount,double payamount,String date,double total_payamount)
     {
        this.shiftno = shiftno;
        this.ccode = ccode;
        this.bamount = bamount;
        this.payamount = payamount;
        this.date = date;
+       this.total_payamount = total_payamount;
     
     }
     
@@ -34,13 +35,21 @@ public class paycreditinformation {
     {
      return ccode;
     }
-    public double getbamount()
+    public double getpaymount()
     {
-      return bamount;
+      return payamount;
     }
     public String getdate()
     {
      return date;
+    }
+    public double gettotpayamount()
+    {
+      return total_payamount;
+    }
+    public double getbalance()
+    {
+      return bamount;
     }
     
     

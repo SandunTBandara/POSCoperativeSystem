@@ -266,10 +266,10 @@ public class Invoice extends javax.swing.JInternalFrame {
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 810, -1, -1));
         jPanel1.add(txt_discunt, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 800, 150, 40));
 
+        btn_payment.setText("Generate Payment");
         btn_payment.setBackground(new java.awt.Color(0, 0, 153));
         btn_payment.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         btn_payment.setForeground(new java.awt.Color(204, 204, 204));
-        btn_payment.setText("Generate Payment");
         btn_payment.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_paymentActionPerformed(evt);
@@ -565,6 +565,7 @@ public class Invoice extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txt_QtyActionPerformed
 
     private void txt_discountKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_discountKeyReleased
+        ManageValidation.validateNumber(txt_discount, 7);
         double discount = 0;
         double tprice = 0;
         double qty = 0;

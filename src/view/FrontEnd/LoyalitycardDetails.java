@@ -6,6 +6,7 @@
 package view.FrontEnd;
 
 import controller.ManageLoyalityCustomer;
+import controller.ManageValidation;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 
@@ -50,6 +51,7 @@ public class LoyalitycardDetails extends javax.swing.JDialog {
         lbl_memberID = new javax.swing.JLabel();
         btn_cancel = new javax.swing.JButton();
         btn_barcodeadd = new javax.swing.JButton();
+        lbl_memError = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
 
@@ -80,6 +82,12 @@ public class LoyalitycardDetails extends javax.swing.JDialog {
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel5.setText("Loyality Card Code");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 310, -1, 40));
+
+        txt_memberID.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_memberIDKeyReleased(evt);
+            }
+        });
         jPanel1.add(txt_memberID, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 30, 223, 37));
 
         btn_addtotalpoint.setBackground(new java.awt.Color(0, 0, 0));
@@ -133,6 +141,9 @@ public class LoyalitycardDetails extends javax.swing.JDialog {
             }
         });
         jPanel1.add(btn_barcodeadd, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 30, 100, 40));
+
+        lbl_memError.setForeground(new java.awt.Color(255, 0, 51));
+        jPanel1.add(lbl_memError, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 10, 120, -1));
 
         kGradientPanel1.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 790, 550));
 
@@ -212,6 +223,9 @@ public class LoyalitycardDetails extends javax.swing.JDialog {
     private void btn_barcodeaddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_barcodeaddActionPerformed
        ResultSet result = null;
         try{
+            ManageValidation.validatorText(txt_memberID, lbl_memError);
+            if(ManageValidation.validatorText(txt_memberID, lbl_memError))
+            {
         ManageLoyalityCustomer mlc1 = new ManageLoyalityCustomer();
         result = mlc1.getloyalitycustomer(txt_memberID.getText().toString());
         while(result.next())
@@ -225,6 +239,7 @@ public class LoyalitycardDetails extends javax.swing.JDialog {
         }
         mID = lbl_memberID.getText().toString();
         totpoint = Double.parseDouble( lbl_totalpoint.getText());
+            }
         
         }
         catch(Exception e)
@@ -245,6 +260,10 @@ public class LoyalitycardDetails extends javax.swing.JDialog {
     private void btn_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelActionPerformed
        this.dispose();
     }//GEN-LAST:event_btn_cancelActionPerformed
+
+    private void txt_memberIDKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_memberIDKeyReleased
+       ManageValidation.validateNumber(txt_memberID, 7);
+    }//GEN-LAST:event_txt_memberIDKeyReleased
 
     /**
      * @param args the command line arguments
@@ -304,6 +323,7 @@ public class LoyalitycardDetails extends javax.swing.JDialog {
     private keeptoo.KGradientPanel kGradientPanel1;
     private javax.swing.JLabel lbl_LCardType;
     private javax.swing.JLabel lbl_LCode;
+    private javax.swing.JLabel lbl_memError;
     private javax.swing.JLabel lbl_memberID;
     private javax.swing.JLabel lbl_memberName;
     private javax.swing.JLabel lbl_totalpoint;
