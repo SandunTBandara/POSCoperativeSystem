@@ -73,6 +73,26 @@ public class ManageDepartment {
         return name;
     }
    
+    
+    public int getID(String name) {
+        int id = 0;
+        try {
+            Connection con = DB.createConnection();
+            String sql = "select dno from department where  description='" + name+"';";
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            
+            while (rs.next()) {
+                id = rs.getInt("dno");
+            }
+
+        } catch (Exception e) {
+           System.out.println(e.getMessage());
+        }
+
+        return id;
+    }
+    
    //pass item name to Iteminformation view 
    public String GetNamewithId(String x)
    {
@@ -158,6 +178,27 @@ public class ManageDepartment {
    
    
    }
+   
+    
+   public void updateDep()
+    {        
+        try{
+             Connection con = DB.createConnection();
+             String sql = "UPDATE department SET description = ? WHERE dno = "+ departments.getID() + ";";
+             PreparedStatement stmt = con.prepareStatement(sql);
+             stmt.setString(1, departments.getDescription());
+
+             int result = stmt.executeUpdate();
+
+             if (result > 0) {
+                 JOptionPane.showMessageDialog(null, "User has been updated succesfully ", "SuperMarket Management", JOptionPane.INFORMATION_MESSAGE);
+             } 
+        }
+        catch(Exception e)
+        {
+          System.out.println(e.getMessage());
+        }
+    }
    
        
             Window getVisibleContent() {
