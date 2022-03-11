@@ -98,6 +98,21 @@ public class ManageSupplies {
         return result;
     }
     
+    
+    public ResultSet loadAll() {
+        ResultSet result = null;
+        try {
+            Connection con = DB.createConnection();
+            Statement stmt = con.createStatement();
+            String sql = "SELECT * FROM supplier";
+            result = stmt.executeQuery(sql);
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return result;
+    }
+    
      public ResultSet getSupplierName(int code){
         ResultSet result = null;
         try{
@@ -134,6 +149,51 @@ public class ManageSupplies {
       return name;
     
     
+    }
+       
+    
+    public ResultSet getSupplier(int code)
+    {
+        ResultSet rs =null;
+        try{
+      Connection con = DB.createConnection();
+      Statement stmt = con.createStatement();
+      String sql = "select * from supplier where scode = "+code+"";
+      rs= stmt.executeQuery(sql);
+      
+        }
+        catch(Exception e)
+        {
+           System.out.println(e.getMessage());
+        }
+      
+      return rs;
+    
+    
+    }
+       
+    public void updateSupplier()
+    {        
+        try{
+             Connection con = DB.createConnection();
+             String sql = "UPDATE supplier SET Sname = ?, ContactName=?, delivery_day_count=?, address=? , contact_no=? WHERE scode = "+ Supplies.getSCode()+ ";";
+             PreparedStatement stmt = con.prepareStatement(sql);
+             stmt.setString(1, Supplies.getSname());
+             stmt.setString(2, Supplies.getCname());
+             stmt.setInt(3, Supplies.getDay());
+             stmt.setString(4, Supplies.getSaddress());
+             stmt.setInt(5, Supplies.getContactNo());
+
+             int result = stmt.executeUpdate();
+
+             if (result > 0) {
+                 JOptionPane.showMessageDialog(null, "User has been updated succesfully ", "SuperMarket Management", JOptionPane.INFORMATION_MESSAGE);
+             } 
+        }
+        catch(Exception e)
+        {
+          System.out.println(e.getMessage());
+        }
     }
        
        
