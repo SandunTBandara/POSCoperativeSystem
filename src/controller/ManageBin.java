@@ -106,13 +106,13 @@ public class ManageBin {
    }
     
    public ResultSet getnamebyid(String type)
-   { ResultSet result = null;
-     try{
+   { 
+       ResultSet result = null;
+       try{
          Connection con = DB.createConnection();
          String sql = "select name from bintype where Bcode = "+Integer.parseInt(type)+" ";
          Statement stmt = con.createStatement();
-          result = stmt.executeQuery(sql);
-         
+          result = stmt.executeQuery(sql);       
          
      }  
      catch(Exception e)
