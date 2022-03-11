@@ -17,6 +17,16 @@ public class LoyalityCardCustomer {
     String LCode;
     double totpoint;
     
+    public void setLoyalityCardCustomer(String barcode,String memberID,String Name,String LCode,double totpoint)
+    {
+       this.barcode = barcode;
+       this.memberID = memberID;
+       this.Name = Name;
+       this.LCode = LCode;
+       this.totpoint = totpoint;
+       
+    }
+    
     public LoyalityCardCustomer(String barcode,String memberID,String Name,String cardType,String LCode,double totpoint)
     {
        this.barcode = barcode;
