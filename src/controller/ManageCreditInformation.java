@@ -71,4 +71,53 @@ public class ManageCreditInformation {
           return result;
     }
     
+    
+    public String loadCreditTypeName(int id)throws Exception
+    {
+        String name = "";
+        ResultSet result = null;
+        Connection con = DB.createConnection();
+        Statement stmt = con.createStatement();
+        String sql = "select TypeName from credittype where ccode = " + id;
+        result = stmt.executeQuery(sql);
+        while(result.next()){
+            name = result.getString("TypeName");
+        } 
+        return name;
+    }
+    
+    public int loadCreditID(String name)throws Exception
+    {
+        int id = 0;
+        ResultSet result = null;
+        Connection con = DB.createConnection();
+        Statement stmt = con.createStatement();
+        String sql = "select ccode from credittype where  TypeName='" + name + "'";
+        result = stmt.executeQuery(sql);
+        while(result.next()){
+            id = result.getInt("ccode");
+        } 
+        return id;
+    }
+    
+    public void updateCredit()
+    {        
+        try{
+             Connection con = DB.createConnection();
+             String sql = "UPDATE credittype SET TypeName = ? WHERE ccode = "+ cinfo1.getID() + ";";
+             PreparedStatement stmt = con.prepareStatement(sql);
+             stmt.setString(1, cinfo1.getType());
+
+             int result = stmt.executeUpdate();
+
+             if (result > 0) {
+                 JOptionPane.showMessageDialog(null, "User has been updated succesfully ", "SuperMarket Management", JOptionPane.INFORMATION_MESSAGE);
+             } 
+        }
+        catch(Exception e)
+        {
+          System.out.println(e.getMessage());
+        }
+    }
+    
 }
