@@ -30,6 +30,25 @@ public class ManageLoyalityCustomer {
       this.lcm = lcus;
     }
     
+    public ResultSet getAll()
+    {
+        ResultSet result = null;
+        try{
+            
+        Connection con = DB.createConnection();
+        Statement stmt = con.createStatement();
+        String Sql = "Select * from loyalitycardcustomer";
+        result = stmt.executeQuery(Sql);
+        
+        }
+        catch(Exception e)
+        {
+          System.out.println("getloyalerror1" +e.getMessage());
+        }
+        
+        return result;
+    }
+    
     public ResultSet getloyalitycustomer(String bcode)
     {
         ResultSet result = null;
@@ -68,6 +87,54 @@ public class ManageLoyalityCustomer {
           System.out.println("error update" +e.getMessage());
         }
     
+    }
+    
+     public void saveLoyalityMember()
+    {    
+        try{
+            Connection con = DB.createConnection();
+            String sql = "INSERT INTO loyalitycardcustomer (memberId, Name, totalpoints, barcode, Lcode) VALUES (?,?,?,?,?)";
+            PreparedStatement stmt = con.prepareStatement(sql);
+//            System.out.println(card.getCode() + "   "+ card.getName());
+            stmt.setString(1, lcm.getmemId());
+            stmt.setString(2, lcm.getName());
+            stmt.setDouble(3, lcm.gettotpoint());
+            stmt.setString(4, lcm.getbarcode());
+            stmt.setString(5, lcm.getLcode());
+    
+            int result = stmt.executeUpdate();
+
+            if (result > 0) {
+                JOptionPane.showMessageDialog(null, "Loyality Member has been succesfully Added", "SuperMarket Management", JOptionPane.INFORMATION_MESSAGE);
+            } 
+        }
+        catch(Exception e)
+        {
+          System.out.println(e.getMessage());
+        }    
+   }
+     
+     public void updateMember()
+    {        
+        try{
+             Connection con = DB.createConnection();
+             String sql = "UPDATE loyalitycardcustomer SET Name = ?, totalpoints=?, barcode=?, Lcode=? WHERE memberId = '"+ lcm.getmemId() + "';";
+             PreparedStatement stmt = con.prepareStatement(sql);
+             stmt.setString(1, lcm.getName());
+             stmt.setDouble(2, lcm.gettotpoint());
+             stmt.setString(3, lcm.getbarcode());
+             stmt.setString(4, lcm.getLcode());
+
+             int result = stmt.executeUpdate();
+
+             if (result > 0) {
+                 JOptionPane.showMessageDialog(null, "Credit Customer has been updated succesfully ", "SuperMarket Management", JOptionPane.INFORMATION_MESSAGE);
+             } 
+        }
+        catch(Exception e)
+        {
+          System.out.println(e.getMessage());
+        }
     }
     
     
