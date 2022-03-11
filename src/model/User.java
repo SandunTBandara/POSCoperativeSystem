@@ -38,8 +38,12 @@ public class User {
     private int price;
     private int cashier;
     private int reports;
+    private int backEnd;
+    private int BasicInfo;
+    private int EntryNote;
+    private int Admin;
     
-    public void setPrivilages(int cus, int credit,int dep,int sup, int store, int cat, int item, int bin, int itemalert, int loymem, int loycard, int grn, int order, int orderReturn, int exchange, int supInvoice, int disposal, int price, int cashier, int reports){
+    public void setPrivilages(int cus, int credit,int dep,int sup, int store, int cat, int item, int bin, int itemalert, int loymem, int loycard, int grn, int order, int orderReturn, int exchange, int supInvoice, int disposal, int price, int cashier, int reports, int back, int basic, int entry, int admin){
         
         System.out.println(cus + " " + credit + " " + dep + " " + sup + " " + store + " " + cat + " " + item + " " + bin +" " + itemalert + " " + loymem + " "  + loycard + " " + grn + " " + order + " " + orderReturn + " " + exchange + " " + supInvoice+ " " + disposal + " " + price + " " + price + " " + cashier + " " + reports);
         this.cus=cus;
@@ -62,6 +66,10 @@ public class User {
         this.price = price;
         this.cashier = cashier;
         this.reports = reports;
+        this.backEnd = back;
+        this.BasicInfo = basic;
+        this.EntryNote = entry;
+        this.Admin = admin;
     }
     
     public int getCus(){
@@ -141,6 +149,22 @@ public class User {
     
     public int getRepors(){
         return this.reports;
+    }
+    
+    public int getBackEnd(){
+        return this.backEnd;
+    }
+    
+    public int getBasisInfo(){
+        return this.BasicInfo;
+    }
+    
+    public int getEntryNote(){
+        return this.EntryNote;
+    }
+    
+    public int getAdmin(){
+        return this.Admin;
     }
     
     
