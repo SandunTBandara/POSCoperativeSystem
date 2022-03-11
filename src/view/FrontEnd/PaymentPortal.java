@@ -486,13 +486,25 @@ double sQty=0, mQty=0;
         points = lcd.gettotpoint();
         if(memId != null)
         {
+            
             bal = Double.parseDouble(txtbalancef.getText());
+            if(bal >= points)
+            {
             totbal = bal - points;
             points = 0;
             txtbalancef.setText(Double.toString(totbal));
             
             ManageLoyalityCustomer mlC = new ManageLoyalityCustomer();
             mlC.updateloyalitycustomer(memId, points);
+            }
+            else
+            {
+               totbal = bal - bal+10;
+               points = points - bal+10;
+               txtbalancef.setText(Double.toString(totbal));
+               ManageLoyalityCustomer m2C = new ManageLoyalityCustomer();
+               m2C.updateloyalitycustomer(memId, points);
+            }
           
         }
         else

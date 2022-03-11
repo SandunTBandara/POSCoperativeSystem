@@ -73,8 +73,11 @@ public class ManageCustomerInvoice {
       int result = stmt.executeUpdate();
       
              if (result > 0) {
-                 JOptionPane.showMessageDialog(null, "Invoice has been succesfully Added", "SuperMarket Management", JOptionPane.INFORMATION_MESSAGE);
+                 System.out.println("Invoice Saved succesfully");
              } 
+             else{
+             JOptionPane.showMessageDialog(null, "Invoice not Added", "SuperMarket POS Management", JOptionPane.ERROR_MESSAGE);
+             }
   
         }
         catch(Exception e)

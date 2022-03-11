@@ -209,6 +209,10 @@ public class LoyalitycardDetails extends javax.swing.JDialog {
           lbl_totalpoint.setText(Double.toString(points));
            JOptionPane.showMessageDialog(null, "Points SuccesFully Added", "Super MArket POS System", JOptionPane.INFORMATION_MESSAGE);
         }
+        else
+        {
+          JOptionPane.showMessageDialog(null, "No Points for this bill", "Super MArket POS System", JOptionPane.INFORMATION_MESSAGE);
+        }
         
         ManageLoyalityCustomer mcl = new ManageLoyalityCustomer();
         mcl.updateloyalitycustomer(lbl_memberID.getText().toString(), points);
@@ -262,7 +266,7 @@ public class LoyalitycardDetails extends javax.swing.JDialog {
     }//GEN-LAST:event_btn_cancelActionPerformed
 
     private void txt_memberIDKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_memberIDKeyReleased
-       ManageValidation.validateNumber(txt_memberID, 7);
+       
     }//GEN-LAST:event_txt_memberIDKeyReleased
 
     /**

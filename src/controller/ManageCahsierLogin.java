@@ -82,6 +82,29 @@ public class ManageCahsierLogin {
     
     }
     
+    int result1;
+     public int updateuserlogin(String date, String time,double famount,String sno)
+    {
+        try{
+        Connection con = DB.createConnection();
+        String sql = "Update cashierloginin set SignOutDate = '"+date+"' , SignOutTime = '"+time+"' , FloatAmountOut = '"+famount+"'   where shiftNo = '"+sno+"' ";
+        PreparedStatement stmt = con.prepareStatement(sql);
+        result1 = stmt.executeUpdate();
+        
+        if(result1<0 )
+        {
+           JOptionPane.showMessageDialog(null, "Not Update", "Super MArket POS System", JOptionPane.ERROR_MESSAGE);
+        }
+        
+        }
+        catch(Exception e)
+        {
+          System.out.println("error update" +e.getMessage());
+        }
+        return result1;
+    
+    }
+    
     
     
 

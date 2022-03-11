@@ -37,7 +37,7 @@ public class ManageLoyalityCustomer {
             
         Connection con = DB.createConnection();
         Statement stmt = con.createStatement();
-        String Sql = "Select * from loyalitycardcustomer";
+        String Sql = "Select * from loyalitycardcustomer where barcode = '"+bcode+"'";
         result = stmt.executeQuery(Sql);
         
         }

@@ -73,11 +73,6 @@ public class Invoice extends javax.swing.JInternalFrame {
         datepicker = new com.github.lgooddatepicker.components.DatePicker();
         timePicker = new com.github.lgooddatepicker.components.TimePicker();
         jLabel13 = new javax.swing.JLabel();
-        lbl_itemnameerror = new javax.swing.JLabel();
-        lbl_priceerror = new javax.swing.JLabel();
-        lbl_qtyerror = new javax.swing.JLabel();
-        lbl_toterror = new javax.swing.JLabel();
-        lbl_itemerror = new javax.swing.JLabel();
         txt_discount = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         txt_discunt = new javax.swing.JTextField();
@@ -85,6 +80,12 @@ public class Invoice extends javax.swing.JInternalFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        lbl_priceerror = new javax.swing.JLabel();
+        lbl_itemnameerror = new javax.swing.JLabel();
+        lbl_qtyerror = new javax.swing.JLabel();
+        lbl_toterror = new javax.swing.JLabel();
+        lbl_itemerror = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
 
@@ -234,26 +235,6 @@ public class Invoice extends javax.swing.JInternalFrame {
         jLabel13.setForeground(new java.awt.Color(204, 204, 255));
         jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 170, -1, -1));
 
-        lbl_itemnameerror.setBackground(new java.awt.Color(255, 0, 0));
-        lbl_itemnameerror.setForeground(new java.awt.Color(255, 0, 0));
-        jPanel1.add(lbl_itemnameerror, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 190, 120, -1));
-
-        lbl_priceerror.setBackground(new java.awt.Color(255, 0, 0));
-        lbl_priceerror.setForeground(new java.awt.Color(255, 0, 0));
-        jPanel1.add(lbl_priceerror, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 190, 120, -1));
-
-        lbl_qtyerror.setBackground(new java.awt.Color(255, 0, 0));
-        lbl_qtyerror.setForeground(new java.awt.Color(255, 0, 0));
-        jPanel1.add(lbl_qtyerror, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 190, 120, -1));
-
-        lbl_toterror.setBackground(new java.awt.Color(255, 0, 0));
-        lbl_toterror.setForeground(new java.awt.Color(255, 0, 0));
-        jPanel1.add(lbl_toterror, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 190, 120, -1));
-
-        lbl_itemerror.setBackground(new java.awt.Color(255, 0, 0));
-        lbl_itemerror.setForeground(new java.awt.Color(255, 0, 0));
-        jPanel1.add(lbl_itemerror, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, 120, -1));
-
         txt_discount.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txt_discountKeyReleased(evt);
@@ -290,6 +271,31 @@ public class Invoice extends javax.swing.JInternalFrame {
         jLabel1.setForeground(new java.awt.Color(204, 204, 255));
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 122, 41));
 
+        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel15.setText("Press F2 For New Invoice");
+        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 30, -1, -1));
+
+        lbl_priceerror.setBackground(new java.awt.Color(255, 0, 0));
+        lbl_priceerror.setForeground(new java.awt.Color(255, 0, 0));
+        jPanel2.add(lbl_priceerror, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 170, 120, -1));
+
+        lbl_itemnameerror.setBackground(new java.awt.Color(255, 0, 0));
+        lbl_itemnameerror.setForeground(new java.awt.Color(255, 0, 0));
+        jPanel2.add(lbl_itemnameerror, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 170, 120, -1));
+
+        lbl_qtyerror.setBackground(new java.awt.Color(255, 0, 0));
+        lbl_qtyerror.setForeground(new java.awt.Color(255, 0, 0));
+        jPanel2.add(lbl_qtyerror, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 170, 120, -1));
+
+        lbl_toterror.setBackground(new java.awt.Color(255, 0, 0));
+        lbl_toterror.setForeground(new java.awt.Color(255, 0, 0));
+        jPanel2.add(lbl_toterror, new org.netbeans.lib.awtextra.AbsoluteConstraints(1180, 170, 120, -1));
+
+        lbl_itemerror.setBackground(new java.awt.Color(255, 0, 0));
+        lbl_itemerror.setForeground(new java.awt.Color(255, 0, 0));
+        jPanel2.add(lbl_itemerror, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 120, -1));
+
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 1520, 190));
 
         jPanel3.setBackground(new java.awt.Color(0, 0, 0));
@@ -301,7 +307,7 @@ public class Invoice extends javax.swing.JInternalFrame {
         jLabel14.setText("INVOICE");
         jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 0, -1, -1));
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 10, 890, 50));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 10, 860, 50));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 1570, 900));
 
@@ -602,6 +608,7 @@ public class Invoice extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

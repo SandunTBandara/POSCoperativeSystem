@@ -267,6 +267,10 @@ ResultSet result1 = null;
                    {
                      JOptionPane.showMessageDialog(null, "Credit amount succesfully added","Super Market POS System",JOptionPane.INFORMATION_MESSAGE);
                    }
+                   else
+                   {
+                       JOptionPane.showMessageDialog(null, "Credit amount not added","Super Market POS System",JOptionPane.ERROR_MESSAGE);
+                   }
                    
                 }
         if(result>0 && rst>0)

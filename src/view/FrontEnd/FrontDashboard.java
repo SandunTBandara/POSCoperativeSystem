@@ -25,6 +25,9 @@ public class FrontDashboard extends javax.swing.JFrame {
     public FrontDashboard() {
         initComponents();
          setExtendedState(JFrame.MAXIMIZED_BOTH);
+          Invoice Invoice1 = new Invoice();
+        frontendpanel.removeAll();
+        frontendpanel.add(Invoice1).setVisible(true);
     }
 
     /**
@@ -38,6 +41,7 @@ public class FrontDashboard extends javax.swing.JFrame {
 
         jMenuItem2 = new javax.swing.JMenuItem();
         frontendpanel = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -54,15 +58,24 @@ public class FrontDashboard extends javax.swing.JFrame {
 
         frontendpanel.setBackground(new java.awt.Color(51, 255, 255));
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setText("Press F2 for new Invoice");
+
         javax.swing.GroupLayout frontendpanelLayout = new javax.swing.GroupLayout(frontendpanel);
         frontendpanel.setLayout(frontendpanelLayout);
         frontendpanelLayout.setHorizontalGroup(
             frontendpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1960, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frontendpanelLayout.createSequentialGroup()
+                .addContainerGap(1653, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addContainerGap())
         );
         frontendpanelLayout.setVerticalGroup(
             frontendpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1000, Short.MAX_VALUE)
+            .addGroup(frontendpanelLayout.createSequentialGroup()
+                .addGap(43, 43, 43)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(895, Short.MAX_VALUE))
         );
 
         getContentPane().add(frontendpanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1960, 1000));
@@ -130,7 +143,12 @@ public class FrontDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-        // TODO add your handling code here:
+        
+        UserSignOut UserSignOut1 = new UserSignOut(null,true);
+        this.dispose();
+        UserSignOut1.setVisible(true);
+         
+        
     }//GEN-LAST:event_jMenuItem5ActionPerformed
    
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
@@ -186,6 +204,7 @@ public class FrontDashboard extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel frontendpanel;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
