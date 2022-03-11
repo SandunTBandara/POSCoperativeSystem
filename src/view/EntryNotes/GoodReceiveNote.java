@@ -1308,7 +1308,7 @@ public class GoodReceiveNote extends javax.swing.JDialog {
     }//GEN-LAST:event_billNoActionPerformed
 
     private void billNoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_billNoKeyPressed
-        // TODO add your handling code here:
+         ManageValidation.validateNumber(billNo, 4);
     }//GEN-LAST:event_billNoKeyPressed
 
     private void F16BNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_F16BNoActionPerformed
@@ -1491,7 +1491,7 @@ public class GoodReceiveNote extends javax.swing.JDialog {
     }//GEN-LAST:event_vatPercentageActionPerformed
 
     private void vatPercentageKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_vatPercentageKeyPressed
-        // TODO add your handling code here:
+        ManageValidation.validateNumber(vatPercentage, 7);
     }//GEN-LAST:event_vatPercentageKeyPressed
 
     private void vatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vatActionPerformed
@@ -1507,7 +1507,7 @@ public class GoodReceiveNote extends javax.swing.JDialog {
     }//GEN-LAST:event_itemDecreasePriceActionPerformed
 
     private void itemDecreasePriceKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_itemDecreasePriceKeyPressed
-        // TODO add your handling code here:
+         ManageValidation.validateNumber(itemDecreasePrice, 7);
     }//GEN-LAST:event_itemDecreasePriceKeyPressed
 
     private void loadingChargeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadingChargeActionPerformed
@@ -1515,7 +1515,7 @@ public class GoodReceiveNote extends javax.swing.JDialog {
     }//GEN-LAST:event_loadingChargeActionPerformed
 
     private void loadingChargeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_loadingChargeKeyPressed
-        // TODO add your handling code here:
+       ManageValidation.validateNumber(loadingCharge, 7);
     }//GEN-LAST:event_loadingChargeKeyPressed
 
     private void freeIssuseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_freeIssuseActionPerformed
@@ -1547,7 +1547,7 @@ public class GoodReceiveNote extends javax.swing.JDialog {
     }//GEN-LAST:event_discountPercentageActionPerformed
 
     private void discountPercentageKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_discountPercentageKeyPressed
-        // TODO add your handling code here:
+        ManageValidation.validateNumber(discountPercentage, 7);
     }//GEN-LAST:event_discountPercentageKeyPressed
 
     private void totalItemsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_totalItemsActionPerformed
@@ -1630,7 +1630,7 @@ public class GoodReceiveNote extends javax.swing.JDialog {
     }//GEN-LAST:event_itemBuyingPriceActionPerformed
 
     private void itemBuyingPriceKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_itemBuyingPriceKeyPressed
-        // TODO add your handling code here:
+        ManageValidation.validateNumber(itemBuyingPrice, 7);
     }//GEN-LAST:event_itemBuyingPriceKeyPressed
 
     private void itemSellingPriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemSellingPriceActionPerformed
@@ -1638,7 +1638,7 @@ public class GoodReceiveNote extends javax.swing.JDialog {
     }//GEN-LAST:event_itemSellingPriceActionPerformed
 
     private void itemSellingPriceKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_itemSellingPriceKeyPressed
-        // TODO add your handling code here:
+        ManageValidation.validateNumber(itemSellingPrice, 7);
     }//GEN-LAST:event_itemSellingPriceKeyPressed
 
     private void itemStockQtyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemStockQtyActionPerformed
@@ -1654,7 +1654,7 @@ public class GoodReceiveNote extends javax.swing.JDialog {
     }//GEN-LAST:event_itemQtyActionPerformed
 
     private void itemQtyKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_itemQtyKeyPressed
-        // TODO add your handling code here:
+        ManageValidation.validateNumber(itemQty, 7);
     }//GEN-LAST:event_itemQtyKeyPressed
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
@@ -2010,7 +2010,7 @@ public class GoodReceiveNote extends javax.swing.JDialog {
     }//GEN-LAST:event_itemQtyKeyReleased
 
     private void F23NoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_F23NoActionPerformed
-        // TODO add your handling code here:
+        ManageValidation.validateNumber(grnFreeItemQTY, 7);
     }//GEN-LAST:event_F23NoActionPerformed
 
     /**
