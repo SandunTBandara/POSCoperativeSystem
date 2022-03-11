@@ -10,6 +10,7 @@ package model;
  * @author Sanu
  */
 public class frontlogin {
+    public static String uid;
     private static String userId;
     private String password;
     
@@ -19,6 +20,7 @@ public class frontlogin {
     }
     public frontlogin(String userId, String password)
     {
+        this.uid = userId;
          this.userId = userId;
          this.password = password;
       
