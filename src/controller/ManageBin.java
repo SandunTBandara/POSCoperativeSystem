@@ -105,6 +105,26 @@ public class ManageBin {
    
    }
     
+    public void updateBin()
+    {        
+        try{
+             Connection con = DB.createConnection();
+             String sql = "UPDATE bintype SET name = ? WHERE Bcode = "+ Bin.getID() + ";";
+             PreparedStatement stmt = con.prepareStatement(sql);
+             stmt.setString(1, Bin.getName());
+
+             int result = stmt.executeUpdate();
+
+             if (result > 0) {
+                 JOptionPane.showMessageDialog(null, "User has been updated succesfully ", "SuperMarket Management", JOptionPane.INFORMATION_MESSAGE);
+             } 
+        }
+        catch(Exception e)
+        {
+          System.out.println(e.getMessage());
+        }
+    }
+    
    public ResultSet getnamebyid(String type)
    { 
        ResultSet result = null;
