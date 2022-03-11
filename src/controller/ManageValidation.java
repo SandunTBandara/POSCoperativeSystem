@@ -21,9 +21,13 @@ public class ManageValidation {
             for (int i = 0; i < text.getText().length(); i++) {
                 char c = text.getText().charAt(i);
                 if (!Character.isDigit(c)) {
-                    String s = text.getText().substring(0, i);
-                    text.setText(null);
-                    text.setText(s);
+                   if(c == '.'){
+                        
+                    }else{
+                        String s = text.getText().substring(0, i);
+                        text.setText(null);
+                        text.setText(s);
+                    }
                 }
                 if (text.getText().length() > limit) {
                     String ss = text.getText().substring(i, limit);
@@ -43,6 +47,20 @@ public class ManageValidation {
         } else {
             error.setText("");
             return true;
+        }
+    }
+
+    
+    public static void validatorText2(JTextField text) {
+        try{
+            char[] chars = text.getText().toCharArray();
+        for(int i=0; i<=chars.length; i++){
+            if(Character.isDigit(chars[i])){
+                text.setText(String.valueOf(chars, 0, i));
+         }
+        } 
+        }catch(Exception e){
+            System.out.println(e.getMessage());
         }
     }
 
