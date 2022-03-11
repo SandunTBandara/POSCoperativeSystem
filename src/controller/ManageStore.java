@@ -123,4 +123,25 @@ public class ManageStore {
     }
     
     
+    public void updateStore()
+    {        
+        try{
+             Connection con = DB.createConnection();
+             String sql = "UPDATE store SET location = ? WHERE stcode = '"+ Store.getID() + "';";
+             PreparedStatement stmt = con.prepareStatement(sql);
+             stmt.setString(1, Store.getLocation());
+
+             int result = stmt.executeUpdate();
+
+             if (result > 0) {
+                 JOptionPane.showMessageDialog(null, "User has been updated succesfully ", "SuperMarket Management", JOptionPane.INFORMATION_MESSAGE);
+             } 
+        }
+        catch(Exception e)
+        {
+          System.out.println(e.getMessage());
+        }
+    }
+    
+    
 }
