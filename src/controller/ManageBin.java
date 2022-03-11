@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package controller;
 
 import Model.BinType;
@@ -15,10 +11,6 @@ import java.sql.Statement;
 import javax.swing.JOptionPane;
 import model.DB;
 
-/**
- *
- * @author Sanu
- */
 public class ManageBin {
     BinType Bin;
 
@@ -75,6 +67,23 @@ public class ManageBin {
        return result;
     }
     
+    
+    public ResultSet getAll()
+    {
+       ResultSet result = null;
+       try{
+             Connection con = DB.createConnection();
+            Statement stmt = con.createStatement();
+            String sql = "SELECT * FROM bintype";
+            result = stmt.executeQuery(sql);
+           
+       }
+       catch(Exception e)
+       {
+           System.out.println(e.getMessage());
+       }
+       return result;
+    }
     public void savebinLocation() {
         try {
             Connection con = DB.createConnection();
