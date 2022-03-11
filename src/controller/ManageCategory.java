@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package controller;
 
 import Model.Category;
@@ -11,10 +7,6 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import model.DB;
 
-/**
- *
- * @author Sanu
- */
 public class ManageCategory {
     Category Categories;
     public  ManageCategory()
@@ -26,11 +18,11 @@ public class ManageCategory {
         this.Categories = Categories;
     }
     
-    public ResultSet displaytableview(String no)
+   public ResultSet displaytableview()
     {    ResultSet rs = null;
         try {
             Connection con = DB.createConnection();
-            String sql = "Select * from category where dno = "+Integer.parseInt(no)+" ";
+            String sql = "Select * from category";
             Statement stmt = con.createStatement();
             rs = stmt.executeQuery(sql);
              
@@ -42,6 +34,7 @@ public class ManageCategory {
         
         return rs;
     }
+    
     
     
     public ResultSet Viewcategorytable(String Cname, String dpno) {
@@ -76,6 +69,49 @@ public class ManageCategory {
     return cname;
     }
     
+       public void saveCategory()
+       {    
+            try{
+                Connection con = DB.createConnection();
+                String sql = "INSERT INTO category(cno, category, dno) VALUES (?,?,?)";
+                PreparedStatement stmt = con.prepareStatement(sql);
+                stmt.setInt(1, Categories.getCno());
+                stmt.setString(2, Categories.getCategory());
+                stmt.setInt(3, Categories.getDno());
+
+                int result = stmt.executeUpdate();
+
+                if (result > 0) {
+                    JOptionPane.showMessageDialog(null, "Department has been succesfully Added", "SuperMarket Management", JOptionPane.INFORMATION_MESSAGE);
+                } 
+            }
+            catch(Exception e)
+            {
+              System.out.println(e.getMessage());
+            }   
+
+       }
+        
     
+   public void updateCat()
+    {        
+        try{
+             Connection con = DB.createConnection();
+             String sql = "UPDATE category SET category = ?, dno=? WHERE cno = "+ Categories.getCno()+ ";";
+             PreparedStatement stmt = con.prepareStatement(sql);
+             stmt.setString(1, Categories.getCategory());
+             stmt.setInt(2, Categories.getDno());
+
+             int result = stmt.executeUpdate();
+
+             if (result > 0) {
+                 JOptionPane.showMessageDialog(null, "User has been updated succesfully ", "SuperMarket Management", JOptionPane.INFORMATION_MESSAGE);
+             } 
+        }
+        catch(Exception e)
+        {
+          System.out.println(e.getMessage());
+        }
+    }
     
 }
